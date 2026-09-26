@@ -80,6 +80,7 @@ export const STRINGS = {
       "Purpose-built digital engineering designed around your business workflows, operations, and growth goals.",
     exploreLink: "Explore →",
     viewLink: "View →",
+    viewAllServices: "View all services",
     servicePrefix: "Service",
   },
 
@@ -589,6 +590,8 @@ export const STRINGS = {
   // Layout & Footer
   footer: {
     business: "Business",
+    explore: "Explore",
+    company: "Company",
     connect: "Connect",
     whatsapp: "WhatsApp",
     instagram: "Instagram",

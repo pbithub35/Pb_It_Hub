@@ -11,13 +11,15 @@ import { Reveal } from "@/components/ui/Reveal";
 import { cn } from "@/lib/utils";
 import { STRINGS } from "@/config/strings";
 
-export function ServicesSection() {
+export function ServicesSection({ limit }: { limit?: number } = {}) {
+  const listed = limit ? services.slice(0, limit) : services;
   const [active, setActive] = useState(0);
   const [openSlug, setOpenSlug] = useState<string | null>(
-    services[0]?.slug ?? null,
+    listed[0]?.slug ?? null,
   );
   const reduce = useReducedMotion();
-  const current = services[active] ?? services[0];
+  const current = listed[active] ?? listed[0];
+  const hasMore = Boolean(limit && services.length > limit);
 
   return (
     <section id="services" className="surface-dark section-pad relative overflow-clip noise-overlay">
@@ -40,7 +42,7 @@ export function ServicesSection() {
 
         {/* Mobile: Professional Dark Glass Cards */}
         <div className="mt-6 space-y-3 md:hidden">
-          {services.map((service) => {
+          {listed.map((service) => {
             const isOpen = openSlug === service.slug;
             return (
               <div
@@ -133,7 +135,7 @@ export function ServicesSection() {
         {/* Desktop / tablet: list + large sticky visual */}
         <div className="mt-6 md:mt-8 hidden items-start gap-8 md:grid md:grid-cols-[0.95fr_1.05fr] lg:gap-10 xl:grid-cols-[0.9fr_1.1fr] xl:gap-12">
           <div className="space-y-2.5">
-            {services.map((service, index) => {
+            {listed.map((service, index) => {
               const isActive = index === active;
               return (
                 <button
@@ -225,6 +227,18 @@ export function ServicesSection() {
             </AnimatePresence>
           </div>
         </div>
+
+        {hasMore ? (
+          <div className="mt-8 text-center md:mt-10">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80 transition hover:border-cyan/40 hover:bg-white/[0.08] hover:text-white"
+            >
+              {STRINGS.services.viewAllServices}
+              <span aria-hidden>→</span>
+            </Link>
+          </div>
+        ) : null}
       </Container>
     </section>
   );

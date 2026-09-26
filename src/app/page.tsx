@@ -2,9 +2,7 @@ import dynamic from "next/dynamic";
 import { Hero } from "@/components/sections/Hero";
 import { StudentServicesScroll } from "@/components/sections/StudentServices";
 import { ServicesSection } from "@/components/sections/Services";
-import { TechnologiesSection } from "@/components/sections/Technologies";
 import { WhyUsSection } from "@/components/sections/WhyUs";
-import { AboutSection } from "@/components/sections/About";
 import { ContactCTASection } from "@/components/sections/Contact";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
@@ -18,15 +16,6 @@ import { services } from "@/data/services";
 
 const WorkSection = dynamic(() =>
   import("@/components/sections/Work").then((m) => m.WorkSection),
-);
-const AISection = dynamic(() =>
-  import("@/components/sections/AI").then((m) => m.AISection),
-);
-const ProcessSection = dynamic(() =>
-  import("@/components/sections/Process").then((m) => m.ProcessSection),
-);
-const CapabilitiesSection = dynamic(() =>
-  import("@/components/sections/Capabilities").then((m) => m.CapabilitiesSection),
 );
 
 export default function HomePage() {
@@ -48,14 +37,9 @@ export default function HomePage() {
       />
       <Hero />
       <StudentServicesScroll />
-      <ServicesSection />
-      <WorkSection />
-      <AISection />
-      <TechnologiesSection />
+      <ServicesSection limit={4} />
+      <WorkSection limit={3} />
       <WhyUsSection />
-      <ProcessSection />
-      <CapabilitiesSection />
-      <AboutSection />
       <ContactCTASection />
     </>
   );

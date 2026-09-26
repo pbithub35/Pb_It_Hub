@@ -4,6 +4,7 @@ import { footerNav, legalNav } from "@/data/navigation";
 import { siteConfig } from "@/config/site";
 import { getMediaSrc } from "@/lib/media";
 import { Container } from "@/components/ui/Container";
+import { Button } from "@/components/ui/Button";
 import { STRINGS } from "@/config/strings";
 import { buildWhatsAppUrl, getWhatsAppNumber } from "@/lib/whatsapp";
 
@@ -64,56 +65,89 @@ export function Footer() {
       label: STRINGS.footer.whatsapp,
       href: whatsappHref,
       icon: WhatsAppIcon,
-      className: "hover:border-emerald-400/50 hover:text-emerald-300",
+      className: "hover:border-emerald-400/50 hover:bg-emerald-400/10 hover:text-emerald-300",
     },
     {
       label: STRINGS.footer.instagram,
       href: siteConfig.social.instagram,
       icon: InstagramIcon,
-      className: "hover:border-pink-400/50 hover:text-pink-300",
+      className: "hover:border-pink-400/50 hover:bg-pink-400/10 hover:text-pink-300",
     },
     {
       label: STRINGS.footer.call,
       href: callHref,
       icon: CallIcon,
-      className: "hover:border-cyan/50 hover:text-cyan",
+      className: "hover:border-cyan/50 hover:bg-cyan/10 hover:text-cyan",
     },
   ];
 
+  const exploreLinks = footerNav.slice(0, 4);
+  const companyLinks = footerNav.slice(4);
+
   return (
-    <footer className="surface-dark border-t border-white/8">
-      <Container wide className="py-6 md:py-9">
-        <div className="grid gap-6 md:grid-cols-[1.2fr_1fr_auto] md:items-start md:gap-8">
-          {/* Brand */}
-          <div>
+    <footer className="relative overflow-hidden border-t border-white/10 bg-navy-deep">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute inset-0 grid-fade opacity-25" />
+        <div className="absolute -bottom-24 left-1/2 h-56 w-[36rem] -translate-x-1/2 rounded-full bg-blue/10 blur-[100px]" />
+      </div>
+
+      <Container wide className="relative py-10 md:py-14">
+        <div className="grid gap-10 lg:grid-cols-[1.35fr_1fr_1fr_auto] lg:gap-12">
+          {/* Brand + CTA */}
+          <div className="max-w-md">
             <Link href="/" className="inline-flex items-center gap-2.5">
               <Image
                 src={getMediaSrc("brand/logo")}
                 alt={siteConfig.name}
-                width={32}
-                height={32}
-                className="h-8 w-8 rounded-md object-cover md:h-9 md:w-9"
+                width={36}
+                height={36}
+                className="h-9 w-9 rounded-lg object-cover"
               />
-              <span className="font-display text-sm tracking-[0.08em] text-white md:text-base">
+              <span className="font-display text-base tracking-[0.08em] text-white md:text-lg">
                 {siteConfig.name}
               </span>
             </Link>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/45">
+            <p className="mt-4 text-sm leading-relaxed text-white/55">
               {STRINGS.brand.footerSlogan}
             </p>
-            <p className="mt-2 text-xs text-white/35">
-              {siteConfig.location}, {siteConfig.region} · Serving{" "}
-              {siteConfig.areasServed.filter((a) => a !== "India").join(", ")}
-            </p>
+            <div className="mt-6">
+              <Button href="/contact" size="sm">
+                {STRINGS.hero.ctaProject}
+              </Button>
+            </div>
           </div>
 
-          {/* Business links */}
+          {/* Explore */}
           <div>
-            <p className="eyebrow mb-3 text-white/40">{STRINGS.footer.business}</p>
-            <ul className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-white/55 md:flex-col md:gap-y-2.5">
-              {footerNav.map((item) => (
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan/80">
+              {STRINGS.footer.explore}
+            </p>
+            <ul className="mt-4 space-y-2.5 text-sm text-white/60">
+              {exploreLinks.map((item) => (
                 <li key={item.href}>
-                  <Link href={item.href} className="transition hover:text-white">
+                  <Link
+                    href={item.href}
+                    className="transition hover:text-white"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Company */}
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan/80">
+              {STRINGS.footer.company}
+            </p>
+            <ul className="mt-4 space-y-2.5 text-sm text-white/60">
+              {companyLinks.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className="transition hover:text-white"
+                  >
                     {item.label}
                   </Link>
                 </li>
@@ -123,8 +157,10 @@ export function Footer() {
 
           {/* Connect */}
           <div>
-            <p className="eyebrow mb-3 text-white/40">{STRINGS.footer.connect}</p>
-            <ul className="flex items-center gap-2.5">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan/80">
+              {STRINGS.footer.connect}
+            </p>
+            <ul className="mt-4 flex items-center gap-2.5">
               {connect.map((item) => {
                 const Icon = item.icon;
                 return (
@@ -134,27 +170,34 @@ export function Footer() {
                       target={item.label === STRINGS.footer.call ? undefined : "_blank"}
                       rel={item.label === STRINGS.footer.call ? undefined : "noreferrer"}
                       aria-label={item.label}
-                      className={`inline-flex h-10 w-10 items-center justify-center rounded-md border border-white/12 bg-white/[0.04] text-white/75 transition ${item.className}`}
+                      className={`inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/12 bg-white/[0.04] text-white/80 transition ${item.className}`}
                     >
-                      <Icon className="h-[18px] w-[18px]" />
+                      <Icon className="h-5 w-5" />
                     </a>
                   </li>
                 );
               })}
             </ul>
+            <a
+              href={`mailto:${siteConfig.email}`}
+              className="mt-4 block text-sm text-white/50 transition hover:text-cyan"
+            >
+              {siteConfig.email}
+            </a>
+            <p className="mt-2 text-xs text-white/35">
+              {siteConfig.location}, {siteConfig.region}
+            </p>
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-3 border-t border-white/8 pt-5 text-[11px] text-white/35 sm:flex-row sm:items-center sm:justify-between md:text-xs">
-          <p>
-            {STRINGS.brand.copyrightNotice(new Date().getFullYear())}
-          </p>
-          <div className="flex gap-4 md:gap-5">
+        <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
+          <p>{STRINGS.brand.copyrightNotice(new Date().getFullYear())}</p>
+          <div className="flex flex-wrap gap-4 md:gap-5">
             {legalNav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="transition hover:text-white/70"
+                className="transition hover:text-white/75"
               >
                 {item.label}
               </Link>
