@@ -56,6 +56,9 @@ export const metadata: Metadata = {
     images: ["/images/pb-it-hub-dark.jpg"],
   },
   robots: { index: true, follow: true },
+  verification: {
+    google: "9HS6OMGZ7q_bgWuMfXBvHaroK7kWizbVzY4mfMU4ovI",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
