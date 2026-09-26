@@ -15,7 +15,9 @@ export function FreeResourceCard({ resource }: { resource: FreeResource }) {
       </h3>
       <p className="mt-2 flex-1 text-sm text-slate-300">{resource.description}</p>
       <span className="mt-4 text-[11px] font-semibold uppercase tracking-wider text-cyan-400 group-hover:text-cyan-300">
-        Read →
+        {resource.category === "Free Source Code" || resource.codeBlocks?.length
+          ? "Get free code →"
+          : "Read →"}
       </span>
     </Link>
   );

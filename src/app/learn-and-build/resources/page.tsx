@@ -7,10 +7,17 @@ import { FreeResourceCard } from "@/components/learn-build/FreeResourceCard";
 import { getPublicFreeResources } from "@/data/freeResources";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Free Coding Resources",
+  title: "Free Source Code & Coding Resources for BCA, MCA, B.Tech",
   description:
-    "Free project ideas, viva prep, interview questions and career guides for students learning by building.",
+    "Free source code for BCA, MCA, B.Tech CSE, B.Sc CS/IT and Diploma practicals — plus project ideas, viva prep and career guides.",
   path: "/learn-and-build/resources",
+  keywords: [
+    "free source code BCA practical",
+    "free source code MCA project",
+    "B.Tech CSE practical source code",
+    "college project free code",
+    "PHP MySQL practical",
+  ],
 });
 
 export default function ResourcesPage() {
@@ -23,8 +30,8 @@ export default function ResourcesPage() {
         <SectionHeading
           tone="dark"
           eyebrow="Free resources"
-          title="Learn with practical guides"
-          description="Project ideas, viva preparation, interview questions and career guidance written for real student search intent."
+          title="Free source code & practical guides"
+          description="Copy-ready starters for BCA, MCA, B.Tech, B.Sc and Diploma practicals — plus project ideas, viva prep and career guidance."
         />
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {resources.map((resource) => (

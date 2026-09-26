@@ -11,6 +11,7 @@ import {
   organizationJsonLd,
   localBusinessJsonLd,
   serviceJsonLd,
+  webSiteJsonLd,
   absoluteUrl,
 } from "@/lib/seo";
 import { services } from "@/data/services";
@@ -33,6 +34,7 @@ export default function HomePage() {
 
   return (
     <>
+      <JsonLd data={webSiteJsonLd()} />
       <JsonLd data={organizationJsonLd()} />
       {localBusiness ? <JsonLd data={localBusiness} /> : null}
       <JsonLd

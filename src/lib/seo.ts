@@ -6,6 +6,7 @@ interface PageSeoInput {
   description?: string;
   path?: string;
   image?: string;
+  keywords?: string[];
   noIndex?: boolean;
 }
 
@@ -20,6 +21,7 @@ export function createPageMetadata({
   description = siteConfig.description,
   path = "/",
   image = "/images/pb-it-hub-dark.jpg",
+  keywords,
   noIndex = false,
 }: PageSeoInput): Metadata {
   const url = absoluteUrl(path);
@@ -28,6 +30,7 @@ export function createPageMetadata({
   return {
     title,
     description,
+    keywords,
     alternates: { canonical: url },
     openGraph: {
       type: "website",
@@ -60,6 +63,37 @@ export function organizationJsonLd() {
     email: siteConfig.email,
     sameAs: Object.values(siteConfig.social).filter(Boolean),
     slogan: siteConfig.tagline,
+  };
+}
+
+export function webSiteJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: siteConfig.name,
+    url: siteConfig.url,
+    description: siteConfig.description,
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+    },
+  };
+}
+
+export function faqJsonLd(
+  faqs: Array<{ question: string; answer: string }>,
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
   };
 }
 
@@ -126,3 +160,43 @@ export function breadcrumbJsonLd(
     })),
   };
 }
+
+export function blogPostingJsonLd({
+  title,
+  description,
+  url,
+  datePublished,
+  authorName,
+  image = "/images/pb-it-hub-dark.jpg",
+}: {
+  title: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  authorName: string;
+  image?: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: title,
+    description,
+    url: absoluteUrl(url),
+    datePublished,
+    author: {
+      "@type": "Person",
+      name: authorName,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    image: absoluteUrl(image),
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": absoluteUrl(url),
+    },
+  };
+}
+

@@ -30,6 +30,9 @@ export const STRINGS = {
     about: "About",
     contact: "Contact",
     whyUs: "Why Us",
+    faq: "FAQ",
+    locations: "Locations",
+    blog: "Blog",
     privacyPolicy: "Privacy Policy",
     termsConditions: "Terms & Conditions",
     openMenu: "Open menu",
@@ -454,6 +457,133 @@ export const STRINGS = {
     getInTouch: "Get in Touch",
     backToHome: "Back to Home",
     clearSelection: "Clear selection and close",
+  },
+
+  // FAQ Section & Page Copy
+  faq: {
+    eyebrow: "Knowledge Base & Help",
+    title: "Frequently Asked Questions",
+    description:
+      "Find direct answers about student final-year projects, source code, 1-to-1 mentorship, custom project builds, and our digital product engineering services.",
+    searchPlaceholder: "Search questions (e.g., source code, viva, BCA, refund)...",
+    allCategory: "All Questions",
+    stillQuestions: "Still have questions?",
+    stillQuestionsSub:
+      "Our engineering team is always ready to guide you on projects, architecture, or custom builds.",
+    whatsappCTA: "Chat on WhatsApp",
+    contactCTA: "Contact Us",
+    categories: [
+      { id: "student-projects", label: "Student Projects & Code" },
+      { id: "mentorship-kt", label: "1-on-1 Sessions & Viva Prep" },
+      { id: "custom-demands", label: "Custom Projects & Demands" },
+      { id: "delivery-payment", label: "Delivery & Payment" },
+      { id: "business-services", label: "Business & Engineering" },
+    ],
+    items: [
+      {
+        id: "q1",
+        category: "student-projects",
+        question: "What is included with a student project purchase?",
+        answer:
+          "Every student project includes the complete, production-ready source code (frontend, backend, database scripts), setup instructions/README, project architecture overview, and database schema files. Optional add-ons are available for SRS documentation, PPT presentation decks, and 1-to-1 viva explanation sessions.",
+      },
+      {
+        id: "q2",
+        category: "student-projects",
+        question: "Are these projects suitable for BCA, MCA, B.Tech, BE, and Diploma students?",
+        answer:
+          "Yes, absolutely. Our project catalog is specifically designed to meet the academic guidelines and complexity requirements of BCA, MCA, B.Tech / BE CSE & IT, B.Sc / M.Sc Computer Science, and Polytechnic Diploma programs. Each project includes clean modular code and industry-standard documentation suitable for college submission.",
+      },
+      {
+        id: "q3",
+        category: "student-projects",
+        question: "What technology stacks are the projects built with?",
+        answer:
+          "We offer projects built in modern industry stacks including React, Next.js, Flutter, Android (Kotlin/Java), iOS (Swift), Node.js, Python (FastAPI/Django/Flask), PHP, Laravel, Java (Spring Boot), and AI/ML (PyTorch/Scikit-learn/TensorFlow). All projects follow clean architecture and clean coding standards.",
+      },
+      {
+        id: "q4",
+        category: "student-projects",
+        question: "Will the project run on my laptop / PC?",
+        answer:
+          "Yes. All projects are thoroughly tested on standard developer environments (Windows, macOS, and Linux). Every project comes with step-by-step setup documentation covering prerequisites, environment variables, dependencies installation, and database migration. We also offer live remote setup assistance if you run into configuration issues.",
+      },
+      {
+        id: "q5",
+        category: "mentorship-kt",
+        question: "What is a 1-to-1 Knowledge Transfer (KT) and Viva Preparation session?",
+        answer:
+          "Our 1-to-1 session is a dedicated live video screen-share where an experienced senior software engineer walks you through the entire project codebase line-by-line. We explain the architecture, data flow, API endpoints, database relationships, and typical viva questions your college professors or external examiners might ask.",
+      },
+      {
+        id: "q6",
+        category: "mentorship-kt",
+        question: "Can you help me answer tough technical questions during my external viva?",
+        answer:
+          "Yes. During the preparation session, we simulate realistic external viva exams, asking you likely theoretical and practical questions about your chosen stack (e.g., state management, database normalization, authentication flows, error handling) and giving you clear, confident answers to share with your evaluator.",
+      },
+      {
+        id: "q7",
+        category: "custom-demands",
+        question: "Can I request a custom project based on my college problem statement or idea?",
+        answer:
+          "Yes! Through our 'Write Your Demands' feature or direct WhatsApp inquiry, you can submit your custom synopsis, problem statement, required tech stack, and submission deadline. Our engineering team will review the requirements and provide a tailored scope, timeline, and quote.",
+      },
+      {
+        id: "q8",
+        category: "custom-demands",
+        question: "Can you modify an existing project to add custom features or modules?",
+        answer:
+          "Yes. If you like a project in our catalog but need extra features (such as an additional payment gateway, custom analytics dashboard, specific role-based access, or third-party API integration), our team can customize it to your exact specifications.",
+      },
+      {
+        id: "q9",
+        category: "delivery-payment",
+        question: "How do I receive the project source code after ordering?",
+        answer:
+          "Once your request is confirmed and payment is verified, you receive immediate secure download access to the complete source code archive via email and WhatsApp, along with direct links to documentation and our developer support channel.",
+      },
+      {
+        id: "q10",
+        category: "delivery-payment",
+        question: "What payment methods do you accept?",
+        answer:
+          "We accept UPI (Google Pay, PhonePe, Paytm), Net Banking, Credit/Debit Cards, and direct bank transfers. All transactions are securely processed with verified receipts.",
+      },
+      {
+        id: "q11",
+        category: "business-services",
+        question: "Does PB_IT_HUB also build production software for businesses and startups?",
+        answer:
+          "Yes. PB_IT_HUB is a full-service technology engineering partner. We build custom web applications, SaaS platforms, cross-platform mobile apps (Flutter/React Native), internal business automation, and AI integrations for startups, SMBs, and enterprises across Punjab, Himachal, Jammu, and pan-India.",
+      },
+      {
+        id: "q12",
+        category: "business-services",
+        question: "Where is PB_IT_HUB located, and how can we get in touch?",
+        answer:
+          "PB_IT_HUB is headquartered in Pathankot, Punjab, India. You can connect with our engineering team directly via WhatsApp (+91 97805 61684), email (pbithub0@gmail.com), or through the contact form on our website.",
+      },
+    ],
+  },
+
+  // Blog & Insights
+  blog: {
+    eyebrow: "Articles & Engineering Guides",
+    title: "PB_IT_HUB Blog & Guides",
+    description:
+      "Actionable engineering guides, final year project breakdowns, viva preparation advice, and technology insights for computer science students and developers.",
+    searchPlaceholder: "Search articles (e.g. BCA, viva, Python, React)...",
+    allCategory: "All Articles",
+    readArticle: "Read Article →",
+    backToBlog: "Back to Blog",
+    exploreProjectsCTA: "Explore Student Projects",
+    customProjectCTA: "Custom Project Request",
+    writtenBy: "Written by",
+    publishedOn: "Published on",
+    shareArticle: "Share this guide",
+    sideMenuTitle: "All articles",
+    viewAllArticles: "View all articles",
   },
 
   // Layout & Footer

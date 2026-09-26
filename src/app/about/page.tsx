@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { createPageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BackButton } from "@/components/ui/BackButton";
 import { ContactCTASection } from "@/components/sections/Contact";
 import { STRINGS } from "@/config/strings";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = createPageMetadata({
   title: "About",
   description:
-    "PB_IT_HUB builds digital products, business platforms, SaaS systems and AI-powered solutions.",
+    "PB_IT_HUB is based in Pathankot, Punjab — building digital products, SaaS systems, AI solutions and student projects across Jammu, Himachal and beyond.",
   path: "/about",
 });
 
@@ -35,6 +37,17 @@ export default function AboutPage() {
               From product discovery through design, engineering and launch, we
               stay close to the problem being solved and the people who will use
               the product every day.
+            </p>
+            <p>
+              Based in {siteConfig.location}, {siteConfig.region}, we serve
+              businesses and college students across Punjab, Jammu and Himachal.{" "}
+              <Link
+                href="/locations"
+                className="text-blue underline-offset-4 hover:underline"
+              >
+                See cities we serve
+              </Link>
+              .
             </p>
           </div>
         </Container>

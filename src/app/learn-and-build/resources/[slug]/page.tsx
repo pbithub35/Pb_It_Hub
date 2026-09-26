@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   freeResources,
@@ -8,7 +9,9 @@ import { createPageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { BackButton } from "@/components/ui/BackButton";
+import { Button } from "@/components/ui/Button";
 import { CareerGuidanceCTA } from "@/components/learn-build";
+import { ResourceCodeBlock } from "@/components/learn-build/ResourceCodeBlock";
 
 export function generateStaticParams() {
   return freeResources.map((resource) => ({ slug: resource.slug }));
@@ -83,6 +86,35 @@ export default async function ResourceDetailPage({
             ))}
           </div>
 
+          {resource.codeBlocks?.length ? (
+            <div className="mt-12 space-y-6">
+              <h2 className="font-display text-2xl text-white">
+                Free source code
+              </h2>
+              <p className="text-sm text-slate-400">
+                Copy the files below into your project folder and run as
+                described above.
+              </p>
+              {resource.codeBlocks.map((block) => (
+                <ResourceCodeBlock key={block.filename} block={block} />
+              ))}
+            </div>
+          ) : null}
+
+          {resource.upgradePath ? (
+            <div className="mt-10 rounded-xl border border-cyan-400/25 bg-cyan-400/5 p-5">
+              <p className="text-sm leading-relaxed text-slate-200">
+                Need a complete final-year / major project with full source
+                code, docs and viva support?
+              </p>
+              <div className="mt-4">
+                <Button href={resource.upgradePath} variant="primary" size="sm">
+                  Browse full projects
+                </Button>
+              </div>
+            </div>
+          ) : null}
+
           <div className="mt-12 flex flex-wrap gap-2">
             {resource.tags.map((tag) => (
               <span
@@ -93,6 +125,16 @@ export default async function ResourceDetailPage({
               </span>
             ))}
           </div>
+
+          <p className="mt-8 text-sm text-slate-500">
+            More free guides:{" "}
+            <Link
+              href="/learn-and-build/resources"
+              className="text-cyan-400 underline-offset-4 hover:underline"
+            >
+              all resources
+            </Link>
+          </p>
 
           <div className="mt-14">
             <CareerGuidanceCTA />

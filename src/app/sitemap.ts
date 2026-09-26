@@ -2,8 +2,9 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
 import { services } from "@/data/services";
 import { projects } from "@/data/projects";
-import { getPublicStudentProjects } from "@/data/studentProjects";
 import { freeResources } from "@/data/freeResources";
+import { getAllBlogPosts } from "@/data/blogPosts";
+import { locations } from "@/data/locations";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url.replace(/\/$/, "");
@@ -12,8 +13,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/about",
     "/contact",
+    "/faq",
+    "/blog",
     "/services",
     "/work",
+    "/locations",
     "/privacy",
     "/terms",
     "/learn-and-build",
@@ -27,7 +31,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority:
-      path === "" ? 1 : path.startsWith("/learn-and-build") ? 0.85 : 0.7,
+      path === ""
+        ? 1
+        : path.startsWith("/learn-and-build") || path === "/blog"
+        ? 0.85
+        : path === "/locations" || path === "/faq"
+        ? 0.8
+        : 0.7,
+  }));
+
+  const blogRoutes = getAllBlogPosts().map((post) => ({
+    url: `${base}/blog/${post.slug}`,
+    lastModified: new Date(post.publishDate),
+    changeFrequency: "monthly" as const,
+    priority: 0.85,
   }));
 
   const serviceRoutes = services.map((service) => ({
@@ -44,13 +61,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const studentProjectRoutes = getPublicStudentProjects().map((project) => ({
-    url: `${base}/learn-and-build/projects/${project.slug}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly" as const,
-    priority: 0.8,
-  }));
-
   const resourceRoutes = freeResources.map((resource) => ({
     url: `${base}/learn-and-build/resources/${resource.slug}`,
     lastModified: new Date(),
@@ -58,11 +68,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
+  const locationRoutes = locations.map((location) => ({
+    url: `${base}/locations/${location.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: location.isHq ? 0.9 : 0.8,
+  }));
+
   return [
     ...staticRoutes,
+    ...blogRoutes,
     ...serviceRoutes,
     ...workRoutes,
-    ...studentProjectRoutes,
     ...resourceRoutes,
+    ...locationRoutes,
   ];
 }

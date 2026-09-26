@@ -6,10 +6,20 @@ import { BackButton } from "@/components/ui/BackButton";
 import { ProjectAccordion } from "@/components/learn-build";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Student Projects",
+  title: "Final Year Projects & Source Code for BCA, MCA, B.Tech Students",
   description:
-    "Choose a practical project and learn by building with real technologies.",
+    "Explore production-grade student projects with full source code, architecture diagrams, viva preparation, and setup support. Available in React, Flutter, Python, Node.js, AI/ML, PHP, and Java.",
   path: "/learn-and-build/projects",
+  keywords: [
+    "final year projects BCA MCA BTech",
+    "student projects source code",
+    "React student projects",
+    "Flutter college projects",
+    "Python AI ML final year project",
+    "college project source code download",
+    "buy student projects",
+    "PB_IT_HUB projects",
+  ],
 });
 
 export default function StudentProjectsPage() {

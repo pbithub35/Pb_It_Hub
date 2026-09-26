@@ -21,7 +21,7 @@ export const services: ServiceItem[] = [
     description:
       "Robust, scalable web products engineered around your workflows — from internal tools to customer-facing platforms.",
     seoDescription:
-      "Custom website and web application development for businesses in Punjab, Mohali, Chandigarh and beyond — built for performance and real operations.",
+      "Custom website and web application development for businesses in Pathankot, Punjab, Jammu, Himachal and beyond — built for performance and real operations.",
     visualKey: "services/web",
     capabilities: [
       "Product architecture",
@@ -59,7 +59,7 @@ export const services: ServiceItem[] = [
     description:
       "Cross-platform mobile experiences built for clarity, speed, and real daily usage — not novelty demos.",
     seoDescription:
-      "Mobile app development in Punjab using Flutter — API-connected products for businesses that need reliable iOS and Android experiences.",
+      "Mobile app development in Pathankot and Punjab using Flutter — API-connected Android and iOS products for businesses that need reliable daily-use apps.",
     visualKey: "services/mobile",
     capabilities: [
       "Flutter product development",
@@ -135,7 +135,7 @@ export const services: ServiceItem[] = [
     description:
       "Online stores and commerce platforms designed around catalog, checkout and post-purchase operations.",
     seoDescription:
-      "E-commerce website development for Indian businesses — storefronts, catalogs and checkout flows engineered for real selling.",
+      "E-commerce website development cost and build options for Indian retail brands — storefronts, catalogs and checkout flows engineered for real selling.",
     visualKey: "services/web",
     capabilities: [
       "Catalog & product pages",
@@ -173,7 +173,7 @@ export const services: ServiceItem[] = [
     description:
       "Ongoing care for speed, security, content updates and practical search visibility.",
     seoDescription:
-      "Website maintenance and SEO services — performance, security, content updates and practical search improvements for business sites.",
+      "Website maintenance and SEO services price clarity — performance, security, content updates and practical search improvements for business sites.",
     visualKey: "services/crm",
     capabilities: [
       "Performance monitoring",
