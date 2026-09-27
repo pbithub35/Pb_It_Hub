@@ -36,7 +36,7 @@ export const freeResources: FreeResource[] = [
         code: `<?php
 /**
  * BCA Practical — Student Records (PHP + MySQL)
- * Free starter from PB_IT_HUB — extend for your lab submission.
+ * Free starter from PB IT HUB — extend for your lab submission.
  */
 $host = "127.0.0.1";
 $user = "root";
@@ -175,7 +175,7 @@ $result = $conn->query("SELECT * FROM students ORDER BY id DESC");
         language: "javascript",
         code: `/**
  * MCA Practical — Notes REST API (Express)
- * Free starter from PB_IT_HUB
+ * Free starter from PB IT HUB
  */
 const express = require("express");
 const app = express();
@@ -286,7 +286,7 @@ app.listen(PORT, () => {
         language: "jsx",
         code: `import { useMemo, useState } from "react";
 
-/** B.Tech CSE Practical — Task Board (React) | PB_IT_HUB free starter */
+/** B.Tech CSE Practical — Task Board (React) | PB IT HUB free starter */
 export default function App() {
   const [title, setTitle] = useState("");
   const [tasks, setTasks] = useState([
@@ -407,7 +407,7 @@ export default function App() {
 </head>
 <body>
   <h1>Grade Calculator</h1>
-  <p>B.Sc CS / IT lab practical — PB_IT_HUB free starter</p>
+  <p>B.Sc CS / IT lab practical — PB IT HUB free starter</p>
   <label>Marks obtained</label>
   <input id="obtained" type="number" min="0" placeholder="e.g. 78" />
   <label>Total marks</label>
@@ -476,7 +476,7 @@ export default function App() {
         language: "python",
         code: `"""
 Diploma / Polytechnic Practical — Student Fee Calculator
-Free starter from PB_IT_HUB
+Free starter from PB IT HUB
 """
 
 def main():

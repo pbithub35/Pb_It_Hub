@@ -89,7 +89,7 @@ export function WorkSection({ limit }: { limit?: number } = {}) {
                   >
                     <Image
                       src={resolveImageSrc(project.heroImage)}
-                      alt={`${project.title} — PB_IT_HUB Pathankot case study`}
+                      alt={`${project.title} — PB IT HUB Pathankot case study`}
                       fill
                       className="object-contain object-top"
                       sizes="50vw"
@@ -186,7 +186,7 @@ export function WorkSection({ limit }: { limit?: number } = {}) {
                   >
                     <ProjectFrame
                       src={project.heroImage}
-                      alt={`${project.title} — PB_IT_HUB product case study`}
+                      alt={`${project.title} — PB IT HUB product case study`}
                       screenTone={project.screenTone ?? "dark"}
                       urlLabel={frameUrl(project.liveUrl)}
                       mediaAttr

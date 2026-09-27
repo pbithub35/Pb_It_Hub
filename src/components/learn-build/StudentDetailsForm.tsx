@@ -26,9 +26,9 @@ function buildStudentWhatsAppMessage(input: {
   const lines: string[] = [];
 
   if (input.isCareer) {
-    lines.push("Hi PB_IT_HUB — I want to book *Free Career Guidance*.");
+    lines.push("Hi PB IT HUB — I want to book *Free Career Guidance*.");
   } else {
-    lines.push("Hi PB_IT_HUB — I want to place a *Learn or Buy* order.");
+    lines.push("Hi PB IT HUB — I want to place a *Learn or Buy* order.");
   }
 
   lines.push("");

@@ -47,11 +47,11 @@ export const locations: LocationItem[] = [
       "software company Pathankot",
       "final year projects Pathankot",
       "BCA projects Pathankot",
-      "PB_IT_HUB Pathankot",
+      "PB IT HUB Pathankot",
     ],
     headline: "Technology partner based in Pathankot",
     intro:
-      "PB_IT_HUB is headquartered in Pathankot, Punjab. We build websites, web apps, mobile products and custom software for local businesses — and industry-grade college projects with full source code for students in Pathankot and nearby campuses.",
+      "PB IT HUB is headquartered in Pathankot, Punjab. We build websites, web apps, mobile products and custom software for local businesses — and industry-grade college projects with full source code for students in Pathankot and nearby campuses.",
     businessFocus:
       "From shop websites and WhatsApp-led booking sites to CRM and automation, we scope clearly and deliver products Pathankot businesses can run day to day.",
     studentFocus:
@@ -59,7 +59,7 @@ export const locations: LocationItem[] = [
     nearbySlugs: ["jammu", "kathua", "jalandhar", "chandigarh"],
     faqs: [
       {
-        question: "Is PB_IT_HUB actually based in Pathankot?",
+        question: "Is PB IT HUB actually based in Pathankot?",
         answer:
           "Yes. Our primary office is in Pathankot, Punjab. We work with clients and students across Punjab, Jammu, Himachal and pan-India via WhatsApp and remote delivery.",
       },
@@ -87,7 +87,7 @@ export const locations: LocationItem[] = [
     ],
     headline: "Websites, apps & college projects for Chandigarh",
     intro:
-      "Chandigarh is a major student and startup city. PB_IT_HUB builds business websites and software for Tri-city teams, plus final-year projects with source code for BCA, MCA and B.Tech students across Chandigarh campuses.",
+      "Chandigarh is a major student and startup city. PB IT HUB builds business websites and software for Tri-city teams, plus final-year projects with source code for BCA, MCA and B.Tech students across Chandigarh campuses.",
     businessFocus:
       "Product-focused web apps, e-commerce and internal tools for Chandigarh startups and SMBs — scoped before build, no agency theater.",
     studentFocus:
@@ -154,7 +154,7 @@ export const locations: LocationItem[] = [
     ],
     headline: "Digital products for Ludhiana businesses & students",
     intro:
-      "Ludhiana’s industry and colleges need practical tech — not template agencies. PB_IT_HUB builds storefronts, business websites and student projects with source code for Ludhiana clients and campuses.",
+      "Ludhiana’s industry and colleges need practical tech — not template agencies. PB IT HUB builds storefronts, business websites and student projects with source code for Ludhiana clients and campuses.",
     businessFocus:
       "E-commerce, Shopify and custom sites for Ludhiana brands that need catalogs, inquiries and conversion-focused pages.",
     studentFocus:
@@ -216,7 +216,7 @@ export const locations: LocationItem[] = [
     ],
     headline: "Build online for Amritsar — business or college",
     intro:
-      "Whether you run a shop in Amritsar or need a final-year submission, PB_IT_HUB delivers websites, apps and student project packages with transparent WhatsApp support.",
+      "Whether you run a shop in Amritsar or need a final-year submission, PB IT HUB delivers websites, apps and student project packages with transparent WhatsApp support.",
     businessFocus:
       "Tourism, retail and service businesses get clear websites with inquiry or booking paths that fit how Amritsar customers actually reach you.",
     studentFocus:
@@ -369,7 +369,7 @@ export const locations: LocationItem[] = [
     ],
     headline: "Solan’s students and businesses — practical tech",
     intro:
-      "Solan’s education and industry corridor needs usable projects and websites. PB_IT_HUB provides both with transparent WhatsApp ordering from Pathankot.",
+      "Solan’s education and industry corridor needs usable projects and websites. PB IT HUB provides both with transparent WhatsApp ordering from Pathankot.",
     businessFocus:
       "Business websites and light digital systems for Solan organizations that want a professional presence.",
     studentFocus:

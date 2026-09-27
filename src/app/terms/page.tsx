@@ -7,7 +7,7 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = createPageMetadata({
   title: "Terms & Conditions",
   description:
-    "Terms for using PB_IT_HUB website, business services, and Learn or Buy student offerings.",
+    "Terms for using PB IT HUB website, business services, and Learn or Buy student offerings.",
   path: "/terms",
 });
 

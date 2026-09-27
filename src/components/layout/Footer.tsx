@@ -75,7 +75,7 @@ export function Footer() {
   const reduce = useReducedMotion();
   const phoneDigits = getWhatsAppNumber();
   const whatsappHref = buildWhatsAppUrl(
-    "Hi PB_IT_HUB — I’d like to connect.",
+    "Hi PB IT HUB — I’d like to connect.",
     phoneDigits,
   );
   const callHref =

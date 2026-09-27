@@ -116,7 +116,10 @@ export function localBusinessJsonLd() {
     url: siteConfig.url,
     description: siteConfig.description,
     email: siteConfig.email,
-    telephone: siteConfig.phone || undefined,
+    telephone: siteConfig.phone ? `+${siteConfig.phone}` : undefined,
+    image: absoluteUrl("/images/pb-it-hub-mark.png"),
+    logo: absoluteUrl("/images/pb-it-hub-mark.png"),
+    hasMap: siteConfig.maps.url,
     areaServed: siteConfig.areasServed.map((name) => ({
       "@type": "Place",
       name,

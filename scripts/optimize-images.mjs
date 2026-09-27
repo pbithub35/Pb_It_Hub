@@ -96,7 +96,7 @@ async function findImages(dir) {
 
 async function run() {
   console.log("=========================================================");
-  console.log("   PB_IT_HUB Image Optimization & Migration Pipeline     ");
+  console.log("   PB IT HUB Image Optimization & Migration Pipeline     ");
   console.log("=========================================================\n");
 
   await fs.mkdir(ORIGINALS_DIR, { recursive: true });
@@ -289,7 +289,7 @@ async function run() {
   console.log(`Originals Preserved in: public/images/_originals/\n`);
 
   // Write markdown report
-  let md = "# Image Optimization Report — PB_IT_HUB\n\n";
+  let md = "# Image Optimization Report — PB IT HUB\n\n";
   md += `**Execution Time:** ${new Date().toISOString()}\n\n`;
   md += `| Metric | Value |\n|---|---|\n`;
   md += `| Total Images | ${report.length} |\n`;

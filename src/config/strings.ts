@@ -1,5 +1,5 @@
 /**
- * Centralized Strings & Copy Catalog for PB_IT_HUB
+ * Centralized Strings & Copy Catalog for PB IT HUB
  *
  * All UI labels, headlines, descriptions, CTAs, button texts, badges,
  * modal copy, form labels, and section headings are organized by domain/component
@@ -10,7 +10,7 @@ export const STRINGS = {
   // Brand & Global Identifiers
   brand: {
     name: "PB IT HUB",
-    legalName: "PB_IT_HUB",
+    legalName: "PB IT HUB",
     eyebrow: "BUILD · AUTOMATE · GROW",
     tagline: "Technology designed for real-world business.",
     subheadline: "Technology designed for real-world business.",
@@ -409,7 +409,7 @@ export const STRINGS = {
     },
     pledgeTitle: "Our Engineering Belief & Commitment",
     pledgeQuote:
-      "We've been in your shoes. We started PB_IT_HUB to bridge the gap between college education and real industry engineering. We promise 100% honesty about your skills and actionable clarity on your next steps.",
+      "We've been in your shoes. We started PB IT HUB to bridge the gap between college education and real industry engineering. We promise 100% honesty about your skills and actionable clarity on your next steps.",
   },
 
   // Form Fields, Placeholders & Validation
@@ -445,7 +445,7 @@ export const STRINGS = {
     close: "Close",
     closeSymbol: "Close ✕",
     downloadSourceCode: "Download Source Code",
-    joinCommunity: "Join the PB_IT_HUB Student Community",
+    joinCommunity: "Join the PB IT HUB Student Community",
     downloadPendingNote:
       "When the backend is connected, a temporary download link will appear here after approval.",
   },
@@ -557,16 +557,16 @@ export const STRINGS = {
       {
         id: "q11",
         category: "business-services",
-        question: "Does PB_IT_HUB also build production software for businesses and startups?",
+        question: "Does PB IT HUB also build production software for businesses and startups?",
         answer:
-          "Yes. PB_IT_HUB is a full-service technology engineering partner. We build custom web applications, SaaS platforms, cross-platform mobile apps (Flutter/React Native), internal business automation, and AI integrations for startups, SMBs, and enterprises across Punjab, Himachal, Jammu, and pan-India.",
+          "Yes. PB IT HUB is a full-service technology engineering partner. We build custom web applications, SaaS platforms, cross-platform mobile apps (Flutter/React Native), internal business automation, and AI integrations for startups, SMBs, and enterprises across Punjab, Himachal, Jammu, and pan-India.",
       },
       {
         id: "q12",
         category: "business-services",
-        question: "Where is PB_IT_HUB located, and how can we get in touch?",
+        question: "Where is PB IT HUB located, and how can we get in touch?",
         answer:
-          "PB_IT_HUB is headquartered in Pathankot, Punjab, India. You can connect with our engineering team directly via WhatsApp (+91 97805 61684), email (pbithub0@gmail.com), or through the contact form on our website.",
+          "PB IT HUB is headquartered in Pathankot, Punjab, India. You can connect with our engineering team directly via WhatsApp (+91 97805 61684), email (pbithub0@gmail.com), or through the contact form on our website.",
       },
     ],
   },

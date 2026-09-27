@@ -7,7 +7,7 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = createPageMetadata({
   title: "Privacy Policy",
   description:
-    "How PB_IT_HUB collects, uses, stores and protects your information for business and student services.",
+    "How PB IT HUB collects, uses, stores and protects your information for business and student services.",
   path: "/privacy",
 });
 

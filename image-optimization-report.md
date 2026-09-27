@@ -1,4 +1,4 @@
-# Image Optimization Report — PB_IT_HUB
+# Image Optimization Report — PB IT HUB
 
 **Execution Time:** 2026-09-26T10:31:08.837Z
 

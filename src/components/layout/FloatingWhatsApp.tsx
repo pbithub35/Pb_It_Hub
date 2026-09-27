@@ -5,7 +5,7 @@ import { STRINGS } from "@/config/strings";
 
 export function FloatingWhatsApp() {
   const href = buildWhatsAppUrl(
-    "Hi PB_IT_HUB — I’d like to connect on WhatsApp.",
+    "Hi PB IT HUB — I’d like to connect on WhatsApp.",
   );
 
   return (

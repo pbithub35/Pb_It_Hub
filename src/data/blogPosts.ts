@@ -10,7 +10,7 @@ export const blogPosts: BlogPost[] = [
     publishDate: "2025-02-15",
     readTime: "7 min read",
     author: {
-      name: "PB_IT_HUB Engineering Team",
+      name: "PB IT HUB Engineering Team",
       role: "Lead Software Architects",
     },
     tags: [
@@ -55,7 +55,7 @@ export const blogPosts: BlogPost[] = [
         },
       ],
       conclusion:
-        "At PB_IT_HUB, every project in our catalog is engineered to production standards with comprehensive documentation, clean architecture, and 1-to-1 viva preparation to help you clear evaluations with top grades.",
+        "At PB IT HUB, every project in our catalog is engineered to production standards with comprehensive documentation, clean architecture, and 1-to-1 viva preparation to help you clear evaluations with top grades.",
     },
     seo: {
       title: "25 BCA & MCA Final Year Project Ideas",
@@ -79,7 +79,7 @@ export const blogPosts: BlogPost[] = [
     publishDate: "2025-02-18",
     readTime: "9 min read",
     author: {
-      name: "PB_IT_HUB Engineering Team",
+      name: "PB IT HUB Engineering Team",
       role: "Lead Software Architects",
     },
     tags: [
@@ -125,7 +125,7 @@ export const blogPosts: BlogPost[] = [
         },
       ],
       conclusion:
-        "Want personalized viva mock drills? PB_IT_HUB offers 1-on-1 Knowledge Transfer sessions where senior engineers review your codebase with you line-by-line before your college submission.",
+        "Want personalized viva mock drills? PB IT HUB offers 1-on-1 Knowledge Transfer sessions where senior engineers review your codebase with you line-by-line before your college submission.",
     },
     seo: {
       title: "College Project Viva Questions & Answers",
@@ -149,7 +149,7 @@ export const blogPosts: BlogPost[] = [
     publishDate: "2025-02-20",
     readTime: "8 min read",
     author: {
-      name: "PB_IT_HUB Engineering Team",
+      name: "PB IT HUB Engineering Team",
       role: "Lead Software Architects",
     },
     tags: [
@@ -196,7 +196,7 @@ export const blogPosts: BlogPost[] = [
         },
       ],
       conclusion:
-        "PB_IT_HUB provides fully trained, production-ready Python AI/ML projects with clean REST endpoints, frontend dashboards, and pre-packaged dataset pipelines.",
+        "PB IT HUB provides fully trained, production-ready Python AI/ML projects with clean REST endpoints, frontend dashboards, and pre-packaged dataset pipelines.",
     },
     seo: {
       title: "Python & AI/ML Project Ideas for Students",
@@ -220,7 +220,7 @@ export const blogPosts: BlogPost[] = [
     publishDate: "2025-02-22",
     readTime: "6 min read",
     author: {
-      name: "PB_IT_HUB Engineering Team",
+      name: "PB IT HUB Engineering Team",
       role: "Lead Software Architects",
     },
     tags: [
@@ -258,7 +258,7 @@ export const blogPosts: BlogPost[] = [
         },
       ],
       conclusion:
-        "Both stacks are winners. If your project is web-first or admin-heavy, choose React/Next.js. If your project is user-first and mobile-centric, choose Flutter. PB_IT_HUB supports both with battle-tested starter architectures and complete source code.",
+        "Both stacks are winners. If your project is web-first or admin-heavy, choose React/Next.js. If your project is user-first and mobile-centric, choose Flutter. PB IT HUB supports both with battle-tested starter architectures and complete source code.",
     },
     seo: {
       title: "React vs Flutter for Final Year Projects",
@@ -282,7 +282,7 @@ export const blogPosts: BlogPost[] = [
     publishDate: "2025-03-01",
     readTime: "6 min read",
     author: {
-      name: "PB_IT_HUB Engineering Team",
+      name: "PB IT HUB Engineering Team",
       role: "Lead Software Architects",
     },
     tags: [
@@ -321,7 +321,7 @@ export const blogPosts: BlogPost[] = [
         },
       ],
       conclusion:
-        "PB_IT_HUB scopes every build in writing before work starts. Share a short brief on Contact or WhatsApp and we will tell you which band you are in — without vague “starting from” theater.",
+        "PB IT HUB scopes every build in writing before work starts. Share a short brief on Contact or WhatsApp and we will tell you which band you are in — without vague “starting from” theater.",
     },
     seo: {
       title: "Custom Website Cost in Punjab",
@@ -345,7 +345,7 @@ export const blogPosts: BlogPost[] = [
     publishDate: "2025-03-02",
     readTime: "7 min read",
     author: {
-      name: "PB_IT_HUB Engineering Team",
+      name: "PB IT HUB Engineering Team",
       role: "Lead Software Architects",
     },
     tags: [
@@ -378,7 +378,7 @@ export const blogPosts: BlogPost[] = [
         },
       ],
       conclusion:
-        "Need a store scoped for your catalog? PB_IT_HUB builds Shopify and custom e-commerce for Punjab brands. Tell us product count and how you take orders today.",
+        "Need a store scoped for your catalog? PB IT HUB builds Shopify and custom e-commerce for Punjab brands. Tell us product count and how you take orders today.",
     },
     seo: {
       title: "E-commerce Website Cost in India",
@@ -402,7 +402,7 @@ export const blogPosts: BlogPost[] = [
     publishDate: "2025-03-03",
     readTime: "8 min read",
     author: {
-      name: "PB_IT_HUB Engineering Team",
+      name: "PB IT HUB Engineering Team",
       role: "Lead Software Architects",
     },
     tags: [
@@ -436,7 +436,7 @@ export const blogPosts: BlogPost[] = [
         },
       ],
       conclusion:
-        "Want a MERN project with complete source code and viva prep? Browse Learn or Buy on PB_IT_HUB and order on WhatsApp.",
+        "Want a MERN project with complete source code and viva prep? Browse Learn or Buy on PB IT HUB and order on WhatsApp.",
     },
     seo: {
       title: "MERN Final Year Project Ideas",
@@ -460,7 +460,7 @@ export const blogPosts: BlogPost[] = [
     publishDate: "2025-03-04",
     readTime: "5 min read",
     author: {
-      name: "PB_IT_HUB Engineering Team",
+      name: "PB IT HUB Engineering Team",
       role: "Lead Software Architects",
     },
     tags: [
@@ -488,7 +488,7 @@ export const blogPosts: BlogPost[] = [
         },
       ],
       conclusion:
-        "Ship a live demo link before your viva. If you need a complete college project with source code, explore PB_IT_HUB Learn or Buy.",
+        "Ship a live demo link before your viva. If you need a complete college project with source code, explore PB IT HUB Learn or Buy.",
     },
     seo: {
       title: "Host Free on GitHub Pages or Vercel",

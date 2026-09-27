@@ -32,7 +32,7 @@ export default function CareerGuidancePage() {
 
             <p className="max-w-3xl text-sm leading-relaxed text-muted-strong">
               Too many engineering students are trapped in tutorial hell, learning outdated technologies
-              or building copy-paste clone projects that get ignored by recruiters. At PB_IT_HUB, we connect
+              or building copy-paste clone projects that get ignored by recruiters. At PB IT HUB, we connect
               you directly with working software engineers who know what companies are actually hiring for in 2026.
               No hidden costs. No sales pitches. Just honest, practical guidance.
             </p>
@@ -102,14 +102,14 @@ export default function CareerGuidancePage() {
                 </ul>
               </div>
 
-              {/* Right: The PB_IT_HUB Engineering Standard */}
+              {/* Right: The PB IT HUB Engineering Standard */}
               <div className="rounded-xl border border-blue/25 bg-white p-6 sm:p-7 shadow-sm">
                 <div className="flex items-center gap-2.5 text-blue mb-4">
                   <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue/10 font-bold text-sm">
                     ✓
                   </span>
                   <h3 className="font-display text-lg font-bold text-navy">
-                    The PB_IT_HUB Engineering Standard
+                    The PB IT HUB Engineering Standard
                   </h3>
                 </div>
 

@@ -9,7 +9,7 @@ import { STRINGS } from "@/config/strings";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "About PB_IT_HUB Pathankot",
+  title: "About PB IT HUB Pathankot",
   description:
     "Pathankot technology company building websites, apps and student projects for Punjab, Jammu and Himachal.",
   path: "/about",
@@ -88,7 +88,7 @@ export default function AboutPage() {
             tone="light"
             eyebrow={STRINGS.about.eyebrow}
             title={STRINGS.about.title}
-            description="PB_IT_HUB is a Pathankot-based technology partner for digital products, business platforms and student project learning — built with practical engineering, not empty buzzwords."
+            description="PB IT HUB is a Pathankot-based technology partner for digital products, business platforms and student project learning — built with practical engineering, not empty buzzwords."
           />
 
           <div className="mt-6 grid gap-3 sm:grid-cols-3 md:mt-8 md:gap-4">

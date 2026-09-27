@@ -40,7 +40,7 @@ export function StudentActionDrawer() {
             <header className="flex items-start justify-between gap-3 border-b border-slate-200/80 bg-white px-5 py-4 sm:px-6">
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-cyan-700">
-                  PB_IT_HUB · Student
+                  PB IT HUB · Student
                 </p>
                 <h2
                   id="student-action-title"

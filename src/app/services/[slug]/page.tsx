@@ -88,7 +88,7 @@ export default async function ServiceDetailPage({
           <div className="relative mt-6 aspect-[16/9] overflow-hidden rounded-[1.25rem] border border-navy/10">
             <Image
               src={resolveImageSrc(service.visualKey)}
-              alt={`PB_IT_HUB ${service.shortTitle} visual`}
+              alt={`PB IT HUB ${service.shortTitle} visual`}
               fill
               priority
               className="object-cover"

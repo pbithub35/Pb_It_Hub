@@ -1,8 +1,8 @@
 export const siteConfig = {
-  name: "PB_IT_HUB",
+  name: "PB IT HUB",
   /** Clean wordmark for UI (no underscores) */
   displayName: "PB IT HUB",
-  legalName: "PB_IT_HUB",
+  legalName: "PB IT HUB",
   tagline: "BUILD • AUTOMATE • GROW",
   /** Default meta title (~50–60 chars) */
   seoTitle: "Websites & Student Projects | Pathankot",

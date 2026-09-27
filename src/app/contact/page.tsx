@@ -11,7 +11,7 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp";
 export const metadata: Metadata = createPageMetadata({
   title: "Contact Pathankot Team",
   description:
-    "Start a website, app or student project with PB_IT_HUB in Pathankot — WhatsApp-friendly support.",
+    "Start a website, app or student project with PB IT HUB in Pathankot — WhatsApp-friendly support.",
   path: "/contact",
 });
 
@@ -19,7 +19,7 @@ const contactPoints = [
   {
     label: "WhatsApp",
     value: `+${siteConfig.whatsapp}`,
-    href: buildWhatsAppUrl("Hi PB_IT_HUB — I’d like to discuss a project."),
+    href: buildWhatsAppUrl("Hi PB IT HUB — I’d like to discuss a project."),
     hint: "Fastest for briefs & student orders",
   },
   {

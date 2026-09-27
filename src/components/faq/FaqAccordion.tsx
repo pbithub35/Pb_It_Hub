@@ -76,7 +76,7 @@ export function FaqAccordion() {
   }, [selectedCategory, searchQuery]);
 
   const whatsappHref = `https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(
-    "Hi PB_IT_HUB, I have a question about projects and services.",
+    "Hi PB IT HUB, I have a question about projects and services.",
   )}`;
 
   return (

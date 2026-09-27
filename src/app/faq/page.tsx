@@ -12,7 +12,7 @@ export const metadata: Metadata = createPageMetadata({
     "Answers on student project source code, viva help, pricing and custom software from Pathankot.",
   path: "/faq",
   keywords: [
-    "PB_IT_HUB FAQ",
+    "PB IT HUB FAQ",
     "student projects FAQ",
     "final year projects BCA MCA",
     "website company Pathankot FAQ",

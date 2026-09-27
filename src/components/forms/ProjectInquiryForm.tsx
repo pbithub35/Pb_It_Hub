@@ -20,7 +20,7 @@ function buildBusinessWhatsAppMessage(form: {
   details: string;
 }) {
   const lines = [
-    "Hi PB_IT_HUB — I want to *Start a Project*.",
+    "Hi PB IT HUB — I want to *Start a Project*.",
     "",
     `*Name:* ${form.name.trim()}`,
     `*Email:* ${form.email.trim()}`,

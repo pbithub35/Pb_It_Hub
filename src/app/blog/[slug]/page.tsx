@@ -50,7 +50,7 @@ export default async function BlogPostPage({
   ];
 
   const whatsappHref = `https://wa.me/${siteConfig.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(
-    `Hi PB_IT_HUB, I read your article "${post.title}" and would like to ask about projects.`,
+    `Hi PB IT HUB, I read your article "${post.title}" and would like to ask about projects.`,
   )}`;
 
   return (

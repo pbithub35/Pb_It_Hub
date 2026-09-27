@@ -31,7 +31,7 @@ async function findFiles(dir) {
 
 async function run() {
   console.log("=========================================================");
-  console.log("     PB_IT_HUB Image Optimization Comparison Tool        ");
+  console.log("     PB IT HUB Image Optimization Comparison Tool        ");
   console.log("=========================================================\n");
 
   try {

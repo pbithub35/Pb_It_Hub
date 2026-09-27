@@ -49,7 +49,7 @@ export function ProductVisual({
           <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
           <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
           <span className="ml-3 text-[10px] uppercase tracking-[0.2em] text-white/40">
-            PB_IT_HUB
+            PB IT HUB
           </span>
         </div>
 

@@ -59,7 +59,7 @@ export async function submitProjectInquiry(
 
   // Development / pre-backend fallback
   await new Promise((resolve) => setTimeout(resolve, 700));
-  console.info("[PB_IT_HUB] Project inquiry (no endpoint configured):", payload);
+  console.info("[PB IT HUB] Project inquiry (no endpoint configured):", payload);
 
   return {
     ok: true,
