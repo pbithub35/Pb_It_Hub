@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope, Syne } from "next/font/google";
+import { Manrope, Plus_Jakarta_Sans } from "next/font/google";
 import { SiteShell } from "@/components/layout/SiteShell";
 import { siteConfig } from "@/config/site";
 import "@/styles/globals.css";
@@ -10,8 +10,8 @@ const manrope = Manrope({
   display: "swap",
 });
 
-const syne = Syne({
-  variable: "--font-syne",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
   display: "swap",
 });
@@ -19,24 +19,25 @@ const syne = Syne({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: siteConfig.seoTitle,
-    template: `%s | ${siteConfig.name}`,
+    default: "PB_IT_HUB — Software Development, AI Solutions & Student Projects",
+    template: "%s · PB_IT_HUB",
   },
-  description: siteConfig.seoDescription,
+  description:
+    "PB_IT_HUB delivers custom web applications, SaaS platforms, AI solutions, and industry-grade student projects with source code for BCA, MCA, B.Tech & CS/IT students.",
   keywords: [
-    "website development Pathankot",
     "student projects with source code",
     "final year projects BCA MCA BTech",
-    "software company Punjab",
-    "web design Jammu Himachal",
+    "computer science projects",
+    "React Flutter Python Node.js projects",
+    "custom software development",
+    "SaaS application development",
+    "AI automation solutions",
+    "software development Pathankot Punjab",
     "PB_IT_HUB",
   ],
   applicationName: siteConfig.name,
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
-  alternates: {
-    canonical: siteConfig.url,
-  },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -45,6 +46,7 @@ export const metadata: Metadata = {
       { url: "/icon-512.png", type: "image/png", sizes: "512x512" },
     ],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: ["/icon.png"],
   },
   manifest: "/site.webmanifest",
   openGraph: {
@@ -52,19 +54,16 @@ export const metadata: Metadata = {
     locale: siteConfig.locale,
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: siteConfig.seoTitle,
-    description: siteConfig.seoDescription,
-    images: [
-      {
-        url: "/images/pb-it-hub-dark.jpg",
-        alt: "PB_IT_HUB — website development and student projects in Pathankot",
-      },
-    ],
+    title: "PB_IT_HUB — Software Development, AI Solutions & Student Projects",
+    description:
+      "PB_IT_HUB delivers custom web applications, SaaS platforms, AI solutions, and industry-grade student projects with source code for BCA, MCA, B.Tech & CS/IT students.",
+    images: [{ url: "/images/pb-it-hub-dark.jpg", alt: siteConfig.name }],
   },
   twitter: {
     card: "summary_large_image",
-    title: siteConfig.seoTitle,
-    description: siteConfig.seoDescription,
+    title: "PB_IT_HUB — Software Development, AI Solutions & Student Projects",
+    description:
+      "PB_IT_HUB delivers custom web applications, SaaS platforms, AI solutions, and industry-grade student projects with source code for BCA, MCA, B.Tech & CS/IT students.",
     images: ["/images/pb-it-hub-dark.jpg"],
   },
   robots: { index: true, follow: true },
@@ -77,7 +76,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${manrope.variable} ${syne.variable} h-full antialiased`}
+      className={`${manrope.variable} ${jakarta.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
         <SiteShell>{children}</SiteShell>

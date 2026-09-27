@@ -38,7 +38,7 @@ const bottomNavItems: BottomNavItem[] = [
   {
     id: "services",
     label: STRINGS.nav.services,
-    href: "/#services",
+    href: "/services",
     icon: (active) => (
       <svg
         className={cn("h-5 w-5 transition-transform", active && "scale-110")}
@@ -80,7 +80,7 @@ const bottomNavItems: BottomNavItem[] = [
   {
     id: "work",
     label: STRINGS.nav.work,
-    href: "/#work",
+    href: "/work",
     icon: (active) => (
       <svg
         className={cn("h-5 w-5 transition-transform", active && "scale-110")}
@@ -200,7 +200,7 @@ export function MobileBottomBar() {
   return (
     <nav
       aria-label="Mobile Bottom Navigation"
-      className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-navy-deep/92 backdrop-blur-xl shadow-[0_-8px_30px_rgba(0,0,0,0.45)] lg:hidden"
+      className="fixed inset-x-0 bottom-0 z-50 border-t border-navy/10 bg-paper/95 shadow-[0_-4px_24px_rgba(11,18,32,0.06)] backdrop-blur-xl lg:hidden"
       style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
     >
       <div className="grid h-14 grid-cols-5 items-center px-1">
@@ -219,21 +219,19 @@ export function MobileBottomBar() {
               }}
               className={cn(
                 "relative flex h-full flex-col items-center justify-center gap-1 transition-colors active:scale-95",
-                active ? "text-cyan" : "text-white/50 hover:text-white/80",
+                active ? "text-blue" : "text-navy/50 hover:text-navy/75",
               )}
             >
-              {/* Icon */}
-              <div className={cn("transition-colors", active ? "text-cyan" : "text-white/50")}>
+              <div className={cn("transition-colors", active ? "text-blue" : "text-navy/50")}>
                 {item.icon(active)}
               </div>
 
-              {/* Label */}
               <span
                 className={cn(
                   "text-[9px] tracking-tight transition-all",
                   active
-                    ? "font-bold text-cyan"
-                    : "font-medium text-white/55",
+                    ? "font-bold text-blue"
+                    : "font-medium text-navy/50",
                 )}
               >
                 {item.label}

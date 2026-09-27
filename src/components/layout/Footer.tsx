@@ -1,12 +1,16 @@
+"use client";
+
 import Link from "next/link";
-import Image from "next/image";
+import { motion, useReducedMotion } from "framer-motion";
 import { footerNav, legalNav } from "@/data/navigation";
 import { siteConfig } from "@/config/site";
-import { getMediaSrc } from "@/lib/media";
+import { BrandLogo } from "@/components/ui/BrandLogo";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { STRINGS } from "@/config/strings";
 import { buildWhatsAppUrl, getWhatsAppNumber } from "@/lib/whatsapp";
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -58,7 +62,17 @@ function GoogleIcon({ className }: { className?: string }) {
   );
 }
 
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease },
+  },
+};
+
 export function Footer() {
+  const reduce = useReducedMotion();
   const phoneDigits = getWhatsAppNumber();
   const whatsappHref = buildWhatsAppUrl(
     "Hi PB_IT_HUB — I’d like to connect.",
@@ -76,25 +90,25 @@ export function Footer() {
       label: STRINGS.footer.whatsapp,
       href: whatsappHref,
       icon: WhatsAppIcon,
-      className: "hover:border-emerald-400/50 hover:bg-emerald-400/10 hover:text-emerald-300",
+      className: "hover:border-emerald-400/40 hover:bg-emerald-500/10 hover:text-emerald-400",
     },
     {
       label: STRINGS.footer.instagram,
       href: siteConfig.social.instagram,
       icon: InstagramIcon,
-      className: "hover:border-pink-400/50 hover:bg-pink-400/10 hover:text-pink-300",
+      className: "hover:border-pink-400/40 hover:bg-pink-500/10 hover:text-pink-400",
     },
     {
       label: STRINGS.footer.google,
       href: siteConfig.social.google,
       icon: GoogleIcon,
-      className: "hover:border-blue/50 hover:text-blue",
+      className: "hover:border-blue-bright/40 hover:bg-blue/15 hover:text-blue-bright",
     },
     {
       label: STRINGS.footer.call,
       href: callHref,
       icon: CallIcon,
-      className: "hover:border-cyan/50 hover:bg-cyan/10 hover:text-cyan",
+      className: "hover:border-blue-bright/40 hover:bg-blue/15 hover:text-blue-bright",
     },
   ].filter((item) => Boolean(item.href));
 
@@ -102,28 +116,29 @@ export function Footer() {
   const companyLinks = footerNav.slice(4);
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/10 bg-navy-deep">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 grid-fade opacity-25" />
-        <div className="absolute -bottom-24 left-1/2 h-56 w-[36rem] -translate-x-1/2 rounded-full bg-blue/10 blur-[100px]" />
-      </div>
-
+    <footer
+      className="relative overflow-hidden border-t border-white/8"
+      style={{ backgroundColor: "#020617" }}
+    >
       <Container wide className="relative py-10 md:py-14">
-        <div className="grid gap-10 lg:grid-cols-[1.35fr_1fr_1fr_auto] lg:gap-12">
+        <motion.div
+          className="grid gap-10 lg:grid-cols-[1.35fr_1fr_1fr_auto] lg:gap-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: { staggerChildren: 0.1, delayChildren: 0.04 },
+            },
+          }}
+        >
           {/* Brand + CTA */}
-          <div className="max-w-md">
-            <Link href="/" className="inline-flex items-center gap-2.5">
-              <Image
-                src={getMediaSrc("brand/logo")}
-                alt={siteConfig.name}
-                width={36}
-                height={36}
-                className="h-9 w-9 rounded-lg object-cover"
-              />
-              <span className="font-display text-base tracking-[0.08em] text-white md:text-lg">
-                {siteConfig.name}
-              </span>
-            </Link>
+          <motion.div
+            className="max-w-md"
+            variants={reduce ? undefined : itemVariants}
+          >
+            <BrandLogo tone="dark" />
             <p className="mt-4 text-sm leading-relaxed text-white/55">
               {STRINGS.brand.footerSlogan}
             </p>
@@ -132,14 +147,14 @@ export function Footer() {
                 {STRINGS.hero.ctaProject}
               </Button>
             </div>
-          </div>
+          </motion.div>
 
           {/* Explore */}
-          <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan/80">
+          <motion.div variants={reduce ? undefined : itemVariants}>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-blue-bright">
               {STRINGS.footer.explore}
             </p>
-            <ul className="mt-4 space-y-2.5 text-sm text-white/60">
+            <ul className="mt-4 space-y-2.5 text-sm text-white/55">
               {exploreLinks.map((item) => (
                 <li key={item.href}>
                   <Link
@@ -151,14 +166,14 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Company */}
-          <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan/80">
+          <motion.div variants={reduce ? undefined : itemVariants}>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-blue-bright">
               {STRINGS.footer.company}
             </p>
-            <ul className="mt-4 space-y-2.5 text-sm text-white/60">
+            <ul className="mt-4 space-y-2.5 text-sm text-white/55">
               {companyLinks.map((item) => (
                 <li key={item.href}>
                   <Link
@@ -170,11 +185,11 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Connect */}
-          <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cyan/80">
+          <motion.div variants={reduce ? undefined : itemVariants}>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-blue-bright">
               {STRINGS.footer.connect}
             </p>
             <ul className="mt-4 flex items-center gap-2.5">
@@ -187,7 +202,7 @@ export function Footer() {
                       target={item.label === STRINGS.footer.call ? undefined : "_blank"}
                       rel={item.label === STRINGS.footer.call ? undefined : "noreferrer"}
                       aria-label={item.label}
-                      className={`inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/12 bg-white/[0.04] text-white/80 transition ${item.className}`}
+                      className={`inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70 transition ${item.className}`}
                     >
                       <Icon className="h-5 w-5" />
                     </a>
@@ -197,30 +212,41 @@ export function Footer() {
             </ul>
             <a
               href={`mailto:${siteConfig.email}`}
-              className="mt-4 block text-sm text-white/50 transition hover:text-cyan"
+              className="mt-4 block text-sm text-white/45 transition hover:text-blue-bright"
             >
               {siteConfig.email}
             </a>
-            <p className="mt-2 text-xs text-white/35">
-              {siteConfig.location}, {siteConfig.region}
-            </p>
-          </div>
-        </div>
+            <a
+              href={siteConfig.maps.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 block text-xs text-white/35 transition hover:text-blue-bright"
+            >
+              {siteConfig.location}, {siteConfig.region} · Map
+            </a>
+          </motion.div>
+        </motion.div>
 
-        <div className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
+        <motion.div
+          className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between"
+          initial={reduce ? false : { opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45, ease, delay: 0.15 }}
+        >
           <p>{STRINGS.brand.copyrightNotice(new Date().getFullYear())}</p>
           <div className="flex flex-wrap gap-4 md:gap-5">
             {legalNav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="transition hover:text-white/75"
+                className="transition hover:text-white"
               >
                 {item.label}
               </Link>
             ))}
           </div>
-        </div>
+        </motion.div>
       </Container>
     </footer>
   );

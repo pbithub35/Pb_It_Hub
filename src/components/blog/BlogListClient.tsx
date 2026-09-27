@@ -74,20 +74,20 @@ export function BlogListClient({ initialPosts }: { initialPosts: BlogPost[] }) {
           <label htmlFor={searchInputId} className="sr-only">
             {STRINGS.blog.searchPlaceholder}
           </label>
-          <SearchIcon className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-steel" />
+          <SearchIcon className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
           <input
             id={searchInputId}
             type="search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={STRINGS.blog.searchPlaceholder}
-            className="w-full rounded-full border border-white/10 bg-white/[0.04] py-3 pl-11 pr-4 text-sm text-white placeholder-steel/60 transition-colors focus:border-blue focus:bg-white/[0.07] focus:outline-none focus:ring-1 focus:ring-blue"
+            className="w-full rounded-full border border-navy/10 bg-white py-3 pl-11 pr-4 text-sm text-navy placeholder-muted/60 shadow-[var(--shadow-soft)] transition-colors focus:border-blue focus:outline-none focus:ring-1 focus:ring-blue"
           />
           {searchQuery ? (
             <button
               type="button"
               onClick={() => setSearchQuery("")}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-steel hover:text-white"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-muted hover:text-navy"
             >
               Clear
             </button>
@@ -102,7 +102,7 @@ export function BlogListClient({ initialPosts }: { initialPosts: BlogPost[] }) {
             className={`rounded-full px-4 py-2 text-xs font-medium transition-all ${
               selectedCategory === "all"
                 ? "bg-blue text-white shadow-md shadow-blue/20"
-                : "border border-white/10 bg-white/[0.03] text-steel hover:border-white/20 hover:text-white"
+                : "border border-navy/10 bg-white text-muted-strong hover:border-navy/20 hover:text-navy"
             }`}
           >
             {STRINGS.blog.allCategory}
@@ -117,7 +117,7 @@ export function BlogListClient({ initialPosts }: { initialPosts: BlogPost[] }) {
                 className={`rounded-full px-4 py-2 text-xs font-medium transition-all ${
                   isActive
                     ? "bg-blue text-white shadow-md shadow-blue/20"
-                    : "border border-white/10 bg-white/[0.03] text-steel hover:border-white/20 hover:text-white"
+                    : "border border-navy/10 bg-white text-muted-strong hover:border-navy/20 hover:text-navy"
                 }`}
               >
                 {cat}
@@ -130,8 +130,8 @@ export function BlogListClient({ initialPosts }: { initialPosts: BlogPost[] }) {
       {/* Blog Cards Grid */}
       <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-2">
         {filteredPosts.length === 0 ? (
-          <div className="col-span-full rounded-2xl border border-white/10 bg-white/[0.02] p-8 text-center">
-            <p className="text-base text-steel">
+          <div className="col-span-full rounded-2xl border border-navy/10 bg-white p-8 text-center shadow-[var(--shadow-soft)]">
+            <p className="text-base text-muted-strong">
               No matching articles found for &ldquo;{searchQuery}&rdquo;.
             </p>
             <button
@@ -149,26 +149,26 @@ export function BlogListClient({ initialPosts }: { initialPosts: BlogPost[] }) {
           filteredPosts.map((post) => (
             <article
               key={post.slug}
-              className="group flex flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.02] p-6 transition-all duration-300 hover:border-white/25 hover:bg-white/[0.04] md:p-8"
+              className="group flex flex-col justify-between rounded-2xl border border-navy/10 bg-white p-6 shadow-[var(--shadow-soft)] transition-all duration-300 hover:border-navy/20 hover:shadow-[var(--shadow-card)] md:p-8"
             >
               <div>
                 <div className="flex items-center justify-between gap-3 text-xs">
                   <span className="rounded-full border border-blue/30 bg-blue/10 px-3 py-1 font-mono text-[11px] font-semibold text-blue uppercase">
                     {post.category}
                   </span>
-                  <span className="inline-flex items-center gap-1.5 text-steel/70">
+                  <span className="inline-flex items-center gap-1.5 text-muted">
                     <ClockIcon className="h-3.5 w-3.5" />
                     {post.readTime}
                   </span>
                 </div>
 
-                <h2 className="mt-4 font-display text-xl font-bold text-white transition-colors group-hover:text-blue md:text-2xl">
+                <h2 className="mt-4 font-display text-xl font-bold text-navy transition-colors group-hover:text-blue md:text-2xl">
                   <Link href={`/blog/${post.slug}`} className="focus:outline-none">
                     {post.title}
                   </Link>
                 </h2>
 
-                <p className="mt-3 text-sm leading-relaxed text-steel md:text-base">
+                <p className="mt-3 text-sm leading-relaxed text-muted-strong md:text-base">
                   {post.excerpt}
                 </p>
 
@@ -176,7 +176,7 @@ export function BlogListClient({ initialPosts }: { initialPosts: BlogPost[] }) {
                   {post.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded-md border border-white/5 bg-white/[0.03] px-2.5 py-0.5 text-[11px] font-medium text-steel"
+                      className="rounded-md border border-navy/10 bg-off-white px-2.5 py-0.5 text-[11px] font-medium text-muted"
                     >
                       #{tag}
                     </span>
@@ -184,7 +184,7 @@ export function BlogListClient({ initialPosts }: { initialPosts: BlogPost[] }) {
                 </div>
               </div>
 
-              <div className="mt-8 flex items-center justify-between border-t border-white/5 pt-4 text-xs text-steel">
+              <div className="mt-8 flex items-center justify-between border-t border-navy/10 pt-4 text-xs text-muted">
                 <span>{post.author.name}</span>
                 <Link
                   href={`/blog/${post.slug}`}

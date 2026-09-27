@@ -4,9 +4,11 @@ import { motion, useReducedMotion } from "framer-motion";
 import { whyUsItems, type WhyUsItem } from "@/data/why-us";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Reveal } from "@/components/ui/Reveal";
+import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { ShowMoreFade } from "@/components/ui/ShowMoreFade";
 import { STRINGS } from "@/config/strings";
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 function ApproachIcon({ icon }: { icon: WhyUsItem["icon"] }) {
   switch (icon) {
@@ -94,47 +96,45 @@ export function WhyUsSection() {
   function WhyCard({ item, featured = false }: { item: WhyUsItem; featured?: boolean }) {
     return (
       <motion.article
-        whileHover={reduce ? undefined : { y: -6 }}
-        transition={{ duration: 0.25, ease: "easeOut" }}
+        whileHover={reduce ? undefined : { y: -5 }}
+        transition={{ duration: 0.25, ease }}
         className={
           featured
-            ? "group relative flex h-full flex-col justify-between rounded-md border border-white/10 bg-white/[0.03] p-5 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all duration-300 hover:border-cyan/40 hover:bg-white/[0.05] hover:shadow-[0_16px_40px_rgba(34,211,238,0.1)] sm:rounded-xl sm:p-7 md:p-8"
-            : "group relative flex h-full flex-col justify-between rounded-md border border-white/10 bg-white/[0.03] p-5 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.3)] transition-all duration-300 hover:border-cyan/40 hover:bg-white/[0.05] hover:shadow-[0_16px_40px_rgba(34,211,238,0.1)] sm:rounded-xl sm:p-6"
+            ? "group relative flex h-full flex-col justify-between rounded-2xl border border-navy/10 bg-white p-5 shadow-[var(--shadow-soft)] transition-all duration-300 hover:border-blue/20 hover:shadow-[var(--shadow-card-hover)] sm:p-7 md:p-8"
+            : "group relative flex h-full flex-col justify-between rounded-2xl border border-navy/10 bg-white p-5 shadow-[var(--shadow-soft)] transition-all duration-300 hover:border-blue/20 hover:shadow-[var(--shadow-card-hover)] sm:p-6"
         }
       >
-        <div className="pointer-events-none absolute -inset-px rounded-[inherit] bg-gradient-to-br from-cyan/10 via-transparent to-blue/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
         <div className="relative">
           <div className="flex items-center justify-between gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-cyan/10 text-cyan transition-all duration-300 group-hover:bg-cyan group-hover:text-navy-deep group-hover:shadow-[0_4px_16px_rgba(34,211,238,0.4)] sm:h-11 sm:w-11">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-blue/20 bg-blue/[0.06] text-blue transition-all duration-300 group-hover:bg-blue group-hover:text-white sm:h-11 sm:w-11">
               <ApproachIcon icon={item.icon} />
             </div>
             <div className="flex items-center gap-2.5">
-              <span className="rounded-full border border-cyan/20 bg-cyan/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-cyan sm:text-xs">
+              <span className="rounded-full border border-blue/20 bg-blue/[0.06] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-blue sm:text-xs">
                 {item.highlight}
               </span>
-              <span className="font-display text-xs font-bold text-white/40 transition-colors group-hover:text-cyan sm:text-sm">
+              <span className="font-display text-xs font-bold text-muted transition-colors group-hover:text-blue sm:text-sm">
                 {item.number}
               </span>
             </div>
           </div>
 
-          <h3 className="mt-4 font-display text-base text-white transition-colors group-hover:text-cyan sm:text-xl md:text-2xl">
+          <h3 className="mt-4 font-display text-base text-navy transition-colors group-hover:text-blue sm:text-xl md:text-2xl">
             {item.title}
           </h3>
-          <p className="mt-2 text-xs leading-relaxed text-white/65 sm:text-sm">
+          <p className="mt-2 text-xs leading-relaxed text-muted-strong sm:text-sm">
             {item.description}
           </p>
         </div>
 
-        <div className="relative mt-4 border-t border-white/8 pt-4 sm:mt-5">
+        <div className="relative mt-4 border-t border-navy/8 pt-4 sm:mt-5">
           <ul className="space-y-1.5">
             {item.points.map((pt) => (
               <li
                 key={pt}
-                className="flex items-center gap-2 text-xs font-medium text-white/80"
+                className="flex items-center gap-2 text-xs font-medium text-muted-strong"
               >
-                <span className="h-1.5 w-1.5 rounded-full bg-cyan" />
+                <span className="h-1.5 w-1.5 rounded-full bg-blue" />
                 <span>{pt}</span>
               </li>
             ))}
@@ -145,13 +145,7 @@ export function WhyUsSection() {
   }
 
   return (
-    <section id="why" className="surface-dark section-pad relative overflow-hidden noise-overlay">
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 grid-fade opacity-45" />
-        <div className="absolute top-1/3 -left-10 h-80 w-80 rounded-full bg-blue/15 blur-[120px]" />
-        <div className="absolute bottom-10 -right-10 h-80 w-80 rounded-full bg-cyan/15 blur-[120px]" />
-      </div>
-
+    <section id="why" className="section-pad relative overflow-hidden bg-paper">
       <Container wide className="relative">
         <Reveal>
           <SectionHeading
@@ -163,13 +157,15 @@ export function WhyUsSection() {
         </Reveal>
 
         {/* Desktop */}
-        <div className="mt-6 hidden gap-5 md:mt-7 md:grid md:grid-cols-2 lg:grid-cols-3">
+        <RevealGroup className="mt-6 hidden gap-5 md:mt-7 md:grid md:grid-cols-2 lg:grid-cols-3">
           {whyUsItems.map((item) => (
-            <WhyCard key={item.number} item={item} />
+            <RevealItem key={item.number}>
+              <WhyCard item={item} />
+            </RevealItem>
           ))}
-        </div>
+        </RevealGroup>
 
-        {/* Mobile: 3 + arrow */}
+        {/* Mobile: 3 + expand */}
         <div className="mt-8 md:hidden">
           <ShowMoreFade
             expandFromMd={false}

@@ -3,7 +3,6 @@ import Link from "next/link";
 import { createPageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { BackButton } from "@/components/ui/BackButton";
 import { ContactCTASection } from "@/components/sections/Contact";
 import { locations, locationRegions } from "@/data/locations";
 import { STRINGS } from "@/config/strings";
@@ -23,9 +22,8 @@ export const metadata: Metadata = createPageMetadata({
 export default function LocationsIndexPage() {
   return (
     <>
-      <div className="surface-light pt-24 pb-12 md:pt-28 md:pb-16">
+      <div className="surface-light page-shell">
         <Container wide>
-          <BackButton href="/" label={STRINGS.actions.backToHome} />
           <SectionHeading
             tone="light"
             eyebrow="Locations"
@@ -33,14 +31,14 @@ export default function LocationsIndexPage() {
             description="City pages for businesses and college students we serve. Pick your city for local context, then start a project or browse student packages."
           />
 
-          <div className="mt-10 space-y-12 md:mt-12 md:space-y-14">
+          <div className="mt-6 space-y-8 md:mt-8 md:space-y-10">
             {locationRegions.map((region) => {
               const cities = locations.filter((l) => l.region === region.id);
               if (!cities.length) return null;
 
               return (
                 <section key={region.id}>
-                  <h2 className="font-display text-2xl text-navy md:text-3xl">
+                  <h2 className="heading-section">
                     {region.label}
                   </h2>
                   <ul className="mt-5 space-y-3 md:mt-6 md:space-y-3.5">
@@ -51,7 +49,7 @@ export default function LocationsIndexPage() {
                           className="flex flex-col gap-2 rounded-[1.35rem] border border-navy/10 bg-off-white px-5 py-5 transition hover:border-navy/20 hover:bg-white md:flex-row md:items-center md:justify-between md:px-6 md:py-6"
                         >
                           <div>
-                            <p className="font-display text-xl text-navy md:text-2xl">
+                            <p className="font-display text-lg font-semibold text-ink md:text-xl">
                               {city.name}
                               {city.isHq ? (
                                 <span className="ml-2 text-xs font-sans uppercase tracking-[0.14em] text-blue">

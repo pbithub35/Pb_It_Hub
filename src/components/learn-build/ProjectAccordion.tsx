@@ -178,10 +178,9 @@ export function ProjectAccordion() {
   return (
     <div className="space-y-4">
       {/* FILTER & SEARCH BAR */}
-      <div className="space-y-2.5 rounded-xl border border-slate-700/60 bg-slate-900/60 p-3 sm:p-4 backdrop-blur-sm">
-        {/* Search Bar Input */}
+      <div className="space-y-2.5 rounded-xl border border-navy/10 bg-white p-3 sm:p-4">
         <div className="relative">
-          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400">
+          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-muted">
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
@@ -191,22 +190,21 @@ export function ProjectAccordion() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={STRINGS.learnBuild.searchPlaceholder}
-            className="w-full rounded-lg border border-slate-700 bg-slate-950/80 py-2 pl-9 pr-9 text-xs sm:text-sm text-white placeholder-slate-400 transition-colors focus:border-cyan focus:outline-none focus:ring-1 focus:ring-cyan"
+            className="w-full rounded-lg border border-navy/10 bg-off-white py-2 pl-9 pr-9 text-xs text-ink placeholder-muted transition-colors focus:border-blue focus:outline-none focus:ring-1 focus:ring-blue sm:text-sm"
           />
           {searchQuery ? (
             <button
               type="button"
               onClick={() => setSearchQuery("")}
-              className="absolute inset-y-0 right-0 flex items-center pr-3 text-xs text-slate-400 hover:text-white"
+              className="absolute inset-y-0 right-0 flex items-center pr-3 text-xs text-muted hover:text-ink"
             >
               ✕
             </button>
           ) : null}
         </div>
 
-        {/* Stack Filters Bar - smooth horizontal scroll on mobile, flex-wrap on sm */}
         <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5 -mx-0.5 px-0.5 sm:mx-0 sm:px-0 sm:flex-wrap sm:overflow-visible">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mr-1 hidden sm:inline shrink-0">
+          <span className="mr-1 hidden shrink-0 text-[10px] font-bold uppercase tracking-wider text-muted sm:inline">
             {STRINGS.learnBuild.stackLabel}
           </span>
           {projectPlatformFilters.map((filter) => (
@@ -217,8 +215,8 @@ export function ProjectAccordion() {
               className={cn(
                 "shrink-0 rounded-full border px-3 py-1 text-[11px] font-semibold transition-all",
                 platformFilter === filter.id
-                  ? "border-cyan/60 bg-cyan/20 text-cyan shadow-sm"
-                  : "border-slate-700/80 bg-slate-900/70 text-slate-300 hover:border-slate-500 hover:text-white",
+                  ? "border-blue/40 bg-blue/10 text-blue shadow-sm"
+                  : "border-navy/10 bg-white text-muted-strong hover:border-navy/20 hover:text-ink",
               )}
             >
               {filter.label}
@@ -226,10 +224,9 @@ export function ProjectAccordion() {
           ))}
         </div>
 
-        {/* Level Filters Bar & Results Count */}
-        <div className="flex flex-col gap-2 border-t border-slate-800/80 pt-2 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-2 border-t border-navy/8 pt-2 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5 -mx-0.5 px-0.5 sm:mx-0 sm:px-0 sm:flex-wrap sm:overflow-visible">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mr-1 hidden sm:inline shrink-0">
+            <span className="mr-1 hidden shrink-0 text-[10px] font-bold uppercase tracking-wider text-muted sm:inline">
               {STRINGS.learnBuild.levelLabel}
             </span>
             {projectLevelFilters.map((filter) => (
@@ -240,8 +237,8 @@ export function ProjectAccordion() {
                 className={cn(
                   "shrink-0 rounded-md border px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider transition-colors",
                   levelFilter === filter.id
-                    ? "border-cyan/50 bg-cyan/15 text-cyan"
-                    : "border-slate-700/60 bg-slate-950/40 text-slate-300 hover:border-slate-500 hover:text-white",
+                    ? "border-blue/40 bg-blue/10 text-blue"
+                    : "border-navy/10 bg-off-white text-muted-strong hover:border-navy/20 hover:text-ink",
                 )}
               >
                 {filter.label}
@@ -249,20 +246,19 @@ export function ProjectAccordion() {
             ))}
           </div>
 
-          <p className="text-[11px] font-medium text-slate-400 shrink-0 self-end sm:self-auto">
+          <p className="shrink-0 self-end text-[11px] font-medium text-muted sm:self-auto">
             {STRINGS.learnBuild.showingProjects(projects.length)}
           </p>
         </div>
       </div>
 
-      {/* PROJECTS LIST ACCORDION */}
-      <div className="space-y-2.5 sm:space-y-3">
+      <div className="space-y-2">
         {projects.length === 0 ? (
-          <div className="rounded-xl border border-slate-700/70 bg-theme-card p-6 text-sm text-slate-300">
+          <div className="rounded-xl border border-navy/10 bg-white p-6 text-sm text-muted-strong">
             {STRINGS.learnBuild.noMatches} &ldquo;{searchQuery || platformFilter}&rdquo;. Try another search keyword or{" "}
             <button
               type="button"
-              className="font-semibold text-cyan underline-offset-2 hover:underline"
+              className="font-semibold text-blue underline-offset-2 hover:underline"
               onClick={() => {
                 setSearchQuery("");
                 setLevelFilter("all");
@@ -283,18 +279,17 @@ export function ProjectAccordion() {
             <div
               key={project.slug}
               className={cn(
-                "overflow-hidden rounded-xl border transition-all duration-300",
+                "overflow-hidden rounded-xl border bg-white transition-all duration-300",
                 isOpen
-                  ? "border-cyan/50 bg-theme-card-hover shadow-md"
-                  : "border-slate-700/70 bg-theme-card/90 hover:border-slate-600 hover:bg-theme-card-hover",
-                isSelected && "ring-2 ring-cyan/50",
+                  ? "border-blue/35"
+                  : "border-navy/10 hover:border-navy/20",
+                isSelected && "ring-2 ring-blue/25",
               )}
             >
-              {/* Compact Accordion Header */}
-              <div className="flex w-full items-center gap-2 px-3 py-2.5 sm:gap-3 sm:px-5 sm:py-3">
+              <div className="flex w-full items-center gap-2 px-3 py-2 sm:gap-3 sm:px-4 sm:py-2.5">
                 <button
                   type="button"
-                  className="flex min-w-0 flex-1 items-center gap-2.5 text-left sm:gap-3.5"
+                  className="flex min-w-0 flex-1 items-center gap-2.5 text-left sm:gap-3"
                   aria-expanded={isOpen}
                   onClick={() => {
                     setOpenSlug((current) => {
@@ -306,10 +301,10 @@ export function ProjectAccordion() {
                 >
                   <span
                     className={cn(
-                      "flex h-7 w-7 sm:h-8 sm:w-8 shrink-0 items-center justify-center rounded-lg font-display text-[11px] sm:text-xs font-bold transition-colors",
+                      "flex h-7 w-7 shrink-0 items-center justify-center rounded-lg font-display text-[11px] font-bold transition-colors sm:h-8 sm:w-8 sm:text-xs",
                       isOpen
-                        ? "bg-cyan/20 text-cyan border border-cyan/40"
-                        : "bg-slate-800 text-slate-300 border border-slate-700/60",
+                        ? "border border-blue/30 bg-blue/10 text-blue"
+                        : "border border-navy/10 bg-off-white text-muted-strong",
                     )}
                   >
                     {number}
@@ -317,37 +312,37 @@ export function ProjectAccordion() {
 
                   <div className="min-w-0 flex-1">
                     <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
-                      <h3 className="font-display text-sm sm:text-base font-semibold text-white">
+                      <h3 className="font-display text-sm font-semibold text-ink sm:text-base">
                         {project.name}
                       </h3>
-                      <span className="rounded-md border border-slate-600/80 bg-slate-800/80 px-2 py-0.2 text-[9px] sm:text-[10px] font-semibold text-slate-200">
+                      <span className="rounded-md border border-navy/10 bg-off-white px-2 py-0.5 text-[9px] font-semibold text-muted-strong sm:text-[10px]">
                         {project.platform}
                       </span>
                       {project.level === "senior" ? (
-                        <span className="rounded-md border border-violet-500/40 bg-violet-500/15 px-1.5 py-0.2 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-violet-200">
+                        <span className="rounded-md border border-violet-200 bg-violet-50 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-violet-700 sm:text-[10px]">
                           Senior
                         </span>
                       ) : null}
                       {project.level === "custom" ? (
-                        <span className="rounded-md border border-amber-500/40 bg-amber-500/15 px-1.5 py-0.2 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider text-amber-200">
+                        <span className="rounded-md border border-amber-200 bg-amber-50 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-amber-800 sm:text-[10px]">
                           Custom
                         </span>
                       ) : null}
                       {isSelected ? (
-                        <span className="inline-flex items-center gap-1 rounded-full border border-cyan/30 bg-cyan/20 px-2 py-0.2 text-[9px] font-bold uppercase tracking-wider text-cyan">
+                        <span className="inline-flex items-center gap-1 rounded-full border border-blue/25 bg-blue/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-blue">
                           Selected
                         </span>
                       ) : null}
                     </div>
-                    <p className="mt-0.5 truncate text-[11px] text-slate-300 sm:text-xs">
+                    <p className="mt-0.5 truncate text-[11px] text-muted sm:text-xs">
                       {project.shortDescription}
                     </p>
                   </div>
 
                   <span
                     className={cn(
-                      "shrink-0 text-xs text-slate-400 transition-transform duration-200",
-                      isOpen && "rotate-180 text-cyan",
+                      "shrink-0 text-xs text-muted transition-transform duration-200",
+                      isOpen && "rotate-180 text-blue",
                     )}
                     aria-hidden
                   >
@@ -364,8 +359,8 @@ export function ProjectAccordion() {
                   className={cn(
                     "inline-flex shrink-0 items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-wider transition sm:px-3 sm:py-2 sm:text-[11px]",
                     isSelected
-                      ? "border-cyan/50 bg-cyan text-navy-deep"
-                      : "border-cyan/40 bg-cyan/15 text-cyan hover:bg-cyan/25",
+                      ? "border-blue bg-blue text-white"
+                      : "border-blue/25 bg-blue/10 text-blue hover:bg-blue/15",
                   )}
                   aria-label={`Download source code for ${project.name}`}
                 >
@@ -384,21 +379,21 @@ export function ProjectAccordion() {
                     transition={{ duration: 0.25 }}
                     className="overflow-hidden"
                   >
-                    <div className="border-t border-slate-700/60 px-3.5 pb-4 pt-3.5 sm:px-6 sm:pb-6 sm:pt-4">
-                      <div className="min-w-0 space-y-2.5 sm:space-y-3.5">
-                        <p className="text-xs leading-relaxed text-slate-200 sm:text-sm">
+                    <div className="border-t border-navy/8 bg-off-white/60 px-3.5 pb-4 pt-3 sm:px-5 sm:pb-5 sm:pt-4">
+                      <div className="min-w-0 space-y-2.5 sm:space-y-3">
+                        <p className="text-xs leading-relaxed text-muted-strong sm:text-sm">
                           {project.description}
                         </p>
 
                         <div className="space-y-1">
-                          <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-cyan-300">
+                          <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-blue">
                             {STRINGS.learnBuild.coreModulesLabel}
                           </p>
                           <ul className="flex flex-wrap gap-1">
                             {project.features.map((feature) => (
                               <li
                                 key={feature}
-                                className="rounded-md border border-slate-700 bg-slate-800/80 px-2 py-0.5 text-[10px] text-slate-200 font-medium sm:px-2.5 sm:py-1 sm:text-[11px]"
+                                className="rounded-md border border-navy/10 bg-white px-2 py-0.5 text-[10px] font-medium text-muted-strong sm:px-2.5 sm:py-1 sm:text-[11px]"
                               >
                                 {feature}
                               </li>
@@ -414,26 +409,24 @@ export function ProjectAccordion() {
                         </div>
                       </div>
 
-                      {/* CLEAR, STRUCTURED ADD-ONS SECTION */}
-                      <div className="mt-4 border-t border-slate-700/60 pt-3.5 sm:mt-6 sm:pt-5">
+                      <div className="mt-4 border-t border-navy/8 pt-3.5 sm:mt-5 sm:pt-4">
                         <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                           <div>
                             <div className="flex items-center gap-2">
-                              <span className="flex h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-cyan" />
-                              <h4 className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.16em] text-white">
+                              <span className="flex h-1.5 w-1.5 rounded-full bg-blue sm:h-2 sm:w-2" />
+                              <h4 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-ink sm:text-xs">
                                 {STRINGS.learnBuild.optionalAddonsTitle}
                               </h4>
                             </div>
-                            <p className="mt-0.5 text-[11px] text-slate-300 sm:text-xs">
+                            <p className="mt-0.5 text-[11px] text-muted sm:text-xs">
                               {STRINGS.learnBuild.optionalAddonsSubtitle}
                             </p>
                           </div>
-                          <span className="text-[10px] text-cyan-300 font-medium sm:text-[11px]">
+                          <span className="text-[10px] font-medium text-blue sm:text-[11px]">
                             {STRINGS.learnBuild.clickInfoTip}
                           </span>
                         </div>
 
-                        {/* Add-on Cards Grid */}
                         <div className="mt-3 grid gap-2 sm:grid-cols-2 sm:gap-3 lg:grid-cols-4">
                           {detailedOffers.map((offer) => {
                             const active = isOfferActive(offer);
@@ -443,32 +436,30 @@ export function ProjectAccordion() {
                                 key={offer.id}
                                 onClick={() => handleOfferClick(offer, project.slug)}
                                 className={cn(
-                                  "group relative flex cursor-pointer flex-col justify-between rounded-xl border p-2.5 sm:p-3.5 transition-all duration-200",
+                                  "group relative flex cursor-pointer flex-col justify-between rounded-xl border p-2.5 transition-all duration-200 sm:p-3.5",
                                   active
-                                    ? "border-cyan-400 bg-cyan-950/40 shadow-[0_0_20px_rgba(34,211,238,0.18)] ring-1 ring-cyan-400"
-                                    : "border-slate-700/80 bg-theme-panel-soft hover:border-slate-600 hover:bg-theme-panel",
+                                    ? "border-blue/40 bg-blue/5 ring-1 ring-blue/25"
+                                    : "border-navy/10 bg-white hover:border-navy/20 hover:bg-off-white",
                                 )}
                               >
                                 <div>
-                                  {/* Card Top: Checkbox + Badges + Info Button */}
                                   <div className="flex items-start justify-between gap-1.5 sm:gap-2">
-                                    <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
+                                    <div className="flex min-w-0 items-center gap-1.5 sm:gap-2">
                                       <span
                                         className={cn(
-                                          "flex h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 items-center justify-center rounded transition-colors",
+                                          "flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded transition-colors sm:h-4 sm:w-4",
                                           active
-                                            ? "bg-cyan text-navy-deep"
-                                            : "border border-slate-500 bg-slate-800/80 group-hover:border-cyan",
+                                            ? "bg-blue text-white"
+                                            : "border border-navy/20 bg-white group-hover:border-blue",
                                         )}
                                       >
-                                        {active && <CheckIcon className="h-2.5 w-2.5 sm:h-3 sm:w-3 stroke-[3]" />}
+                                        {active && <CheckIcon className="h-2.5 w-2.5 stroke-[3] sm:h-3 sm:w-3" />}
                                       </span>
-                                      <span className="truncate font-display text-xs sm:text-sm font-semibold text-white group-hover:text-cyan transition-colors">
+                                      <span className="truncate font-display text-xs font-semibold text-ink transition-colors group-hover:text-blue sm:text-sm">
                                         {offer.name}
                                       </span>
                                     </div>
 
-                                    {/* INFO ICON BUTTON: Trigger 'What We Provide' */}
                                     <button
                                       type="button"
                                       aria-label={`View what we provide for ${offer.name}`}
@@ -477,30 +468,28 @@ export function ProjectAccordion() {
                                         e.stopPropagation();
                                         setInfoModalOffer(offer);
                                       }}
-                                      className="flex h-5 w-5 sm:h-6 sm:w-6 shrink-0 items-center justify-center rounded-full border border-slate-600 bg-slate-800/80 text-slate-300 transition hover:border-cyan hover:bg-cyan/15 hover:text-cyan"
+                                      className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-navy/15 bg-off-white text-muted transition hover:border-blue hover:bg-blue/10 hover:text-blue sm:h-6 sm:w-6"
                                     >
                                       <InfoIcon className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
                                     </button>
                                   </div>
 
-                                  {/* Badge & Tagline */}
-                                  <div className="mt-1.5 sm:mt-2 flex items-center gap-2">
-                                    <span className="rounded-full bg-cyan/20 px-1.5 py-0.5 text-[9px] sm:text-[10px] font-bold text-cyan border border-cyan/30">
+                                  <div className="mt-1.5 flex items-center gap-2 sm:mt-2">
+                                    <span className="rounded-full border border-blue/20 bg-blue/10 px-1.5 py-0.5 text-[9px] font-bold text-blue sm:text-[10px]">
                                       {offer.badge}
                                     </span>
                                   </div>
 
-                                  <p className="mt-1 sm:mt-2 text-[11px] sm:text-xs leading-snug text-slate-300 line-clamp-2">
+                                  <p className="mt-1 line-clamp-2 text-[11px] leading-snug text-muted sm:mt-2 sm:text-xs">
                                     {offer.tagline}
                                   </p>
                                 </div>
 
-                                {/* Bottom Quick Indicator */}
-                                <div className="mt-2.5 sm:mt-3.5 flex items-center justify-between border-t border-slate-700/60 pt-2 sm:pt-2.5 text-[10px] sm:text-[11px]">
+                                <div className="mt-2.5 flex items-center justify-between border-t border-navy/8 pt-2 text-[10px] sm:mt-3 sm:pt-2.5 sm:text-[11px]">
                                   <span
                                     className={cn(
                                       "font-medium transition-colors",
-                                      active ? "text-cyan-300" : "text-slate-400",
+                                      active ? "text-blue" : "text-muted",
                                     )}
                                   >
                                     {active ? STRINGS.buy.addedToPlan : STRINGS.buy.addToPlan}
@@ -511,7 +500,7 @@ export function ProjectAccordion() {
                                       e.stopPropagation();
                                       setInfoModalOffer(offer);
                                     }}
-                                    className="text-[9px] sm:text-[10px] text-slate-400 underline underline-offset-2 hover:text-cyan font-medium"
+                                    className="text-[9px] font-medium text-muted underline underline-offset-2 hover:text-blue sm:text-[10px]"
                                   >
                                     {STRINGS.buy.whatIsThis}
                                   </button>
@@ -638,19 +627,18 @@ export function ProjectAccordion() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={reduce ? undefined : { opacity: 0, scale: 0.95, y: 10 }}
               transition={{ duration: 0.2 }}
-              className="relative z-10 w-full max-w-lg overflow-hidden rounded-xl border border-slate-700 bg-theme-card p-6 shadow-lg sm:p-7"
+              className="relative z-10 w-full max-w-lg overflow-hidden rounded-xl border border-navy/10 bg-white p-6 sm:p-7"
             >
-              {/* Header */}
               <div className="flex items-start justify-between gap-3">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-cyan/15 text-cyan">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue/10 text-blue">
                     <VideoIcon className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="font-display text-lg font-bold text-white sm:text-xl">
+                    <h3 className="font-display text-lg font-bold text-ink sm:text-xl">
                       {infoModalOffer.name}
                     </h3>
-                    <p className="text-xs text-slate-300">{infoModalOffer.tagline}</p>
+                    <p className="text-xs text-muted">{infoModalOffer.tagline}</p>
                   </div>
                 </div>
 
@@ -658,30 +646,28 @@ export function ProjectAccordion() {
                   type="button"
                   aria-label="Close dialog"
                   onClick={() => setInfoModalOffer(null)}
-                  className="rounded-full border border-slate-700 bg-slate-800 p-1.5 text-slate-300 hover:border-slate-500 hover:text-white"
+                  className="rounded-full border border-navy/10 bg-off-white p-1.5 text-muted hover:border-navy/20 hover:text-ink"
                 >
                   ✕
                 </button>
               </div>
 
-              {/* Overview */}
-              <p className="mt-4 text-xs leading-relaxed text-slate-200 sm:text-sm">
+              <p className="mt-4 text-xs leading-relaxed text-muted-strong sm:text-sm">
                 {infoModalOffer.description}
               </p>
 
-              {/* WHAT WE PROVIDE YOU — Clear Deliverables */}
-              <div className="mt-5 rounded-xl border border-cyan-500/30 bg-theme-panel p-4 sm:p-5">
+              <div className="mt-5 rounded-xl border border-blue/20 bg-blue/5 p-4 sm:p-5">
                 <div className="flex items-center gap-2">
-                  <span className="flex h-2 w-2 rounded-full bg-cyan" />
-                  <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-cyan">
+                  <span className="flex h-2 w-2 rounded-full bg-blue" />
+                  <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-blue">
                     {STRINGS.buy.whatWeProvideYou}
                   </p>
                 </div>
 
-                <ul className="mt-3 space-y-2.5 text-xs text-slate-100 sm:text-sm font-medium">
+                <ul className="mt-3 space-y-2.5 text-xs font-medium text-ink sm:text-sm">
                   {infoModalOffer.whatWeProvide.map((point) => (
                     <li key={point} className="flex items-start gap-2.5">
-                      <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-cyan/20 text-cyan">
+                      <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-blue/15 text-blue">
                         ✓
                       </span>
                       <span className="leading-snug">{point}</span>
@@ -690,9 +676,8 @@ export function ProjectAccordion() {
                 </ul>
               </div>
 
-              {/* Modal Footer Controls */}
-              <div className="mt-6 flex flex-col gap-2.5 sm:flex-row sm:items-center sm:justify-between pt-2 border-t border-slate-700">
-                <span className="rounded-full bg-cyan/15 border border-cyan/30 px-3 py-1 text-center text-xs font-bold text-cyan">
+              <div className="mt-6 flex flex-col gap-2.5 border-t border-navy/8 pt-4 sm:flex-row sm:items-center sm:justify-between">
+                <span className="rounded-full border border-blue/20 bg-blue/10 px-3 py-1 text-center text-xs font-bold text-blue">
                   {STRINGS.learnBuild.specialOfferPrefix} {infoModalOffer.badge}
                 </span>
 
@@ -708,10 +693,10 @@ export function ProjectAccordion() {
                       setInfoModalOffer(null);
                     }}
                     className={cn(
-                      "inline-flex h-10 flex-1 sm:flex-none items-center justify-center rounded-xl px-4 text-xs font-semibold uppercase tracking-wider transition-all",
+                      "inline-flex h-10 flex-1 items-center justify-center rounded-xl px-4 text-xs font-semibold uppercase tracking-wider transition-all sm:flex-none",
                       isOfferActive(infoModalOffer)
-                        ? "border border-red-400/30 bg-red-500/10 text-red-300 hover:bg-red-500/20"
-                        : "bg-cyan text-navy-deep font-bold hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]",
+                        ? "border border-red-200 bg-red-50 text-red-600 hover:bg-red-100"
+                        : "bg-blue font-bold text-white hover:bg-blue-bright",
                     )}
                   >
                     {isOfferActive(infoModalOffer)
@@ -722,7 +707,7 @@ export function ProjectAccordion() {
                   <button
                     type="button"
                     onClick={() => setInfoModalOffer(null)}
-                    className="inline-flex h-10 items-center justify-center rounded-xl border border-slate-700 bg-slate-800 px-4 text-xs font-semibold uppercase tracking-wider text-slate-300 hover:bg-slate-700 hover:text-white"
+                    className="inline-flex h-10 items-center justify-center rounded-xl border border-navy/15 bg-off-white px-4 text-xs font-semibold uppercase tracking-wider text-muted-strong hover:bg-white hover:text-ink"
                   >
                     {STRINGS.learnBuild.done}
                   </button>

@@ -66,7 +66,10 @@ export function organizationJsonLd() {
     url: siteConfig.url,
     description: siteConfig.description,
     email: siteConfig.email,
-    sameAs: Object.values(siteConfig.social).filter(Boolean),
+    sameAs: [
+      ...Object.values(siteConfig.social).filter(Boolean),
+      siteConfig.maps.url,
+    ],
     slogan: siteConfig.tagline,
   };
 }
@@ -124,7 +127,10 @@ export function localBusinessJsonLd() {
       addressRegion: "Punjab",
       addressCountry: "IN",
     },
-    sameAs: Object.values(siteConfig.social).filter(Boolean),
+    sameAs: [
+      ...Object.values(siteConfig.social).filter(Boolean),
+      siteConfig.maps.url,
+    ],
   };
 }
 

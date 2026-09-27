@@ -13,9 +13,10 @@ import {
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { BackButton } from "@/components/ui/BackButton";
 import { Button } from "@/components/ui/Button";
+import { OfficeMap } from "@/components/ui/OfficeMap";
 import { ContactCTASection } from "@/components/sections/Contact";
+import { siteConfig } from "@/config/site";
 
 export function generateStaticParams() {
   return locations.map((location) => ({ slug: location.slug }));
@@ -64,10 +65,9 @@ export default async function LocationDetailPage({
         <JsonLd data={faqJsonLd(location.faqs)} />
       ) : null}
 
-      <div className="surface-light pt-24 pb-12 md:pt-28 md:pb-16">
+      <div className="surface-light page-shell">
         <Container wide className="max-w-4xl">
-          <BackButton href="/locations" label="All locations" />
-          <p className="eyebrow text-muted-strong">
+          <p className="eyebrow text-blue">
             {location.regionLabel}
             {location.isHq ? " · Headquarters" : ""}
           </p>
@@ -78,18 +78,31 @@ export default async function LocationDetailPage({
             className="mt-2"
           />
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-5 flex flex-wrap gap-2.5">
             <Button href="/contact" variant="primary" size="md">
               Start a Project
             </Button>
             <Button href="/learn-and-build/projects" variant="ghost" size="md">
               Browse student projects
             </Button>
+            {location.isHq ? (
+              <Button
+                href={siteConfig.maps.url}
+                variant="secondary"
+                size="md"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Open in Google Maps
+              </Button>
+            ) : null}
           </div>
 
-          <div className="mt-12 space-y-10 md:mt-14 md:space-y-12">
+          {location.isHq ? <OfficeMap className="mt-8" /> : null}
+
+          <div className="mt-8 space-y-8 md:mt-10 md:space-y-10">
             <section>
-              <h2 className="font-display text-2xl text-navy md:text-3xl">
+              <h2 className="heading-section">
                 For businesses in {location.name}
               </h2>
               <p className="mt-3 text-base leading-relaxed text-muted-strong md:text-lg">
@@ -104,7 +117,7 @@ export default async function LocationDetailPage({
             </section>
 
             <section>
-              <h2 className="font-display text-2xl text-navy md:text-3xl">
+              <h2 className="heading-section">
                 For students in {location.name}
               </h2>
               <p className="mt-3 text-base leading-relaxed text-muted-strong md:text-lg">
@@ -120,7 +133,7 @@ export default async function LocationDetailPage({
 
             {location.faqs.length ? (
               <section>
-                <h2 className="font-display text-2xl text-navy md:text-3xl">
+                <h2 className="heading-section">
                   FAQ — {location.name}
                 </h2>
                 <ul className="mt-5 space-y-5">
@@ -140,7 +153,7 @@ export default async function LocationDetailPage({
 
             {nearby.length ? (
               <section>
-                <h2 className="font-display text-2xl text-navy md:text-3xl">
+                <h2 className="heading-section">
                   Nearby cities
                 </h2>
                 <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-blue">

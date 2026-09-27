@@ -16,7 +16,7 @@ export function SectionHeading({
   title,
   description,
   align = "left",
-  tone = "dark",
+  tone = "light",
   className,
   titleClassName,
   noWrap = false,
@@ -32,8 +32,8 @@ export function SectionHeading({
       {eyebrow ? (
         <p
           className={cn(
-            "eyebrow mb-2 md:mb-3.5",
-            tone === "light" ? "text-muted-strong" : "text-cyan/80",
+            "eyebrow mb-1.5 md:mb-2",
+            tone === "light" ? "text-blue" : "text-blue-bright/90",
           )}
         >
           {eyebrow}
@@ -41,11 +41,11 @@ export function SectionHeading({
       ) : null}
       <h2
         className={cn(
-          "font-display text-[length:var(--text-4xl)] leading-[1.08]",
+          "heading-section",
           noWrap
             ? "whitespace-normal md:whitespace-nowrap [text-wrap:unset] md:[text-wrap:nowrap]"
             : "text-balance",
-          tone === "light" ? "text-navy" : "text-white",
+          tone === "dark" && "text-white",
           titleClassName,
         )}
       >
@@ -54,7 +54,7 @@ export function SectionHeading({
       {description ? (
         <p
           className={cn(
-            "mt-2.5 max-w-2xl text-sm leading-relaxed md:mt-4 md:text-base lg:text-lg",
+            "mt-2 max-w-2xl text-sm leading-relaxed md:text-[0.95rem]",
             noWrap && "max-w-3xl",
             align === "center" && "mx-auto",
             tone === "light" ? "text-muted-strong" : "text-white/65",

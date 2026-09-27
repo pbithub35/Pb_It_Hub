@@ -11,7 +11,6 @@ import { resolveImageSrc } from "@/lib/media";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { BackButton } from "@/components/ui/BackButton";
 import { ContactCTASection } from "@/components/sections/Contact";
 
 export function generateStaticParams() {
@@ -74,20 +73,19 @@ export default async function ServiceDetailPage({
         ])}
       />
 
-      <section className="surface-dark pt-28 pb-16 md:pt-32">
+      <section className="surface-light page-shell !pb-8 md:!pb-10">
         <Container wide>
-          <BackButton href="/services" label="Back to services" tone="dark" />
-          <p className="eyebrow text-white/45">Service {service.number}</p>
-          <h1 className="mt-4 max-w-4xl font-display text-[length:var(--text-5xl)] text-white">
+          <p className="eyebrow text-blue">Service {service.number}</p>
+          <h1 className="heading-page mt-2 max-w-4xl">
             {service.title}
           </h1>
-          <p className="mt-5 max-w-2xl text-base text-white/60 md:text-lg">
+          <p className="mt-3 max-w-2xl text-sm text-muted-strong">
             {service.description}
           </p>
-          <div className="mt-8">
+          <div className="mt-5">
             <Button href="/contact">Start a Project</Button>
           </div>
-          <div className="relative mt-10 aspect-[16/9] overflow-hidden rounded-[1.5rem] border border-white/10">
+          <div className="relative mt-6 aspect-[16/9] overflow-hidden rounded-[1.25rem] border border-navy/10">
             <Image
               src={resolveImageSrc(service.visualKey)}
               alt={`PB_IT_HUB ${service.shortTitle} visual`}
@@ -101,14 +99,14 @@ export default async function ServiceDetailPage({
       </section>
 
       <section className="surface-light section-pad">
-        <Container wide className="grid gap-12 lg:grid-cols-2">
+        <Container wide className="grid gap-8 lg:grid-cols-2 lg:gap-10">
           <div>
-            <h2 className="font-display text-3xl text-navy">Capabilities</h2>
-            <ul className="mt-6 space-y-3">
+            <h2 className="heading-section">Capabilities</h2>
+            <ul className="mt-4 space-y-2.5">
               {service.capabilities.map((item) => (
                 <li
                   key={item}
-                  className="border-b border-navy/8 pb-3 text-muted-strong"
+                  className="border-b border-navy/8 pb-2.5 text-sm text-muted-strong"
                 >
                   {item}
                 </li>
@@ -116,12 +114,12 @@ export default async function ServiceDetailPage({
             </ul>
           </div>
           <div>
-            <h2 className="font-display text-3xl text-navy">Technology</h2>
-            <ul className="mt-6 flex flex-wrap gap-2">
+            <h2 className="heading-section">Technology</h2>
+            <ul className="mt-4 flex flex-wrap gap-2">
               {service.technologies.map((tech) => (
                 <li
                   key={tech}
-                  className="rounded-full border border-navy/10 bg-off-white px-3 py-1.5 text-sm text-navy"
+                  className="rounded-full border border-navy/10 bg-off-white px-3 py-1.5 text-sm text-ink"
                 >
                   {tech}
                 </li>
@@ -133,16 +131,16 @@ export default async function ServiceDetailPage({
 
       <section className="surface-soft section-pad">
         <Container wide>
-          <h2 className="font-display text-3xl text-navy">Process</h2>
-          <ol className="mt-8 grid gap-4 md:grid-cols-5">
+          <h2 className="heading-section">Process</h2>
+          <ol className="mt-5 grid gap-3 md:grid-cols-5 md:gap-4">
             {processSteps.map((step) => (
               <li
                 key={step.number}
                 className="rounded-xl border border-navy/8 bg-white p-4"
               >
                 <p className="text-xs tracking-[0.14em] text-blue">{step.number}</p>
-                <p className="mt-2 font-display text-lg text-navy">{step.title}</p>
-                <p className="mt-2 text-sm text-muted-strong">{step.description}</p>
+                <p className="mt-2 font-display text-base font-semibold text-ink">{step.title}</p>
+                <p className="mt-1.5 text-sm text-muted-strong">{step.description}</p>
               </li>
             ))}
           </ol>
@@ -152,8 +150,8 @@ export default async function ServiceDetailPage({
       {relatedWork.length ? (
         <section className="surface-light section-pad !pt-0">
           <Container wide>
-            <h2 className="font-display text-3xl text-navy">Relevant work</h2>
-            <ul className="mt-6 grid gap-4 md:grid-cols-3">
+            <h2 className="heading-section">Relevant work</h2>
+            <ul className="mt-5 grid gap-3 md:grid-cols-3 md:gap-4">
               {relatedWork.map((project) => (
                 <li key={project.slug}>
                   <Link
@@ -163,7 +161,7 @@ export default async function ServiceDetailPage({
                     <p className="text-xs uppercase tracking-[0.14em] text-muted-strong">
                       {project.category}
                     </p>
-                    <p className="mt-2 font-display text-xl text-navy">
+                    <p className="mt-2 font-display text-lg font-semibold text-ink">
                       {project.title}
                     </p>
                   </Link>
@@ -176,8 +174,8 @@ export default async function ServiceDetailPage({
 
       <section className="surface-soft section-pad !pt-0">
         <Container wide>
-          <h2 className="font-display text-3xl text-navy">Related services</h2>
-          <ul className="mt-6 grid gap-4 md:grid-cols-3">
+          <h2 className="heading-section">Related services</h2>
+          <ul className="mt-5 grid gap-3 md:grid-cols-3 md:gap-4">
             {relatedServices.map((item) => (
               <li key={item.slug}>
                 <Link
@@ -187,7 +185,7 @@ export default async function ServiceDetailPage({
                   <p className="text-xs uppercase tracking-[0.14em] text-blue">
                     {item.number}
                   </p>
-                  <p className="mt-2 font-display text-xl text-navy">
+                  <p className="mt-2 font-display text-lg font-semibold text-ink">
                     {item.title}
                   </p>
                   <p className="mt-2 line-clamp-2 text-sm text-muted-strong">

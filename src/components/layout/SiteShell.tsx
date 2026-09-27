@@ -5,6 +5,7 @@ import { ContactModal } from "@/components/forms/ContactModal";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { MobileBottomBar } from "@/components/layout/MobileBottomBar";
+import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   return (
@@ -13,6 +14,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
       <main className="flex-1 pb-16 lg:pb-0">{children}</main>
       <Footer />
       <ContactModal />
+      <FloatingWhatsApp />
       <MobileBottomBar />
     </ContactModalProvider>
   );

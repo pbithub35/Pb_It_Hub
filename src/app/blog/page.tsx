@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { createPageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { BackButton } from "@/components/ui/BackButton";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { BlogListClient } from "@/components/blog/BlogListClient";
 import { BlogSidebar } from "@/components/blog/BlogSidebar";
@@ -29,18 +28,12 @@ export default function BlogPage() {
   ];
 
   return (
-    <div className="min-h-[100svh] pt-24 pb-16 md:pt-28 md:pb-24">
+    <div className="page-shell min-h-[100svh]">
       <JsonLd data={breadcrumbJsonLd(breadcrumbs)} />
 
       <Container wide className="max-w-6xl">
-        <BackButton
-          href="/"
-          label={STRINGS.actions.backToHome}
-          tone="dark"
-        />
 
         <SectionHeading
-          tone="dark"
           eyebrow={STRINGS.blog.eyebrow}
           title={STRINGS.blog.title}
           description={STRINGS.blog.description}

@@ -8,8 +8,8 @@ function Chevron({ open }: { open: boolean }) {
   return (
     <span
       className={cn(
-        "inline-flex h-7 w-7 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] text-cyan transition duration-300",
-        open && "rotate-180 border-cyan/40 bg-cyan/10",
+        "inline-flex h-7 w-7 items-center justify-center rounded-full border border-navy/12 bg-white text-blue transition duration-300",
+        open && "rotate-180 border-blue/30 bg-blue/[0.06]",
       )}
       aria-hidden
     >
@@ -76,7 +76,7 @@ export function ShowMoreFade({
               </motion.div>
             ) : (
               <div
-                className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-28 bg-gradient-to-t from-navy-deep via-navy-deep/90 to-transparent"
+                className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-28 bg-gradient-to-t from-white via-white/90 to-transparent"
                 aria-hidden
               />
             )}
@@ -88,7 +88,7 @@ export function ShowMoreFade({
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
-            className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-navy-deep px-3.5 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-white/70 shadow-[0_8px_24px_rgba(0,0,0,0.35)] transition hover:border-cyan/40 hover:text-cyan"
+            className="inline-flex items-center gap-2 rounded-full border border-navy/10 bg-white px-3.5 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-navy shadow-[var(--shadow-soft)] transition hover:border-blue/25 hover:text-blue"
           >
             <span>{open ? lessLabel : moreLabel}</span>
             <Chevron open={open} />

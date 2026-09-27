@@ -4,7 +4,6 @@ import { services } from "@/data/services";
 import { createPageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { BackButton } from "@/components/ui/BackButton";
 import { STRINGS } from "@/config/strings";
 
 export const metadata: Metadata = createPageMetadata({
@@ -16,16 +15,15 @@ export const metadata: Metadata = createPageMetadata({
 
 export default function ServicesIndexPage() {
   return (
-    <div className="surface-light pt-24 pb-12 md:pt-28 md:pb-16">
+    <div className="surface-light page-shell">
       <Container wide>
-        <BackButton href="/" label={STRINGS.actions.backToHome} />
         <SectionHeading
           tone="light"
           eyebrow={STRINGS.services.eyebrow}
           title="What we design and engineer"
           description="Product-focused technology capabilities built around real business needs."
         />
-        <div className="mt-7 space-y-3 md:mt-8 md:space-y-3.5">
+        <div className="mt-5 space-y-2.5 md:mt-6 md:space-y-3">
           {services.map((service) => (
             <Link
               key={service.slug}
@@ -37,7 +35,7 @@ export default function ServicesIndexPage() {
                   {service.number}
                 </span>
                 <div>
-                  <h2 className="font-display text-2xl text-navy">
+                  <h2 className="font-display text-lg font-semibold text-ink md:text-xl">
                     {service.title}
                   </h2>
                   <p className="mt-2 max-w-2xl text-sm text-muted-strong">

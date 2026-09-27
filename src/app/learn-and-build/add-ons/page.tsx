@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { createPageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { BackButton } from "@/components/ui/BackButton";
 import { SimpleAddOnsSection } from "@/components/learn-build";
 
 export const metadata: Metadata = createPageMetadata({
@@ -14,16 +13,14 @@ export const metadata: Metadata = createPageMetadata({
 
 export default function AddOnsPage() {
   return (
-    <section className="section-pad">
+    <section className="page-shell">
       <Container wide>
-        <BackButton href="/learn-and-build" label="Back to Learn or Buy" tone="dark" />
         <SectionHeading
-          tone="dark"
           eyebrow="Add-ons"
           title="Optional learning support"
           description="Select what you need — offers show as % OFF or FREE. Prices stay private."
         />
-        <div className="mt-10">
+        <div className="mt-5 md:mt-6">
           <SimpleAddOnsSection />
         </div>
       </Container>

@@ -6,22 +6,21 @@ import {
   studentOffers,
 } from "@/data/studentOffers";
 import { FeatureList } from "./FeatureList";
+import { cn } from "@/lib/utils";
 
 export function SimplePackageSection() {
   const { selectPackage, openDrawer } = useStudentAction();
 
   return (
-    <div className="mx-auto max-w-xl rounded-[var(--learn-radius)] border border-[color:var(--learn-accent)]/40 bg-theme-card p-6 md:p-8 shadow-lg">
-      <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[color:var(--learn-accent-secondary)]">
-        Package
-      </p>
-      <h2 className="mt-3 font-display text-2xl text-white md:text-3xl">
+    <div className="mx-auto max-w-xl rounded-2xl border border-blue/25 bg-white p-6 md:p-8">
+      <p className="eyebrow text-blue">Package</p>
+      <h2 className="heading-section mt-2">
         {completeProjectPackage.name}
       </h2>
-      <p className="mt-2 text-sm text-slate-200">
+      <p className="mt-2 text-sm text-muted-strong">
         {completeProjectPackage.description}
       </p>
-      <div className="mt-6">
+      <div className="mt-5">
         <FeatureList
           items={[
             "Selected Project",
@@ -38,7 +37,7 @@ export function SimplePackageSection() {
           selectPackage();
           openDrawer("package");
         }}
-        className="mt-8 inline-flex h-12 w-full items-center justify-center rounded-full learn-accent-btn text-xs font-semibold uppercase tracking-[0.14em] text-white"
+        className="mt-6 inline-flex h-11 w-full items-center justify-center rounded-full bg-blue text-xs font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-blue-bright"
       >
         Choose Package
       </button>
@@ -81,16 +80,23 @@ export function SimpleAddOnsSection() {
             key={item.id}
             type="button"
             onClick={item.onClick}
-            className="rounded-[var(--learn-radius)] border border-slate-700/70 bg-theme-card p-5 text-left transition hover:border-cyan-400/50 hover:bg-theme-card-hover shadow-sm"
+            className={cn(
+              "rounded-2xl border bg-white p-5 text-left transition",
+              item.selected
+                ? "border-blue/40 bg-blue/5 ring-1 ring-blue/20"
+                : "border-navy/10 hover:border-navy/20 hover:bg-off-white",
+            )}
           >
             <div className="flex items-start justify-between gap-3">
-              <h3 className="font-display text-lg text-white">{item.name}</h3>
-              <span className="rounded-full bg-cyan/20 border border-cyan/30 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-cyan">
+              <h3 className="font-display text-lg font-semibold text-ink">
+                {item.name}
+              </h3>
+              <span className="rounded-full border border-blue/20 bg-blue/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-blue">
                 {item.badge}
               </span>
             </div>
-            <p className="mt-2 text-sm text-slate-300">{item.description}</p>
-            <p className="mt-4 text-[11px] font-semibold uppercase tracking-wider text-cyan-400">
+            <p className="mt-2 text-sm text-muted-strong">{item.description}</p>
+            <p className="mt-4 text-[11px] font-semibold uppercase tracking-wider text-blue">
               {item.selected ? "✓ Selected" : "+ Add"}
             </p>
           </button>
@@ -99,20 +105,20 @@ export function SimpleAddOnsSection() {
         <button
           type="button"
           onClick={openCareerGuidance}
-          className="rounded-[var(--learn-radius)] border border-[color:var(--learn-accent-secondary)]/40 bg-theme-card p-5 text-left md:col-span-2 shadow-sm hover:border-[color:var(--learn-accent-secondary)]/70 hover:bg-theme-card-hover transition"
+          className="rounded-2xl border border-teal-200 bg-white p-5 text-left transition hover:border-teal-300 hover:bg-off-white md:col-span-2"
         >
           <div className="flex items-start justify-between gap-3">
-            <h3 className="font-display text-lg text-white">
+            <h3 className="font-display text-lg font-semibold text-ink">
               {studentOffers.careerGuidance.name}
             </h3>
-            <span className="rounded-full bg-[color:var(--learn-accent-secondary)]/20 border border-[color:var(--learn-accent-secondary)]/30 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[color:var(--learn-accent-secondary)]">
+            <span className="rounded-full border border-teal-200 bg-teal-50 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-teal-700">
               FREE
             </span>
           </div>
-          <p className="mt-2 text-sm text-slate-300">
+          <p className="mt-2 text-sm text-muted-strong">
             {studentOffers.careerGuidance.description}
           </p>
-          <p className="mt-4 text-[11px] font-semibold uppercase tracking-wider text-[color:var(--learn-accent-secondary)]">
+          <p className="mt-4 text-[11px] font-semibold uppercase tracking-wider text-teal-700">
             Book Free Guidance
           </p>
         </button>
@@ -122,7 +128,7 @@ export function SimpleAddOnsSection() {
         <button
           type="button"
           onClick={() => openDrawer()}
-          className="inline-flex h-11 w-full items-center justify-center rounded-full learn-accent-btn text-xs font-semibold uppercase tracking-[0.14em] text-white md:w-auto md:px-8"
+          className="inline-flex h-11 w-full items-center justify-center rounded-full bg-blue text-xs font-semibold uppercase tracking-[0.14em] text-white transition hover:bg-blue-bright md:w-auto md:px-8"
         >
           Buy
         </button>

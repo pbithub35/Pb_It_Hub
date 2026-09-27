@@ -2,17 +2,19 @@
 
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import { motion, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
-import { Reveal } from "@/components/ui/Reveal";
 import { STRINGS } from "@/config/strings";
 import { cn } from "@/lib/utils";
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 function ServiceIcon({ id }: { id: string }) {
   switch (id) {
     case "sessions":
       return (
         <svg
-          className="h-5 w-5 text-cyan"
+          className="h-5 w-5 text-blue"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -29,7 +31,7 @@ function ServiceIcon({ id }: { id: string }) {
     case "project-kt":
       return (
         <svg
-          className="h-5 w-5 text-cyan"
+          className="h-5 w-5 text-blue"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -46,7 +48,7 @@ function ServiceIcon({ id }: { id: string }) {
     case "buy-project":
       return (
         <svg
-          className="h-5 w-5 text-cyan"
+          className="h-5 w-5 text-blue"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -63,7 +65,7 @@ function ServiceIcon({ id }: { id: string }) {
     case "build-with-us":
       return (
         <svg
-          className="h-5 w-5 text-cyan"
+          className="h-5 w-5 text-blue"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -80,7 +82,7 @@ function ServiceIcon({ id }: { id: string }) {
     case "practical-prep":
       return (
         <svg
-          className="h-5 w-5 text-cyan"
+          className="h-5 w-5 text-blue"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -97,7 +99,7 @@ function ServiceIcon({ id }: { id: string }) {
     case "career-guidance":
       return (
         <svg
-          className="h-5 w-5 text-emerald-400"
+          className="h-5 w-5 text-teal-600"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -115,7 +117,7 @@ function ServiceIcon({ id }: { id: string }) {
     default:
       return (
         <svg
-          className="h-5 w-5 text-amber-400"
+          className="h-5 w-5 text-amber-600"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -136,6 +138,7 @@ export function StudentServicesScroll() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const reduce = useReducedMotion();
 
   const checkScroll = () => {
     const el = containerRef.current;
@@ -159,8 +162,14 @@ export function StudentServicesScroll() {
   const scroll = (direction: "left" | "right") => {
     const el = containerRef.current;
     if (!el) return;
-    const scrollAmount = direction === "left" ? -360 : 360;
-    el.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    const card = el.querySelector<HTMLElement>("[data-student-card]");
+    const styles = getComputedStyle(el);
+    const gap = parseFloat(styles.columnGap || styles.gap || "20") || 20;
+    const amount = card ? card.offsetWidth + gap : el.clientWidth / 3;
+    el.scrollBy({
+      left: direction === "left" ? -amount : amount,
+      behavior: "smooth",
+    });
   };
 
   const { studentServicesScroll: copy } = STRINGS;
@@ -168,32 +177,30 @@ export function StudentServicesScroll() {
   return (
     <section
       id="student-services"
-      className="surface-dark relative overflow-hidden py-10 md:py-14"
+      className="relative overflow-hidden py-10 md:py-14"
+      style={{ backgroundColor: "var(--pb-surface)" }}
       aria-labelledby="student-services-heading"
     >
-      {/* Background accents */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 grid-fade opacity-30" />
-        <div className="absolute -left-20 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-cyan/10 blur-[100px]" />
-        <div className="absolute -right-20 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-blue/10 blur-[100px]" />
-      </div>
-
       <Container wide className="relative">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-          <Reveal>
-            <p className="eyebrow text-cyan/90">{copy.eyebrow}</p>
+          <motion.div
+            initial={reduce ? false : { opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.55, ease }}
+          >
+            <p className="eyebrow text-blue">{copy.eyebrow}</p>
             <h2
               id="student-services-heading"
-              className="mt-2 font-display text-[length:var(--text-3xl)] text-white"
+              className="heading-section mt-2"
             >
               {copy.headline}
             </h2>
-            <p className="mt-2 max-w-2xl text-xs text-white/65 sm:text-sm">
+            <p className="mt-2 max-w-2xl text-xs text-muted-strong sm:text-sm">
               {copy.description}
             </p>
-          </Reveal>
+          </motion.div>
 
-          {/* Desktop scroll arrows */}
           <div className="hidden items-center gap-2 sm:flex">
             <button
               type="button"
@@ -201,8 +208,9 @@ export function StudentServicesScroll() {
               disabled={!canScrollLeft}
               aria-label="Scroll offerings left"
               className={cn(
-                "inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-white transition hover:border-cyan/40 hover:bg-white/[0.08] active:scale-95",
-                !canScrollLeft && "cursor-not-allowed opacity-30 hover:border-white/10 hover:bg-white/[0.04]",
+                "inline-flex h-9 w-9 items-center justify-center rounded-xl border border-navy/10 bg-white text-navy shadow-[var(--shadow-soft)] transition hover:border-blue/25 hover:text-blue active:scale-95",
+                !canScrollLeft &&
+                  "cursor-not-allowed opacity-30 hover:border-navy/10 hover:text-navy",
               )}
             >
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -215,8 +223,9 @@ export function StudentServicesScroll() {
               disabled={!canScrollRight}
               aria-label="Scroll offerings right"
               className={cn(
-                "inline-flex h-9 w-9 items-center justify-center rounded-lg border border-white/10 bg-white/[0.04] text-white transition hover:border-cyan/40 hover:bg-white/[0.08] active:scale-95",
-                !canScrollRight && "cursor-not-allowed opacity-30 hover:border-white/10 hover:bg-white/[0.04]",
+                "inline-flex h-9 w-9 items-center justify-center rounded-xl border border-navy/10 bg-white text-navy shadow-[var(--shadow-soft)] transition hover:border-blue/25 hover:text-blue active:scale-95",
+                !canScrollRight &&
+                  "cursor-not-allowed opacity-30 hover:border-navy/10 hover:text-navy",
               )}
             >
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -226,59 +235,80 @@ export function StudentServicesScroll() {
           </div>
         </div>
 
-        {/* Horizontal scroll cards */}
-        <div
-          ref={containerRef}
-          className="no-scrollbar mt-6 -mx-4 flex gap-4 overflow-x-auto px-4 pb-4 pt-1 snap-x snap-mandatory sm:-mx-6 sm:px-6 md:mt-8 md:gap-5"
-          style={{ WebkitOverflowScrolling: "touch" }}
-        >
-          {copy.items.map((item) => (
-            <article
-              key={item.id}
-              className="flex w-[290px] shrink-0 snap-start flex-col justify-between rounded-xl border border-white/10 bg-gradient-to-b from-white/[0.05] via-white/[0.03] to-white/[0.01] p-5 backdrop-blur-md transition-all duration-300 hover:border-cyan/40 hover:bg-white/[0.07] hover:-translate-y-1 sm:w-[330px] sm:p-6"
-            >
+        <div className="mt-6 overflow-hidden md:mt-8">
+          <motion.div
+            ref={containerRef}
+            className="no-scrollbar flex gap-4 overflow-x-auto snap-x snap-mandatory pb-1 pt-1 sm:gap-5"
+            style={{ WebkitOverflowScrolling: "touch" }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            variants={{
+              hidden: {},
+              visible: {
+                transition: { staggerChildren: 0.08, delayChildren: 0.06 },
+              },
+            }}
+          >
+            {copy.items.map((item) => (
+              <motion.article
+                key={item.id}
+                data-student-card
+                variants={
+                  reduce
+                    ? undefined
+                    : {
+                        hidden: { opacity: 0, y: 20 },
+                        visible: {
+                          opacity: 1,
+                          y: 0,
+                          transition: { duration: 0.4, ease },
+                        },
+                      }
+                }
+                whileHover={reduce ? undefined : { y: -4 }}
+                transition={{ duration: 0.22, ease }}
+                className="flex w-[min(88vw,300px)] shrink-0 snap-start flex-col justify-between rounded-2xl border border-navy/10 bg-white p-5 shadow-[var(--shadow-soft)] transition-shadow duration-300 hover:border-blue/20 hover:shadow-[var(--shadow-card-hover)] sm:w-[calc((100%-1.25rem)/2)] sm:p-6 lg:w-[calc((100%-2.5rem)/3)]"
+              >
               <div>
-                {/* Header row: Number + Icon + Badge */}
                 <div className="flex items-center justify-between">
-                  <div className="rounded-md border border-white/10 bg-white/[0.04] p-1.5">
+                  <div className="rounded-xl border border-blue/15 bg-blue/[0.05] p-1.5">
                     <ServiceIcon id={item.id} />
                   </div>
                   <span
                     className={cn(
                       "rounded-md px-2 py-0.5 text-[10px] font-semibold tracking-wider uppercase border",
                       item.badge === "100% FREE"
-                        ? "border-emerald-500/40 bg-emerald-500/10 text-emerald-300"
+                        ? "border-emerald-500/30 bg-emerald-50 text-emerald-700"
                         : item.badge === "BEST VALUE"
-                        ? "border-amber-500/40 bg-amber-500/10 text-amber-300"
-                        : "border-cyan/30 bg-cyan/10 text-cyan",
+                          ? "border-amber-500/30 bg-amber-50 text-amber-700"
+                          : "border-blue/20 bg-blue/[0.06] text-blue",
                     )}
                   >
                     {item.badge}
                   </span>
                 </div>
 
-                {/* Title & Tagline */}
-                <h3 className="mt-3.5 font-display text-base font-semibold text-white sm:text-lg">
+                <h3 className="mt-3.5 font-display text-base font-semibold text-navy sm:text-lg">
                   {item.title}
                 </h3>
-                <p className="mt-1 text-xs font-medium text-cyan/90">
-                  {item.tagline}
-                </p>
+                <p className="mt-1 text-xs font-medium text-blue">{item.tagline}</p>
 
-                {/* Description */}
-                <p className="mt-2 text-xs leading-relaxed text-white/60">
+                <p className="mt-2 text-xs leading-relaxed text-muted-strong">
                   {item.description}
                 </p>
 
-                {/* Benefits / Deliverables list */}
-                <div className="mt-4 border-t border-white/5 pt-3.5">
-                  <p className="text-[10px] font-semibold uppercase tracking-wider text-white/40">
+                <div className="mt-4 border-t border-navy/8 pt-3.5">
+                  <p className="text-[10px] font-semibold uppercase tracking-wider text-muted">
                     What You Get:
                   </p>
                   <ul className="mt-2 space-y-1.5">
                     {item.benefits.map((benefit, i) => (
-                      <li key={i} className="flex items-start gap-2 text-[11px] leading-snug text-white/75 sm:text-xs">
-                        <span className="shrink-0 font-bold text-cyan mt-0.5">✓</span>
+                      <li
+                        key={i}
+                        className="flex items-start gap-2 text-[11px] leading-snug text-muted-strong sm:text-xs"
+                      >
+                        <span className="mt-0.5 shrink-0 font-bold text-blue">✓</span>
                         <span>{benefit}</span>
                       </li>
                     ))}
@@ -286,22 +316,21 @@ export function StudentServicesScroll() {
                 </div>
               </div>
 
-              {/* Action CTA */}
               <div className="mt-5 pt-2">
                 <Link
                   href={item.ctaHref}
-                  className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-cyan/30 bg-cyan/10 px-3.5 py-2 text-xs font-semibold text-cyan transition hover:border-cyan hover:bg-cyan hover:text-black active:scale-[0.98]"
+                  className="inline-flex w-full items-center justify-center gap-1.5 rounded-xl border border-blue/20 bg-blue/[0.06] px-3.5 py-2 text-xs font-semibold text-blue transition hover:border-blue hover:bg-blue hover:text-white active:scale-[0.98]"
                 >
                   <span>{item.ctaText}</span>
                   <span aria-hidden="true">→</span>
                 </Link>
               </div>
-            </article>
+            </motion.article>
           ))}
+          </motion.div>
         </div>
 
-        {/* Mobile swipe hint */}
-        <p className="mt-2 text-center text-[11px] text-white/40 sm:hidden">
+        <p className="mt-2 text-center text-[11px] text-muted sm:hidden">
           ← {copy.scrollHint} →
         </p>
       </Container>

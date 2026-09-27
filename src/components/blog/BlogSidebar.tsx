@@ -36,23 +36,23 @@ export function BlogSidebar({
   return (
     <aside className={cn("w-full", className)}>
       {/* Mobile: collapsible */}
-      <details className="group rounded-2xl border border-white/10 bg-white/[0.03] lg:hidden">
-        <summary className="cursor-pointer list-none px-4 py-3.5 font-display text-sm text-white [&::-webkit-details-marker]:hidden">
+      <details className="group rounded-2xl border border-navy/10 bg-white shadow-[var(--shadow-soft)] lg:hidden">
+        <summary className="cursor-pointer list-none px-4 py-3.5 font-display text-sm text-navy [&::-webkit-details-marker]:hidden">
           <span className="flex items-center justify-between gap-3">
             {STRINGS.blog.sideMenuTitle}
-            <span className="text-xs uppercase tracking-[0.14em] text-steel transition group-open:rotate-180">
+            <span className="text-xs uppercase tracking-[0.14em] text-muted transition group-open:rotate-180">
               ▾
             </span>
           </span>
         </summary>
-        <nav className="border-t border-white/10 px-3 pb-4 pt-2" aria-label="Blog articles">
+        <nav className="border-t border-navy/10 px-3 pb-4 pt-2" aria-label="Blog articles">
           <SidebarNav groups={groups} currentSlug={currentSlug} />
         </nav>
       </details>
 
       {/* Desktop: sticky side menu */}
       <div className="hidden lg:sticky lg:top-28 lg:block lg:max-h-[calc(100svh-8rem)] lg:overflow-y-auto">
-        <p className="eyebrow text-cyan/80">{STRINGS.blog.sideMenuTitle}</p>
+        <p className="eyebrow text-blue">{STRINGS.blog.sideMenuTitle}</p>
         <nav className="mt-4" aria-label="Blog articles">
           <SidebarNav groups={groups} currentSlug={currentSlug} />
         </nav>
@@ -80,7 +80,7 @@ function SidebarNav({
     <div className="space-y-5">
       {groups.map(([category, items]) => (
         <div key={category}>
-          <p className="px-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-steel/80">
+          <p className="px-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-muted">
             {category}
           </p>
           <ul className="mt-2 space-y-0.5">
@@ -93,8 +93,8 @@ function SidebarNav({
                     className={cn(
                       "block rounded-lg px-2 py-2 text-sm leading-snug transition",
                       active
-                        ? "bg-blue/15 text-white"
-                        : "text-steel hover:bg-white/[0.04] hover:text-white",
+                        ? "bg-blue/10 text-navy font-medium"
+                        : "text-muted-strong hover:bg-navy/[0.04] hover:text-navy",
                     )}
                     aria-current={active ? "page" : undefined}
                   >

@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { createPageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { BackButton } from "@/components/ui/BackButton";
 import { ProjectAccordion } from "@/components/learn-build";
 
 export const metadata: Metadata = createPageMetadata({
@@ -20,16 +19,14 @@ export const metadata: Metadata = createPageMetadata({
 
 export default function StudentProjectsPage() {
   return (
-    <section className="section-pad">
+    <section className="page-shell">
       <Container wide>
-        <BackButton href="/learn-and-build" label="Back to Learn or Buy" tone="dark" />
         <SectionHeading
-          tone="dark"
           eyebrow="Projects"
           title="Final-year projects with source code"
           description="BCA, MCA and B.Tech packages — expand for details, then order on WhatsApp."
         />
-        <div className="mt-8 md:mt-10">
+        <div className="mt-5 md:mt-6">
           <ProjectAccordion />
         </div>
       </Container>

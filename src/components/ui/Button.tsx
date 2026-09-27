@@ -24,44 +24,66 @@ type ButtonAsLink = ButtonBaseProps & {
 
 export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
+const base =
+  "inline-flex appearance-none items-center justify-center gap-2 rounded-full border font-display font-bold uppercase tracking-[0.12em] leading-none no-underline transition-all duration-200 ease-out cursor-pointer select-none focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-blue active:scale-[0.98] disabled:pointer-events-none disabled:opacity-60";
+
 const variants: Record<ButtonVariant, string> = {
-  primary: "btn-primary",
-  secondary: "btn-secondary",
-  ghost: "btn-ghost",
-  light: "btn-light",
+  primary:
+    "border-[#1e40af] bg-[#1d4ed8] text-white shadow-[0_10px_28px_rgba(29,78,216,0.35)] hover:bg-[#1e40af] hover:shadow-[0_14px_32px_rgba(29,78,216,0.42)]",
+  secondary:
+    "border-navy/12 bg-white text-ink shadow-[var(--shadow-soft)] hover:border-navy/20 hover:bg-off-white",
+  ghost:
+    "border-navy/12 bg-transparent text-ink shadow-none hover:bg-navy/[0.04]",
+  light:
+    "border-navy/8 bg-white text-ink shadow-[var(--shadow-soft)] hover:bg-off-white",
 };
 
 const sizes: Record<ButtonSize, string> = {
-  sm: "min-h-9 px-4 text-[10px] tracking-[0.12em] md:min-h-10 md:px-5 md:text-xs md:tracking-[0.14em]",
-  md: "min-h-11 px-5 text-[11px] tracking-[0.12em] md:min-h-12 md:px-7 md:text-xs md:tracking-[0.16em]",
-  lg: "min-h-12 px-6 text-xs tracking-[0.12em] md:min-h-14 md:px-8 md:text-sm md:tracking-[0.16em]",
+  sm: "min-h-10 px-5 text-[0.6875rem]",
+  md: "min-h-11 px-6 text-xs",
+  lg: "min-h-12 px-7 text-[0.8125rem]",
 };
 
 export function Button(props: ButtonProps) {
-  const {
-    children,
-    className,
-    variant = "primary",
-    size = "md",
-  } = props;
-
-  const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-full font-semibold uppercase transition-all duration-300 ease-[var(--ease-out-expo)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--pb-blue)] disabled:opacity-60 disabled:pointer-events-none active:scale-[0.98]",
-    variants[variant],
-    sizes[size],
-    className,
-  );
-
   if ("href" in props && props.href) {
-    const { href, target, rel, onClick } = props;
+    const {
+      children,
+      className,
+      variant = "primary",
+      size = "md",
+      magnetic: _magnetic,
+      href,
+      target,
+      rel,
+      onClick,
+    } = props;
+    const classes = cn(base, variants[variant], sizes[size], className);
+
     return (
-      <Link href={href} className={classes} target={target} rel={rel} onClick={onClick}>
+      <Link
+        href={href}
+        className={classes}
+        target={target}
+        rel={rel}
+        onClick={onClick}
+      >
         {children}
       </Link>
     );
   }
 
-  const { type = "button", ...rest } = props as ButtonAsButton;
+  const {
+    children,
+    className,
+    variant = "primary",
+    size = "md",
+    magnetic: _magnetic,
+    type = "button",
+    ...rest
+  } = props as ButtonAsButton;
+
+  const classes = cn(base, variants[variant], sizes[size], className);
+
   return (
     <button type={type} className={classes} {...rest}>
       {children}

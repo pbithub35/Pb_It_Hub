@@ -44,28 +44,28 @@ export function CareerGuidanceFAQ() {
           <div
             key={faq.question}
             className={cn(
-              "overflow-hidden rounded-2xl border transition-all duration-200",
+              "overflow-hidden rounded-2xl border bg-white transition-all duration-200 shadow-[var(--shadow-soft)]",
               isOpen
-                ? "border-cyan-400/50 bg-theme-card-hover shadow-sm"
-                : "border-slate-700/80 bg-theme-card hover:border-slate-600 hover:bg-theme-card-hover",
+                ? "border-blue/30"
+                : "border-navy/10 hover:border-navy/20",
             )}
           >
             <button
               type="button"
               onClick={() => setOpenIndex(isOpen ? null : index)}
-              className="flex w-full items-center justify-between gap-4 p-5 text-left text-sm font-semibold text-white sm:text-base"
+              className="flex w-full items-center justify-between gap-4 p-5 text-left text-sm font-semibold text-navy sm:text-base"
               aria-expanded={isOpen}
             >
               <span className="flex items-center gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-cyan-500/15 text-xs font-bold text-cyan-400">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue/10 text-xs font-bold text-blue">
                   ?
                 </span>
                 <span>{faq.question}</span>
               </span>
               <span
                 className={cn(
-                  "shrink-0 text-xs text-slate-400 transition-transform duration-200",
-                  isOpen && "rotate-180 text-cyan-400",
+                  "shrink-0 text-xs text-muted transition-transform duration-200",
+                  isOpen && "rotate-180 text-blue",
                 )}
                 aria-hidden
               >
@@ -81,8 +81,8 @@ export function CareerGuidanceFAQ() {
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="border-t border-slate-700/60 px-5 pb-5 pt-3">
-                    <p className="text-xs leading-relaxed text-slate-200 sm:text-sm">
+                  <div className="border-t border-navy/10 px-5 pb-5 pt-3">
+                    <p className="text-xs leading-relaxed text-muted-strong sm:text-sm">
                       {faq.answer}
                     </p>
                   </div>

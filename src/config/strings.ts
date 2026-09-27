@@ -9,7 +9,7 @@
 export const STRINGS = {
   // Brand & Global Identifiers
   brand: {
-    name: "PB_IT_HUB",
+    name: "PB IT HUB",
     legalName: "PB_IT_HUB",
     eyebrow: "BUILD · AUTOMATE · GROW",
     tagline: "Technology designed for real-world business.",
@@ -17,7 +17,7 @@ export const STRINGS = {
     footerSlogan:
       "Based in Pathankot, Punjab — serving Jammu, Himachal & beyond. Technology partner for businesses that want to build, automate and grow.",
     copyrightNotice: (year: number) =>
-      `© ${year} PB_IT_HUB. All rights reserved.`,
+      `© ${year} PB IT HUB. All rights reserved.`,
   },
 
   // Navigation Links
@@ -43,10 +43,13 @@ export const STRINGS = {
   // Homepage Hero Section
   hero: {
     eyebrow: "PATHANKOT · PUNJAB · BUILD · AUTOMATE · GROW",
+    locationLine: "Pathankot · Punjab · Jammu · Himachal",
     headlinePart1: "We build digital products",
     headlinePart2: "that move businesses forward.",
     description:
       "Website development, apps and AI for businesses in Pathankot, Punjab, Jammu and Himachal — plus final-year projects with source code for BCA, MCA and B.Tech students.",
+    descriptionShort:
+      "Websites, apps and AI for regional businesses — plus final-year projects with source code.",
     ctaProject: "Start a Project",
     ctaWork: "Explore Work",
     steps: {
@@ -87,7 +90,7 @@ export const STRINGS = {
   // Why Us / Approach Section
   whyUs: {
     eyebrow: "Approach",
-    title: "Why build with PB_IT_HUB?",
+    title: "Why build with PB IT HUB?",
     description:
       "A product-focused engineering partner built around clarity, craft, and long-term durability — engineered without unnecessary agency theater.",
     seeMore: "See more reasons",
@@ -151,7 +154,7 @@ export const STRINGS = {
 
   // About Section
   about: {
-    eyebrow: "About PB_IT_HUB",
+    eyebrow: "About PB IT HUB",
     title: "Pathankot technology partner for business and students",
     description:
       "Based in Pathankot, Punjab, we build websites, apps and custom software for regional businesses — and industry-grade college projects with source code for BCA, MCA and B.Tech students across Jammu and Himachal.",

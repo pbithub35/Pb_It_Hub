@@ -4,22 +4,20 @@ import { resolveImageSrc } from "@/lib/media";
 import type { ProjectItem } from "@/data/projects";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
-import { BackButton } from "@/components/ui/BackButton";
 import { ProjectFrame } from "@/components/ui/ProjectFrame";
 
 export function ProjectHero({ project }: { project: ProjectItem }) {
   return (
-    <section className="surface-dark pt-28 pb-16 md:pt-32 md:pb-20">
+    <section className="surface-light page-shell !pb-8 md:!pb-10">
       <Container wide>
-        <BackButton href="/work" label="Back to work" tone="dark" />
-        <p className="eyebrow text-white/45">{project.category}</p>
-        <h1 className="mt-4 max-w-4xl font-display text-[length:var(--text-5xl)] text-white">
+        <p className="eyebrow text-blue">{project.category}</p>
+        <h1 className="heading-page mt-2 max-w-4xl">
           {project.title}
         </h1>
-        <p className="mt-5 max-w-2xl text-base text-white/60 md:text-lg">
+        <p className="mt-3 max-w-2xl text-sm text-muted-strong">
           {project.summary}
         </p>
-        <div className="mt-8">
+        <div className="mt-6">
           <ProjectFrame
             src={project.heroImage}
             alt={`${project.title} overview visual`}

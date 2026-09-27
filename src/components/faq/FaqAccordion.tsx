@@ -87,20 +87,20 @@ export function FaqAccordion() {
           <label htmlFor={searchInputId} className="sr-only">
             {STRINGS.faq.searchPlaceholder}
           </label>
-          <SearchIcon className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-steel" />
+          <SearchIcon className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
           <input
             id={searchInputId}
             type="search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder={STRINGS.faq.searchPlaceholder}
-            className="w-full rounded-full border border-white/10 bg-white/[0.04] py-3 pl-11 pr-4 text-sm text-white placeholder-steel/60 transition-colors focus:border-blue focus:bg-white/[0.07] focus:outline-none focus:ring-1 focus:ring-blue"
+            className="w-full rounded-full border border-navy/10 bg-white py-3 pl-11 pr-4 text-sm text-navy placeholder-muted/60 shadow-[var(--shadow-soft)] transition-colors focus:border-blue focus:outline-none focus:ring-1 focus:ring-blue"
           />
           {searchQuery ? (
             <button
               type="button"
               onClick={() => setSearchQuery("")}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-steel hover:text-white"
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-xs text-muted hover:text-navy"
             >
               Clear
             </button>
@@ -115,7 +115,7 @@ export function FaqAccordion() {
             className={`rounded-full px-4 py-2 text-xs font-medium transition-all ${
               selectedCategory === "all"
                 ? "bg-blue text-white shadow-md shadow-blue/20"
-                : "border border-white/10 bg-white/[0.03] text-steel hover:border-white/20 hover:text-white"
+                : "border border-navy/10 bg-white text-muted-strong hover:border-navy/20 hover:text-navy"
             }`}
           >
             {STRINGS.faq.allCategory}
@@ -130,7 +130,7 @@ export function FaqAccordion() {
                 className={`rounded-full px-4 py-2 text-xs font-medium transition-all ${
                   isActive
                     ? "bg-blue text-white shadow-md shadow-blue/20"
-                    : "border border-white/10 bg-white/[0.03] text-steel hover:border-white/20 hover:text-white"
+                    : "border border-navy/10 bg-white text-muted-strong hover:border-navy/20 hover:text-navy"
                 }`}
               >
                 {cat.label}
@@ -143,8 +143,8 @@ export function FaqAccordion() {
       {/* Accordion Questions List */}
       <div className="space-y-3.5">
         {filteredItems.length === 0 ? (
-          <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-8 text-center">
-            <p className="text-base text-steel">
+          <div className="rounded-2xl border border-navy/10 bg-white p-8 text-center shadow-[var(--shadow-soft)]">
+            <p className="text-base text-muted-strong">
               No matching questions found for &ldquo;{searchQuery}&rdquo;.
             </p>
             <button
@@ -164,7 +164,7 @@ export function FaqAccordion() {
             return (
               <div
                 key={item.id}
-                className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] transition-colors hover:border-white/20"
+                className="overflow-hidden rounded-2xl border border-navy/10 bg-white shadow-[var(--shadow-soft)] transition-colors hover:border-navy/20"
               >
                 <button
                   type="button"
@@ -172,12 +172,12 @@ export function FaqAccordion() {
                   aria-expanded={isOpen}
                   className="flex w-full items-start justify-between gap-4 p-5 text-left md:p-6"
                 >
-                  <span className="font-display text-base font-semibold text-white md:text-lg">
+                  <span className="font-display text-base font-semibold text-navy md:text-lg">
                     {item.question}
                   </span>
                   <span
-                    className={`mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/5 text-steel transition-transform duration-200 ${
-                      isOpen ? "rotate-180 text-white" : ""
+                    className={`mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-navy/15 bg-navy/[0.03] text-muted transition-transform duration-200 ${
+                      isOpen ? "rotate-180 text-navy" : ""
                     }`}
                   >
                     <ChevronDownIcon className="h-3.5 w-3.5" />
@@ -193,8 +193,8 @@ export function FaqAccordion() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.22, ease: "easeOut" }}
                     >
-                      <div className="border-t border-white/5 px-5 pb-6 pt-4 md:px-6">
-                        <p className="text-sm leading-relaxed text-steel md:text-base">
+                      <div className="border-t border-navy/10 px-5 pb-6 pt-4 md:px-6">
+                        <p className="text-sm leading-relaxed text-muted-strong md:text-base">
                           {item.answer}
                         </p>
                       </div>
@@ -208,13 +208,13 @@ export function FaqAccordion() {
       </div>
 
       {/* Still Have Questions CTA */}
-      <div className="rounded-3xl border border-blue/20 bg-gradient-to-b from-blue/10 to-blue/5 p-6 md:p-8">
+      <div className="rounded-3xl border border-blue/20 bg-gradient-to-b from-blue/[0.06] to-blue/[0.02] p-6 md:p-8">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
           <div>
-            <h3 className="font-display text-xl font-bold text-white md:text-2xl">
+            <h3 className="font-display text-xl font-bold text-navy md:text-2xl">
               {STRINGS.faq.stillQuestions}
             </h3>
-            <p className="mt-2 max-w-xl text-sm leading-relaxed text-steel md:text-base">
+            <p className="mt-2 max-w-xl text-sm leading-relaxed text-muted-strong md:text-base">
               {STRINGS.faq.stillQuestionsSub}
             </p>
           </div>

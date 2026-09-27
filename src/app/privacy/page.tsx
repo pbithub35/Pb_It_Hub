@@ -2,187 +2,409 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { createPageMetadata } from "@/lib/seo";
 import { Container } from "@/components/ui/Container";
-import { BackButton } from "@/components/ui/BackButton";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Privacy Policy",
   description:
-    "How PB_IT_HUB collects, uses, and protects your information when you use our website and services.",
+    "How PB_IT_HUB collects, uses, stores and protects your information for business and student services.",
   path: "/privacy",
 });
 
-const updatedOn = "26 September 2026";
+const updatedOn = "27 September 2026";
+
+const sections = [
+  {
+    id: "who-we-are",
+    title: "1. Who we are",
+    content: (
+      <>
+        <p>
+          This Privacy Policy explains how <strong>{siteConfig.name}</strong>{" "}
+          (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;) collects, uses,
+          stores and shares information when you visit{" "}
+          <Link href="/" className="text-blue underline-offset-2 hover:underline">
+            {siteConfig.url}
+          </Link>
+          , submit forms, message us on WhatsApp, or use our business or Learn
+          or Buy student services.
+        </p>
+        <p>
+          <strong>Business name:</strong> {siteConfig.legalName}
+          <br />
+          <strong>Location:</strong> {siteConfig.location}, {siteConfig.region}
+          <br />
+          <strong>Areas served:</strong> Pathankot, Punjab, Jammu, Himachal and
+          other regions of India
+          <br />
+          <strong>Email:</strong>{" "}
+          <a
+            href={`mailto:${siteConfig.email}`}
+            className="text-blue underline-offset-2 hover:underline"
+          >
+            {siteConfig.email}
+          </a>
+          <br />
+          <strong>WhatsApp:</strong> +{siteConfig.whatsapp}
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "scope",
+    title: "2. Scope of this policy",
+    content: (
+      <>
+        <p>This policy applies to:</p>
+        <ul className="list-disc space-y-1.5 pl-5">
+          <li>Our public website and all pages linked under our domain</li>
+          <li>Contact / project inquiry forms and related WhatsApp handoff</li>
+          <li>
+            Learn or Buy flows (project selection, add-ons, packages, career
+            guidance requests)
+          </li>
+          <li>
+            Communications by email, phone or WhatsApp that relate to our
+            services
+          </li>
+        </ul>
+        <p>
+          It does not cover third-party websites, app stores, payment apps, or
+          college portals you may visit through external links.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "collect",
+    title: "3. Information we collect",
+    content: (
+      <>
+        <p>
+          <strong>A. Information you provide</strong>
+        </p>
+        <ul className="list-disc space-y-1.5 pl-5">
+          <li>Name, email address, phone / WhatsApp number</li>
+          <li>
+            Project brief, selected service, student project, add-ons or package
+            choices
+          </li>
+          <li>Messages, attachments and notes you send us</li>
+          <li>
+            Optional academic context (course, college, deadline) when relevant
+            to student work
+          </li>
+        </ul>
+        <p className="mt-3">
+          <strong>B. Information collected automatically</strong>
+        </p>
+        <ul className="list-disc space-y-1.5 pl-5">
+          <li>
+            Basic device and browser data (for example browser type, OS, screen
+            size)
+          </li>
+          <li>Pages visited, referral source and approximate timestamps</li>
+          <li>
+            IP address and standard server / hosting logs (for security and
+            reliability)
+          </li>
+        </ul>
+        <p className="mt-3">
+          We do <strong>not</strong> collect payment card numbers on this
+          website. Payments, if any, are handled through separate, agreed
+          channels (for example UPI or bank transfer) confirmed in writing.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "use",
+    title: "4. How we use your information",
+    content: (
+      <>
+        <p>We use personal information to:</p>
+        <ul className="list-disc space-y-1.5 pl-5">
+          <li>Respond to business project inquiries and prepare proposals</li>
+          <li>
+            Process Learn or Buy requests (source code delivery, mentoring,
+            viva prep, career guidance)
+          </li>
+          <li>
+            Continue conversations on WhatsApp / email with your selected items
+            and contact details
+          </li>
+          <li>Improve website content, performance and service quality</li>
+          <li>Prevent abuse, spam and unauthorized access</li>
+          <li>Comply with applicable Indian law and lawful requests</li>
+        </ul>
+        <p>
+          We do not sell your personal information to data brokers or use it for
+          unrelated advertising networks.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "legal-basis",
+    title: "5. Legal basis / reasons for processing",
+    content: (
+      <>
+        <p>Where applicable, we process information because:</p>
+        <ul className="list-disc space-y-1.5 pl-5">
+          <li>You asked us to provide a quote, service or student package</li>
+          <li>
+            Processing is needed to take steps before a contract or to perform
+            an agreed engagement
+          </li>
+          <li>
+            We have a legitimate interest in securing our site and improving
+            delivery
+          </li>
+          <li>We must meet a legal obligation</li>
+        </ul>
+      </>
+    ),
+  },
+  {
+    id: "sharing",
+    title: "6. Sharing of information",
+    content: (
+      <>
+        <p>We may share information only with:</p>
+        <ul className="list-disc space-y-1.5 pl-5">
+          <li>
+            Service providers that help us operate the site (hosting, email,
+            analytics) under appropriate safeguards
+          </li>
+          <li>
+            Messaging platforms you choose to use (for example WhatsApp) when
+            you start or continue a chat with us
+          </li>
+          <li>
+            Professional advisers or authorities when required by law or to
+            protect rights and safety
+          </li>
+        </ul>
+        <p>
+          Team members working on your project may access only what they need to
+          deliver the work. We do not publish your private briefs publicly.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "cookies",
+    title: "7. Cookies, analytics and similar tech",
+    content: (
+      <>
+        <p>
+          Our site may use essential cookies / local storage for basic
+          functionality (for example remembering UI preferences). If analytics
+          tools are enabled, they may collect aggregated usage metrics to help
+          us understand which pages are useful.
+        </p>
+        <p>
+          You can control cookies through your browser settings. Blocking some
+          cookies may affect site features.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "retention",
+    title: "8. Data retention",
+    content: (
+      <>
+        <p>
+          We keep inquiry and project-related records for as long as needed to
+          deliver the service, resolve follow-ups, maintain business records, or
+          meet legal / accounting requirements. When information is no longer
+          needed, we delete or anonymize it where reasonably possible.
+        </p>
+        <p>
+          WhatsApp and email threads may also remain in those platforms according
+          to their own retention settings until you or we delete them.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "security",
+    title: "9. Security",
+    content: (
+      <>
+        <p>
+          We use reasonable technical and organizational measures to protect
+          personal information (access controls, HTTPS where available, limited
+          internal access). No method of transmission or storage is 100% secure;
+          if you suspect unauthorized use of your data with us, contact{" "}
+          <a
+            href={`mailto:${siteConfig.email}`}
+            className="text-blue underline-offset-2 hover:underline"
+          >
+            {siteConfig.email}
+          </a>
+          .
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "rights",
+    title: "10. Your choices and rights",
+    content: (
+      <>
+        <p>Subject to applicable law, you may request to:</p>
+        <ul className="list-disc space-y-1.5 pl-5">
+          <li>Access the personal information we hold about you</li>
+          <li>Correct inaccurate information</li>
+          <li>Delete information that is no longer required</li>
+          <li>Withdraw consent for optional communications</li>
+        </ul>
+        <p>
+          Email{" "}
+          <a
+            href={`mailto:${siteConfig.email}`}
+            className="text-blue underline-offset-2 hover:underline"
+          >
+            {siteConfig.email}
+          </a>{" "}
+          with the subject &ldquo;Privacy request&rdquo;. We may need to verify
+          your identity before acting on a request.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "children",
+    title: "11. Children's privacy",
+    content: (
+      <>
+        <p>
+          Our business services are intended for adults and organizations.
+          Student offerings are aimed at college / university learners. We do
+          not knowingly collect personal information from children under 13. If
+          you believe a child has provided data, contact us and we will take
+          appropriate steps to remove it.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "international",
+    title: "12. Cross-border processing",
+    content: (
+      <>
+        <p>
+          We primarily operate from India. Infrastructure providers (hosting,
+          email, messaging) may process data in other countries. By using our
+          site or contacting us, you understand that information may be
+          processed in locations outside your state of residence, subject to
+          applicable safeguards.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "changes",
+    title: "13. Changes to this policy",
+    content: (
+      <>
+        <p>
+          We may update this Privacy Policy from time to time. The
+          &ldquo;Last updated&rdquo; date at the top will change when we do. Continued
+          use of the site after updates means you accept the revised policy,
+          unless applicable law requires additional notice or consent.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "contact",
+    title: "14. Contact",
+    content: (
+      <>
+        <p>
+          Questions about privacy or this policy:{" "}
+          <a
+            href={`mailto:${siteConfig.email}`}
+            className="text-blue underline-offset-2 hover:underline"
+          >
+            {siteConfig.email}
+          </a>{" "}
+          · WhatsApp +{siteConfig.whatsapp} ·{" "}
+          <Link
+            href="/contact"
+            className="text-blue underline-offset-2 hover:underline"
+          >
+            Contact page
+          </Link>
+          .
+        </p>
+        <p>
+          Related:{" "}
+          <Link
+            href="/terms"
+            className="text-blue underline-offset-2 hover:underline"
+          >
+            Terms &amp; Conditions
+          </Link>
+          .
+        </p>
+      </>
+    ),
+  },
+];
 
 export default function PrivacyPage() {
   return (
-    <div className="surface-light pt-28 pb-20">
+    <div className="surface-light page-shell">
       <Container className="max-w-3xl">
-        <BackButton href="/" label="Back to home" />
-        <h1 className="font-display text-4xl text-navy">Privacy Policy</h1>
-        <p className="mt-3 text-sm text-muted-strong">Last updated: {updatedOn}</p>
+        <p className="eyebrow text-blue">Legal</p>
+        <h1 className="heading-page mt-2">Privacy Policy</h1>
+        <p className="mt-2 text-sm text-muted-strong">
+          Last updated: {updatedOn}
+        </p>
+        <p className="mt-4 text-sm leading-relaxed text-muted-strong">
+          This page explains how {siteConfig.name} handles personal information
+          for website visitors, business clients and students using Learn or
+          Buy.
+        </p>
 
-        <div className="mt-8 space-y-8 text-sm leading-relaxed text-navy/80 sm:text-base">
-          <section className="space-y-3">
-            <h2 className="font-display text-xl text-navy">1. Who we are</h2>
-            <p>
-              This Privacy Policy explains how <strong>{siteConfig.name}</strong>{" "}
-              (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;) handles
-              information when you visit{" "}
-              <Link href="/" className="text-blue underline-offset-2 hover:underline">
-                {siteConfig.url}
-              </Link>{" "}
-              or contact us for business or student services.
-            </p>
-            <p>
-              <strong>Business location:</strong> {siteConfig.location},{" "}
-              {siteConfig.region}
-              <br />
-              <strong>Areas served:</strong> Pathankot, Punjab, Jammu, Himachal
-              &amp; beyond
-              <br />
-              <strong>Email:</strong>{" "}
-              <a
-                href={`mailto:${siteConfig.email}`}
-                className="text-blue underline-offset-2 hover:underline"
-              >
-                {siteConfig.email}
-              </a>
-              <br />
-              <strong>WhatsApp:</strong> +{siteConfig.whatsapp}
-            </p>
-          </section>
+        <nav
+          aria-label="Privacy policy sections"
+          className="mt-6 rounded-2xl border border-navy/10 bg-off-white p-4"
+        >
+          <p className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted">
+            On this page
+          </p>
+          <ol className="mt-2 columns-1 gap-x-8 text-sm text-blue sm:columns-2">
+            {sections.map((section) => (
+              <li key={section.id} className="break-inside-avoid py-0.5">
+                <a
+                  href={`#${section.id}`}
+                  className="underline-offset-2 hover:underline"
+                >
+                  {section.title}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
 
-          <section className="space-y-3">
-            <h2 className="font-display text-xl text-navy">2. Information we collect</h2>
-            <p>We may collect information you voluntarily provide, including:</p>
-            <ul className="list-disc space-y-1.5 pl-5">
-              <li>Name, email address, and phone number</li>
-              <li>Project details, selected student projects, add-ons, or package choices</li>
-              <li>Messages you send through forms or WhatsApp</li>
-              <li>Basic technical data such as browser type, device, and pages visited (via standard hosting/analytics logs, if enabled)</li>
-            </ul>
-            <p>
-              We do not ask for payment card details on this website. Orders and
-              guidance requests are typically completed through WhatsApp or direct
-              communication.
-            </p>
-          </section>
-
-          <section className="space-y-3">
-            <h2 className="font-display text-xl text-navy">3. How we use your information</h2>
-            <p>We use your information to:</p>
-            <ul className="list-disc space-y-1.5 pl-5">
-              <li>Respond to business project inquiries</li>
-              <li>Process Learn or Buy student requests (source code, mentoring, career guidance)</li>
-              <li>Share selected items and contact details so we can continue the conversation on WhatsApp</li>
-              <li>Improve our website and service quality</li>
-              <li>Comply with applicable legal obligations</li>
-            </ul>
-          </section>
-
-          <section className="space-y-3">
-            <h2 className="font-display text-xl text-navy">4. Sharing of information</h2>
-            <p>
-              We do not sell your personal information. We may share limited data
-              with:
-            </p>
-            <ul className="list-disc space-y-1.5 pl-5">
-              <li>Service providers who help us operate hosting, email, or messaging tools</li>
-              <li>Authorities when required by law</li>
-            </ul>
-            <p>
-              When you submit a form that opens WhatsApp, your message is sent
-              through WhatsApp&apos;s platform under WhatsApp&apos;s own terms and
-              privacy practices.
-            </p>
-          </section>
-
-          <section className="space-y-3">
-            <h2 className="font-display text-xl text-navy">5. Cookies and analytics</h2>
-            <p>
-              Our site may use essential cookies for basic functionality. If we
-              enable analytics tools later, they may collect anonymized or
-              aggregated usage data to understand site performance.
-            </p>
-          </section>
-
-          <section className="space-y-3">
-            <h2 className="font-display text-xl text-navy">6. Data retention</h2>
-            <p>
-              We keep inquiry and order-related messages only as long as needed
-              to fulfill your request, provide support, resolve disputes, or meet
-              legal requirements. You may ask us to update or delete your contact
-              details by emailing us.
-            </p>
-          </section>
-
-          <section className="space-y-3">
-            <h2 className="font-display text-xl text-navy">7. Your choices</h2>
-            <p>You may:</p>
-            <ul className="list-disc space-y-1.5 pl-5">
-              <li>Request access to the personal information you shared with us</li>
-              <li>Ask us to correct inaccurate details</li>
-              <li>Ask us to stop contacting you for non-essential communication</li>
-            </ul>
-            <p>
-              Contact us at{" "}
-              <a
-                href={`mailto:${siteConfig.email}`}
-                className="text-blue underline-offset-2 hover:underline"
-              >
-                {siteConfig.email}
-              </a>{" "}
-              for privacy requests.
-            </p>
-          </section>
-
-          <section className="space-y-3">
-            <h2 className="font-display text-xl text-navy">8. Security</h2>
-            <p>
-              We take reasonable steps to protect information shared with us.
-              No method of transmission over the internet is 100% secure, so we
-              cannot guarantee absolute security.
-            </p>
-          </section>
-
-          <section className="space-y-3">
-            <h2 className="font-display text-xl text-navy">9. Children&apos;s privacy</h2>
-            <p>
-              Our services are intended for students and businesses who can
-              lawfully enter into arrangements. If you believe a minor has shared
-              personal data with us without appropriate consent, contact us and
-              we will take reasonable steps to remove it.
-            </p>
-          </section>
-
-          <section className="space-y-3">
-            <h2 className="font-display text-xl text-navy">10. Changes to this policy</h2>
-            <p>
-              We may update this Privacy Policy from time to time. The
-              &ldquo;Last updated&rdquo; date at the top will change when we do.
-              Continued use of the site after updates means you accept the
-              revised policy.
-            </p>
-          </section>
-
-          <section className="space-y-3">
-            <h2 className="font-display text-xl text-navy">11. Contact</h2>
-            <p>
-              For privacy questions, email{" "}
-              <a
-                href={`mailto:${siteConfig.email}`}
-                className="text-blue underline-offset-2 hover:underline"
-              >
-                {siteConfig.email}
-              </a>{" "}
-              or message us on WhatsApp at +{siteConfig.whatsapp}.
-            </p>
-            <p className="text-xs text-muted-strong">
-              This page is provided for transparency and general information. For
-              formal legal advice, consult a qualified professional.
-            </p>
-          </section>
+        <div className="mt-8 space-y-8 text-sm leading-relaxed text-muted-strong">
+          {sections.map((section) => (
+            <section
+              key={section.id}
+              id={section.id}
+              className="scroll-mt-28 space-y-3"
+            >
+              <h2 className="font-display text-xl font-semibold text-ink">
+                {section.title}
+              </h2>
+              {section.content}
+            </section>
+          ))}
         </div>
       </Container>
     </div>

@@ -1,20 +1,18 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { projects } from "@/data/projects";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProjectFrame } from "@/components/ui/ProjectFrame";
+import { Reveal } from "@/components/ui/Reveal";
 import { resolveImageSrc } from "@/lib/media";
 import { theme } from "@/config/theme";
 import { STRINGS } from "@/config/strings";
 
-gsap.registerPlugin(ScrollTrigger);
+const ease = [0.22, 1, 0.36, 1] as const;
 
 function formatProjectIndex(index: number) {
   return String(index + 1).padStart(2, "0");
@@ -44,172 +42,168 @@ function screenBg(tone?: "cream" | "warm" | "dark" | "white"): string {
 }
 
 export function WorkSection({ limit }: { limit?: number } = {}) {
-  const sectionRef = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const displayed = limit ? projects.slice(0, limit) : projects;
   const hasMore = Boolean(limit && projects.length > limit);
 
-  useEffect(() => {
-    if (reduce || !sectionRef.current) return;
-
-    const ctx = gsap.context(() => {
-      const items = gsap.utils.toArray<HTMLElement>("[data-work-item]");
-      items.forEach((item) => {
-        const media = item.querySelector("[data-work-media]");
-        if (media) {
-          gsap.fromTo(
-            media,
-            { scale: 1.04, y: 28 },
-            {
-              scale: 1,
-              y: 0,
-              ease: "none",
-              scrollTrigger: {
-                trigger: item,
-                start: "top 80%",
-                end: "bottom 40%",
-                scrub: true,
-              },
-            },
-          );
-        }
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, [reduce]);
-
   return (
     <section
       id="work"
-      ref={sectionRef}
-      className="surface-dark section-pad relative overflow-hidden noise-overlay"
+      className="section-pad relative overflow-hidden"
+      style={{ backgroundColor: "#F3F6FA" }}
     >
-      {/* Ambient Grid and Glow */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 grid-fade opacity-45" />
-        <div className="absolute top-1/3 -right-20 h-80 w-80 rounded-full bg-purple/15 blur-[120px]" />
-        <div className="absolute bottom-10 -left-20 h-72 w-72 rounded-full bg-blue/15 blur-[120px]" />
-      </div>
-
       <Container wide className="relative">
-        <SectionHeading
-          eyebrow={STRINGS.work.eyebrow}
-          title={STRINGS.work.title}
-          description={STRINGS.work.description}
-          noWrap
-        />
+        <Reveal>
+          <SectionHeading
+            eyebrow={STRINGS.work.eyebrow}
+            title={STRINGS.work.title}
+            description={STRINGS.work.description}
+            noWrap
+          />
+        </Reveal>
 
-        {/* Mobile: Compact Dark Glass Cards */}
+        {/* Mobile: compact project cards */}
         <div className="mt-5 grid grid-cols-2 gap-3 lg:hidden">
-          {displayed.map((project, index) => (
-            <Link
-              key={project.slug}
-              href={`/work/${project.slug}`}
-              className="group overflow-hidden rounded-md border border-white/10 bg-white/[0.03] transition-all duration-300 active:scale-[0.98] hover:border-cyan/40 hover:bg-white/[0.05]"
-            >
-              <div
-                className="relative aspect-[16/10]"
-                style={{ backgroundColor: screenBg(project.screenTone) }}
+          {displayed.map((project, index) => {
+            const fromX = index % 2 === 0 ? -25 : 25;
+            return (
+              <motion.div
+                key={project.slug}
+                initial={reduce ? false : { opacity: 0, x: fromX }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.55, ease, delay: index * 0.04 }}
               >
-                <Image
-                  src={resolveImageSrc(project.heroImage)}
-                  alt={`${project.title} — PB_IT_HUB Pathankot case study`}
-                  fill
-                  className="object-contain object-top"
-                  sizes="50vw"
-                />
-              </div>
-              <div className="space-y-1 p-3">
-                <p className="text-[9px] font-semibold uppercase tracking-[0.14em] text-cyan">
-                  {formatProjectIndex(index)} ·{" "}
-                  {project.category.split("/")[0]?.trim()}
-                </p>
-                <h3 className="font-display text-sm font-semibold leading-snug text-white transition-colors group-hover:text-cyan">
-                  {project.title}
-                </h3>
-                <p className="line-clamp-2 text-[11px] leading-snug text-white/60">
-                  {project.description}
-                </p>
-                <span className="inline-flex pt-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-cyan">
-                  {STRINGS.work.viewProject}
-                </span>
-              </div>
-            </Link>
-          ))}
+                <Link
+                  href={`/work/${project.slug}`}
+                  className="group block overflow-hidden rounded-2xl border border-navy/10 bg-white shadow-[var(--shadow-soft)] transition-shadow duration-300 hover:border-blue/20 hover:shadow-[var(--shadow-card-hover)]"
+                >
+                  <motion.div
+                    className="relative aspect-[16/10] overflow-hidden"
+                    style={{ backgroundColor: screenBg(project.screenTone) }}
+                    initial={reduce ? false : { scale: 0.95 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true, amount: 0.3 }}
+                    whileHover={reduce ? undefined : { scale: 1.03 }}
+                    transition={{ duration: 0.5, ease }}
+                  >
+                    <Image
+                      src={resolveImageSrc(project.heroImage)}
+                      alt={`${project.title} — PB_IT_HUB Pathankot case study`}
+                      fill
+                      className="object-contain object-top"
+                      sizes="50vw"
+                    />
+                  </motion.div>
+                  <div className="space-y-1 p-3">
+                    <p className="text-[9px] font-semibold uppercase tracking-[0.14em] text-blue">
+                      {formatProjectIndex(index)} ·{" "}
+                      {project.category.split("/")[0]?.trim()}
+                    </p>
+                    <h3 className="font-display text-sm font-semibold leading-snug text-navy transition-colors group-hover:text-blue">
+                      {project.title}
+                    </h3>
+                    <p className="line-clamp-2 text-[11px] leading-snug text-muted-strong">
+                      {project.description}
+                    </p>
+                    <span className="inline-flex pt-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-blue">
+                      {STRINGS.work.viewProject}
+                    </span>
+                  </div>
+                </Link>
+              </motion.div>
+            );
+          })}
         </div>
 
-        {/* Desktop / Tablet: Asymmetrical Product Presentation */}
+        {/* Desktop / Tablet: asymmetrical product presentation */}
         <div className="mt-6 hidden space-y-10 lg:block lg:space-y-12">
-          {displayed.map((project, index) => (
-            <article
-              key={project.slug}
-              data-work-item
-              className="grid items-center gap-8 lg:grid-cols-12 lg:gap-10"
-            >
-              <div data-work-text className={cnOrder(index, "text")}>
-                <p className="eyebrow text-cyan">
-                  {STRINGS.work.projectPrefix} {formatProjectIndex(index)}
-                </p>
-                <h3 className="mt-3 font-display text-2xl text-white sm:text-3xl lg:text-4xl">
-                  {project.title}
-                </h3>
-                <p className="mt-4 max-w-md text-base leading-relaxed text-white/65">
-                  {project.description}
-                </p>
-                <ul className="mt-6 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <li
-                      key={tag}
-                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] uppercase tracking-[0.14em] text-white/70"
-                    >
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8 flex flex-wrap items-center gap-4">
-                  {project.caseStudy ? (
-                    <Link
-                      href={`/work/${project.slug}`}
-                      className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-cyan transition hover:gap-3 hover:text-white"
-                    >
-                      {STRINGS.work.viewCaseStudy}
-                      <span aria-hidden>→</span>
-                    </Link>
-                  ) : null}
-                  {project.liveUrl ? (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-white/50 transition hover:text-white"
-                    >
-                      {STRINGS.work.liveSite}
-                      <span aria-hidden>↗</span>
-                    </a>
-                  ) : null}
-                </div>
-              </div>
+          {displayed.map((project, index) => {
+            const fromX = index % 2 === 0 ? -25 : 25;
+            return (
+              <article
+                key={project.slug}
+                className="grid items-center gap-8 lg:grid-cols-12 lg:gap-10"
+              >
+                <motion.div
+                  className={cnOrder(index, "text")}
+                  initial={reduce ? false : { opacity: 0, x: fromX }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ duration: 0.6, ease }}
+                >
+                  <p className="eyebrow text-blue">
+                    {STRINGS.work.projectPrefix} {formatProjectIndex(index)}
+                  </p>
+                  <h3 className="mt-3 font-display text-lg font-semibold text-ink sm:text-xl">
+                    {project.title}
+                  </h3>
+                  <p className="mt-4 max-w-md text-base leading-relaxed text-muted-strong">
+                    {project.description}
+                  </p>
+                  <ul className="mt-6 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <li
+                        key={tag}
+                        className="rounded-full border border-navy/10 bg-white px-3 py-1 text-[10px] uppercase tracking-[0.14em] text-muted-strong shadow-[var(--shadow-soft)]"
+                      >
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-8 flex flex-wrap items-center gap-4">
+                    {project.caseStudy ? (
+                      <Link
+                        href={`/work/${project.slug}`}
+                        className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-blue transition hover:gap-3 hover:text-navy"
+                      >
+                        {STRINGS.work.viewCaseStudy}
+                        <span aria-hidden>→</span>
+                      </Link>
+                    ) : null}
+                    {project.liveUrl ? (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-muted transition hover:text-navy"
+                      >
+                        {STRINGS.work.liveSite}
+                        <span aria-hidden>↗</span>
+                      </a>
+                    ) : null}
+                  </div>
+                </motion.div>
 
-              <div className={cnOrder(index, "media")}>
-                <ProjectFrame
-                  src={project.heroImage}
-                  alt={`${project.title} — PB_IT_HUB product case study`}
-                  screenTone={project.screenTone ?? "dark"}
-                  urlLabel={frameUrl(project.liveUrl)}
-                  mediaAttr
-                  sizes="58vw"
-                />
-              </div>
-            </article>
-          ))}
+                <div className={cnOrder(index, "media")}>
+                  <motion.div
+                    className="overflow-hidden rounded-2xl border border-navy/10 bg-white shadow-[var(--shadow-card)] transition-shadow duration-300 hover:shadow-[var(--shadow-card-hover)]"
+                    initial={reduce ? false : { scale: 0.95, opacity: 0.85 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true, amount: 0.25 }}
+                    whileHover={reduce ? undefined : { scale: 1.03 }}
+                    transition={{ duration: 0.6, ease }}
+                  >
+                    <ProjectFrame
+                      src={project.heroImage}
+                      alt={`${project.title} — PB_IT_HUB product case study`}
+                      screenTone={project.screenTone ?? "dark"}
+                      urlLabel={frameUrl(project.liveUrl)}
+                      mediaAttr
+                      sizes="58vw"
+                    />
+                  </motion.div>
+                </div>
+              </article>
+            );
+          })}
         </div>
 
         {hasMore || !limit ? (
           <div className="mt-8 text-center md:mt-12">
             <Link
               href="/work"
-              className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80 transition hover:border-cyan/40 hover:bg-white/[0.08] hover:text-white"
+              className="inline-flex items-center gap-2 rounded-full border border-navy/10 bg-white px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-navy shadow-[var(--shadow-soft)] transition hover:-translate-y-0.5 hover:border-blue/25 hover:shadow-[var(--shadow-card)]"
             >
               {STRINGS.work.viewAllWork}
               <span aria-hidden>→</span>

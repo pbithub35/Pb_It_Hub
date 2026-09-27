@@ -6,7 +6,6 @@ import { createPageMetadata } from "@/lib/seo";
 import { resolveImageSrc } from "@/lib/media";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { BackButton } from "@/components/ui/BackButton";
 import { STRINGS } from "@/config/strings";
 
 export const metadata: Metadata = createPageMetadata({
@@ -25,9 +24,8 @@ function screenBg(tone?: string) {
 
 export default function WorkIndexPage() {
   return (
-    <div className="surface-light pb-10 pt-16 md:pb-14 md:pt-24">
+    <div className="surface-light page-shell">
       <Container wide>
-        <BackButton href="/" label={STRINGS.actions.backToHome} />
         <SectionHeading
           tone="light"
           eyebrow={STRINGS.work.eyebrow}
@@ -35,7 +33,7 @@ export default function WorkIndexPage() {
           description="A growing collection of platforms we've designed and engineered."
         />
 
-        <div className="mt-5 grid grid-cols-2 gap-2.5 md:mt-8 md:gap-4.5">
+        <div className="mt-5 grid grid-cols-2 gap-2.5 md:mt-6 md:gap-3.5">
           {projects.map((project) => (
             <Link
               key={project.slug}

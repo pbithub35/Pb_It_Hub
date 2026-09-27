@@ -1,22 +1,21 @@
 /**
- * PB_IT_HUB shared theme tokens.
- * Prefer CSS classes (theme-page, theme-card, …) in UI.
- * Use these JS constants only when a style prop or chart/lib needs a hex.
+ * PB IT HUB shared theme tokens — charcoal ink + deep sapphire.
  */
 export const theme = {
-  bg: "#152033",
-  bgPage: "#1a2740",
-  card: "#243552",
-  cardHover: "#2c4060",
-  panel: "#3a5070",
-  panelSoft: "#2a3d5c",
-  navy: "#1e293b",
+  bg: "#ffffff",
+  bgPage: "#f4f6fa",
+  card: "#ffffff",
+  cardHover: "#f8fafc",
+  panel: "#e8ecf3",
+  panelSoft: "#f4f6fa",
+  navy: "#152033",
+  ink: "#0b1220",
   white: "#ffffff",
-  blue: "#3b82f6",
-  cyan: "#22d3ee",
-  teal: "#14b8a6",
-  purple: "#7c3aed",
-  muted: "#a8b4c7",
+  blue: "#1d4ed8",
+  cyan: "#0891b2",
+  teal: "#0f766e",
+  purple: "#4f46e5",
+  muted: "#5b6b7c",
 } as const;
 
 export type ThemeColor = keyof typeof theme;

@@ -8,47 +8,43 @@ import { STRINGS } from "@/config/strings";
 
 export function LearnBuildHero() {
   return (
-    <section className="relative overflow-hidden pt-24 pb-4 sm:pt-28 sm:pb-8 md:pt-32 md:pb-10">
+    <section className="relative overflow-hidden page-shell !pb-4 md:!pb-6">
       <Container wide className="relative">
         <Reveal>
-          <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-6 lg:gap-8">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-6 lg:gap-8">
             <div className="min-w-0 flex-1">
-              <p className="eyebrow text-[color:var(--learn-accent-secondary)]">
-                {STRINGS.learnBuild.eyebrow}
-              </p>
-              <h1 className="mt-2 font-display text-3xl sm:text-4xl md:text-5xl lg:text-[length:var(--text-hero)] leading-[1.08] text-white">
-                <span className="learn-gradient-text">
+              <p className="eyebrow text-blue">{STRINGS.learnBuild.eyebrow}</p>
+              <h1 className="heading-page mt-2 text-balance">
+                <span className="text-blue">
                   {STRINGS.learnBuild.heroHeadlinePart1}
                 </span>{" "}
-                <span className="whitespace-normal sm:whitespace-nowrap">
-                  {STRINGS.learnBuild.heroHeadlinePart2}
-                </span>
+                <span>{STRINGS.learnBuild.heroHeadlinePart2}</span>
               </h1>
-              <p className="mt-3 max-w-xl text-xs sm:text-sm md:text-base leading-relaxed text-slate-200">
+              <p className="mt-2.5 max-w-xl text-sm leading-relaxed text-muted-strong">
                 {STRINGS.learnBuild.heroDescription}
               </p>
-              <div className="mt-4 flex flex-wrap items-center gap-2.5 sm:mt-6 sm:gap-3">
-                <Button href="#projects" className="learn-accent-btn border-0 text-xs sm:text-sm">
+              <div className="mt-4 flex flex-wrap items-center gap-2.5">
+                <Button href="#projects" size="md">
                   {STRINGS.learnBuild.ctaExploreProjects}
                 </Button>
                 <Button
                   href="/learn-and-build/career-guidance"
                   variant="secondary"
-                  className="text-xs sm:text-sm"
+                  size="md"
                 >
                   {STRINGS.learnBuild.ctaFreeGuidance}
                 </Button>
               </div>
             </div>
 
-            <div className="w-full max-w-[280px] xs:max-w-[320px] mx-auto sm:mx-0 sm:w-[38%] sm:max-w-[360px] lg:max-w-[420px] shrink-0">
+            <div className="mx-auto w-full max-w-[280px] shrink-0 sm:mx-0 sm:w-[36%] sm:max-w-[340px] lg:max-w-[380px]">
               <MediaImage
                 src="learn-build/projects-pricing-badge"
                 alt="Projects under ₹1,999 – ₹5,999. Real projects, source code, optional support."
                 width={1024}
                 height={512}
-                className="h-auto w-full mix-blend-screen drop-shadow-md"
-                sizes="(max-width: 640px) 320px, (max-width: 1024px) 38vw, 420px"
+                className="h-auto w-full drop-shadow-md"
+                sizes="(max-width: 640px) 280px, (max-width: 1024px) 36vw, 380px"
                 priority
               />
             </div>
@@ -61,18 +57,16 @@ export function LearnBuildHero() {
 
 export function LearnBuildHomeProjects() {
   return (
-    <section id="projects" className="section-pad !pt-2 md:!pt-6">
+    <section id="projects" className="pb-10 pt-2 md:pb-12 md:pt-4">
       <Container wide>
-        <div className="mb-4 sm:mb-6 md:mb-8">
-          <p className="eyebrow text-[color:var(--learn-accent-secondary)]">
-            {STRINGS.learnBuild.projectsEyebrow}
-          </p>
-          <h2 className="mt-1.5 sm:mt-2 font-display text-xl sm:text-2xl text-white md:text-3xl">
+        <div className="mb-4 md:mb-5">
+          <p className="eyebrow text-blue">{STRINGS.learnBuild.projectsEyebrow}</p>
+          <h2 className="heading-section mt-1.5">
             {STRINGS.learnBuild.projectsTitle}
           </h2>
         </div>
         <ProjectAccordion />
-        <div className="mt-8 sm:mt-10">
+        <div className="mt-8 md:mt-10">
           <CareerGuidanceCTA />
         </div>
       </Container>

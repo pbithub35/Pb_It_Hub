@@ -8,7 +8,6 @@ import {
 import { createPageMetadata, breadcrumbJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Container } from "@/components/ui/Container";
-import { BackButton } from "@/components/ui/BackButton";
 import { Button } from "@/components/ui/Button";
 import { CareerGuidanceCTA } from "@/components/learn-build";
 import { ResourceCodeBlock } from "@/components/learn-build/ResourceCodeBlock";
@@ -56,30 +55,25 @@ export default async function ResourceDetailPage({
         ])}
       />
 
-      <article className="section-pad">
+      <article className="page-shell">
         <Container className="max-w-3xl">
-          <BackButton
-            href="/learn-and-build/resources"
-            label="Back to resources"
-            tone="dark"
-          />
-          <p className="eyebrow text-[color:var(--learn-accent-secondary)]">
+          <p className="eyebrow text-blue">
             {resource.category}
           </p>
-          <h1 className="mt-3 font-display text-[length:var(--text-4xl)] text-white">
+          <h1 className="heading-page mt-2">
             {resource.content.h1}
           </h1>
-          <p className="mt-5 text-base leading-relaxed text-slate-200">
+          <p className="mt-3 text-sm leading-relaxed text-muted-strong">
             {resource.content.intro}
           </p>
 
-          <div className="mt-10 space-y-8">
+          <div className="mt-6 space-y-6">
             {resource.content.sections.map((section) => (
               <section key={section.heading}>
-                <h2 className="font-display text-2xl text-white">
+                <h2 className="font-display text-xl font-semibold text-ink">
                   {section.heading}
                 </h2>
-                <p className="mt-3 text-sm leading-relaxed text-slate-300 md:text-base">
+                <p className="mt-2 text-sm leading-relaxed text-muted-strong">
                   {section.body}
                 </p>
               </section>
@@ -88,10 +82,10 @@ export default async function ResourceDetailPage({
 
           {resource.codeBlocks?.length ? (
             <div className="mt-12 space-y-6">
-              <h2 className="font-display text-2xl text-white">
+              <h2 className="font-display text-2xl text-navy">
                 Free source code
               </h2>
-              <p className="text-sm text-slate-400">
+              <p className="text-sm text-muted">
                 Copy the files below into your project folder and run as
                 described above.
               </p>
@@ -102,8 +96,8 @@ export default async function ResourceDetailPage({
           ) : null}
 
           {resource.upgradePath ? (
-            <div className="mt-10 rounded-xl border border-cyan-400/25 bg-cyan-400/5 p-5">
-              <p className="text-sm leading-relaxed text-slate-200">
+            <div className="mt-10 rounded-xl border border-blue/20 bg-blue/[0.04] p-5">
+              <p className="text-sm leading-relaxed text-muted-strong">
                 Need a complete final-year / major project with full source
                 code, docs and viva support?
               </p>
@@ -119,18 +113,18 @@ export default async function ResourceDetailPage({
             {resource.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-slate-700/80 bg-slate-800/80 px-3 py-1 text-[11px] text-slate-200 font-medium"
+                className="rounded-full border border-navy/10 bg-white px-3 py-1 text-[11px] font-medium text-muted"
               >
                 {tag}
               </span>
             ))}
           </div>
 
-          <p className="mt-8 text-sm text-slate-500">
+          <p className="mt-8 text-sm text-muted">
             More free guides:{" "}
             <Link
               href="/learn-and-build/resources"
-              className="text-cyan-400 underline-offset-4 hover:underline"
+              className="text-blue underline-offset-4 hover:underline"
             >
               all resources
             </Link>

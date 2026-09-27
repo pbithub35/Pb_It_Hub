@@ -14,8 +14,22 @@ import {
 } from "@/lib/seo";
 import { services } from "@/data/services";
 
+const StatsSection = dynamic(() =>
+  import("@/components/sections/Stats").then((m) => m.StatsSection),
+);
+
 const WorkSection = dynamic(() =>
   import("@/components/sections/Work").then((m) => m.WorkSection),
+);
+
+const ProcessSection = dynamic(() =>
+  import("@/components/sections/Process").then((m) => m.ProcessSection),
+);
+
+const TechnologyGraphSection = dynamic(() =>
+  import("@/components/sections/TechnologyGraph").then(
+    (m) => m.TechnologyGraphSection,
+  ),
 );
 
 export default function HomePage() {
@@ -36,9 +50,12 @@ export default function HomePage() {
         )}
       />
       <Hero />
+      <StatsSection />
       <StudentServicesScroll />
-      <ServicesSection limit={4} />
+      <ServicesSection limit={3} />
       <WorkSection limit={3} />
+      <ProcessSection />
+      <TechnologyGraphSection />
       <WhyUsSection />
       <ContactCTASection />
     </>

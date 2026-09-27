@@ -18,8 +18,9 @@ export interface ResolvedMedia {
 }
 
 const localRegistry: Record<string, string> = {
-  "brand/logo": "/images/pb-it-hub-logo.png",
+  "brand/logo": "/images/pb-it-hub-mark.png",
   "brand/mark-dark": "/images/pb-it-hub-dark.jpg",
+  "hero/workspace": "/images/hero/workspace.png",
   "work/studio-ledger/hero": "/images/work/studio-ledger/hero.webp",
   "work/excellent-educators/hero": "/images/work/excellent-educators/hero.webp",
   "work/mahajan-vastra/hero": "/images/work/mahajan-vastra/hero.webp",

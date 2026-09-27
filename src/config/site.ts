@@ -1,5 +1,7 @@
 export const siteConfig = {
   name: "PB_IT_HUB",
+  /** Clean wordmark for UI (no underscores) */
+  displayName: "PB IT HUB",
   legalName: "PB_IT_HUB",
   tagline: "BUILD • AUTOMATE • GROW",
   /** Default meta title (~50–60 chars) */
@@ -19,6 +21,15 @@ export const siteConfig = {
   // Primary office
   location: process.env.NEXT_PUBLIC_BUSINESS_LOCATION ?? "Pathankot",
   region: process.env.NEXT_PUBLIC_BUSINESS_REGION ?? "Punjab, India",
+  /** Google Maps — short link (open / directions) + embed iframe src */
+  maps: {
+    url:
+      process.env.NEXT_PUBLIC_GOOGLE_MAPS_URL ??
+      "https://maps.app.goo.gl/DSFKkFHP2t9EpKiM8",
+    embedSrc:
+      process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_SRC ??
+      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15249885.318783779!2d82.75252935!3d21.0680074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xcfb3dd748297f77%3A0x8c0f3a63af94a559!2sPB%20IT%20HUB!5e0!3m2!1sen!2sin!4v1790532622231!5m2!1sen!2sin",
+  },
   /** Regions we serve (marketing + SEO) */
   areasServed: [
     "Pathankot",
