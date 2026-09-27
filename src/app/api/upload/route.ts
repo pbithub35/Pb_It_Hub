@@ -7,7 +7,7 @@ import {
   type ImageCategory,
 } from "@/lib/image-optimizer";
 
-// Maximum upload limit: 15 MB
+// Maximum upload limit: 15 MB   
 const MAX_UPLOAD_BYTES = 15 * 1024 * 1024;
 const ALLOWED_MIME_TYPES = [
   "image/jpeg",

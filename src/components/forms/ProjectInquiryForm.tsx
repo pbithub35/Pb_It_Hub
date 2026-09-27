@@ -157,12 +157,12 @@ export function ProjectInquiryForm({
         />
       </label>
 
-      <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 border-t border-white/10 pt-4 sm:flex-row sm:items-center sm:justify-between">
         <Button
           type="submit"
           size="lg"
           disabled={status === "loading"}
-          className="w-full sm:w-auto"
+          className="w-full sm:w-auto sm:min-w-[240px]"
         >
           {status === "loading"
             ? STRINGS.form.sending

@@ -42,7 +42,7 @@ export function Navbar() {
   useEffect(() => {
     if (pathname !== "/") return;
 
-    const sections = ["services", "work", "technologies", "about"];
+    const sections = ["services", "work"];
     const elements = sections
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);

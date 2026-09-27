@@ -43,9 +43,11 @@ function screenBg(tone?: "cream" | "warm" | "dark" | "white"): string {
   }
 }
 
-export function WorkSection() {
+export function WorkSection({ limit }: { limit?: number } = {}) {
   const sectionRef = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
+  const displayed = limit ? projects.slice(0, limit) : projects;
+  const hasMore = Boolean(limit && projects.length > limit);
 
   useEffect(() => {
     if (reduce || !sectionRef.current) return;
@@ -100,7 +102,7 @@ export function WorkSection() {
 
         {/* Mobile: Compact Dark Glass Cards */}
         <div className="mt-5 grid grid-cols-2 gap-3 lg:hidden">
-          {projects.map((project, index) => (
+          {displayed.map((project, index) => (
             <Link
               key={project.slug}
               href={`/work/${project.slug}`}
@@ -139,7 +141,7 @@ export function WorkSection() {
 
         {/* Desktop / Tablet: Asymmetrical Product Presentation */}
         <div className="mt-6 hidden space-y-10 lg:block lg:space-y-12">
-          {projects.map((project, index) => (
+          {displayed.map((project, index) => (
             <article
               key={project.slug}
               data-work-item
@@ -203,15 +205,17 @@ export function WorkSection() {
           ))}
         </div>
 
-        <div className="mt-8 text-center md:mt-12">
-          <Link
-            href="/work"
-            className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80 transition hover:border-cyan/40 hover:bg-white/[0.08] hover:text-white"
-          >
-            {STRINGS.work.viewAllWork}
-            <span aria-hidden>→</span>
-          </Link>
-        </div>
+        {hasMore || !limit ? (
+          <div className="mt-8 text-center md:mt-12">
+            <Link
+              href="/work"
+              className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-5 py-2.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/80 transition hover:border-cyan/40 hover:bg-white/[0.08] hover:text-white"
+            >
+              {STRINGS.work.viewAllWork}
+              <span aria-hidden>→</span>
+            </Link>
+          </div>
+        ) : null}
       </Container>
     </section>
   );

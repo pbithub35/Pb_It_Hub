@@ -80,6 +80,7 @@ export const STRINGS = {
       "Custom websites, mobile apps, SaaS and business systems for companies in Pathankot, Punjab, Jammu and Himachal.",
     exploreLink: "Explore →",
     viewLink: "View →",
+    viewAllServices: "View all services",
     servicePrefix: "Service",
   },
 
@@ -589,6 +590,8 @@ export const STRINGS = {
   // Layout & Footer
   footer: {
     business: "Business",
+    explore: "Explore",
+    company: "Company",
     connect: "Connect",
     whatsapp: "WhatsApp",
     instagram: "Instagram",
