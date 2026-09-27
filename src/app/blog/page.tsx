@@ -10,16 +10,14 @@ import { getAllBlogPosts } from "@/data/blogPosts";
 import { STRINGS } from "@/config/strings";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Engineering Blog & Student Project Guides",
+  title: "Blog & Project Guides",
   description: STRINGS.blog.description,
   path: "/blog",
   keywords: [
-    "student projects blog",
     "BCA final year project ideas",
-    "MCA project topics",
     "viva preparation questions",
-    "computer science student guides",
-    "PB_IT_HUB blog",
+    "website cost Punjab",
+    "student projects blog",
   ],
 });
 

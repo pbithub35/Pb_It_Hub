@@ -8,9 +8,9 @@ import { ProjectInquiryForm } from "@/components/forms/ProjectInquiryForm";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Contact",
+  title: "Contact Pathankot Team",
   description:
-    "Start a project with PB_IT_HUB in Pathankot. Tell us what you want to build — businesses and students across Punjab, Jammu and Himachal.",
+    "Start a website, app or student project with PB_IT_HUB in Pathankot — WhatsApp-friendly support.",
   path: "/contact",
 });
 
@@ -36,6 +36,19 @@ export default function ContactPage() {
               >
                 City pages
               </Link>
+              {siteConfig.social.google ? (
+                <>
+                  {" · "}
+                  <a
+                    href={siteConfig.social.google}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-cyan/80 underline-offset-4 hover:text-cyan hover:underline"
+                  >
+                    Google Business Profile
+                  </a>
+                </>
+              ) : null}
             </p>
           </div>
           <div className="rounded-[1.5rem] border border-white/10 bg-white/[0.03] p-6 md:p-8">

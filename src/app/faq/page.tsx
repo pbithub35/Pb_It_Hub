@@ -8,16 +8,15 @@ import { FaqAccordion } from "@/components/faq/FaqAccordion";
 import { STRINGS } from "@/config/strings";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Frequently Asked Questions (FAQ) — Student Projects & Services",
-  description: STRINGS.faq.description,
+  title: "Student & Business FAQ",
+  description:
+    "Answers on student project source code, viva help, pricing and custom software from Pathankot.",
   path: "/faq",
   keywords: [
     "PB_IT_HUB FAQ",
     "student projects FAQ",
-    "source code download questions",
-    "final year projects BCA MCA BTech",
-    "1-on-1 viva session help",
-    "custom software development FAQ",
+    "final year projects BCA MCA",
+    "website company Pathankot FAQ",
   ],
 });
 

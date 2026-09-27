@@ -136,9 +136,9 @@ $result = $conn->query("SELECT * FROM students ORDER BY id DESC");
       },
     ],
     seo: {
-      title: "Free Source Code for BCA Project / Practical (PHP MySQL)",
+      title: "Free BCA Practical Source Code (PHP)",
       description:
-        "Free BCA practical source code — PHP MySQL student records CRUD for lab exams and mini projects. Copy, run on XAMPP, explain in viva.",
+        "Free PHP MySQL student CRUD for BCA labs — copy, run on XAMPP, ready for viva.",
     },
   },
   {
@@ -247,9 +247,9 @@ app.listen(PORT, () => {
       },
     ],
     seo: {
-      title: "Free Source Code for MCA Project / Practical (Node Express)",
+      title: "Free MCA Practical Source Code (Node)",
       description:
-        "Free MCA practical source code — Express REST API notes CRUD for lab exams. Run locally, demo with Postman, explain in viva.",
+        "Free Express REST API notes CRUD for MCA labs — run locally and demo in viva.",
     },
   },
   {
@@ -358,14 +358,14 @@ export default function App() {
       },
     ],
     seo: {
-      title: "Free Source Code for B.Tech CSE Project / Practical (React)",
+      title: "Free B.Tech CSE Practical (React)",
       description:
-        "Free B.Tech CSE practical source code — React task board with filters for lab demos and viva explanation.",
+        "Free React task-board starter for B.Tech CSE practicals and viva demos.",
     },
   },
   {
     slug: "free-source-code-bsc-cs-practical",
-    title: "Free Source Code for B.Sc CS / IT Practical",
+    title: "Free B.Sc CS/IT Practical Source Code",
     description:
       "HTML + JavaScript calculator / mini tool for B.Sc Computer Science & IT lab practicals.",
     category: "Free Source Code",
@@ -438,9 +438,9 @@ export default function App() {
       },
     ],
     seo: {
-      title: "Free Source Code for B.Sc CS / IT Practical",
+      title: "Free B.Sc CS/IT Practical Source Code",
       description:
-        "Free B.Sc Computer Science and IT practical source code — HTML JavaScript grade calculator for lab submission.",
+        "Free HTML/JS grade calculator for B.Sc CS and IT lab practicals.",
     },
   },
   {
@@ -509,9 +509,9 @@ if __name__ == "__main__":
       },
     ],
     seo: {
-      title: "Free Source Code for Diploma Polytechnic Practical (Python)",
+      title: "Free Diploma Practical Source Code",
       description:
-        "Free Diploma / Polytechnic CS practical source code — Python student fee calculator with file log for lab exams.",
+        "Free Python fee calculator for Diploma and Polytechnic CS practicals.",
     },
   },
   {

@@ -7,16 +7,15 @@ import { FreeResourceCard } from "@/components/learn-build/FreeResourceCard";
 import { getPublicFreeResources } from "@/data/freeResources";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Free Source Code & Coding Resources for BCA, MCA, B.Tech",
+  title: "Free Source Code for BCA & MCA",
   description:
-    "Free source code for BCA, MCA, B.Tech CSE, B.Sc CS/IT and Diploma practicals — plus project ideas, viva prep and career guides.",
+    "Free practical source code for BCA, MCA, B.Tech and Diploma labs — plus project ideas and viva guides.",
   path: "/learn-and-build/resources",
   keywords: [
     "free source code BCA practical",
     "free source code MCA project",
     "B.Tech CSE practical source code",
     "college project free code",
-    "PHP MySQL practical",
   ],
 });
 

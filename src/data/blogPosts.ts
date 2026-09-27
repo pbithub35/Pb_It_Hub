@@ -58,12 +58,12 @@ export const blogPosts: BlogPost[] = [
         "At PB_IT_HUB, every project in our catalog is engineered to production standards with comprehensive documentation, clean architecture, and 1-to-1 viva preparation to help you clear evaluations with top grades.",
     },
     seo: {
-      title: "Top 25 Final Year Project Ideas for BCA & MCA Students (2025)",
+      title: "25 BCA & MCA Final Year Project Ideas",
       description:
-        "Discover 25+ real-world final year project ideas for BCA, MCA, and B.Tech students. Covers React, Flutter, Python, and Laravel with complete architecture tips.",
+        "Real-world final year project ideas for BCA, MCA and B.Tech — React, Flutter, Python and Laravel tips.",
       keywords: [
         "BCA final year project ideas",
-        "MCA project topics 2025",
+        "MCA project topics",
         "computer science project with source code",
         "student final year projects",
         "B.Tech CSE major projects",
@@ -128,9 +128,9 @@ export const blogPosts: BlogPost[] = [
         "Want personalized viva mock drills? PB_IT_HUB offers 1-on-1 Knowledge Transfer sessions where senior engineers review your codebase with you line-by-line before your college submission.",
     },
     seo: {
-      title: "How to Clear Your College Project Viva: 20 Common Questions & Answers",
+      title: "College Project Viva Questions & Answers",
       description:
-        "Comprehensive guide to passing your college project external viva. Covers ER diagrams, database normalization, JWT auth, state management, and examiner traps.",
+        "Common viva questions on databases, APIs and architecture — prepare for BCA, MCA and B.Tech external exams.",
       keywords: [
         "project viva questions",
         "external viva preparation computer science",
@@ -199,9 +199,9 @@ export const blogPosts: BlogPost[] = [
         "PB_IT_HUB provides fully trained, production-ready Python AI/ML projects with clean REST endpoints, frontend dashboards, and pre-packaged dataset pipelines.",
     },
     seo: {
-      title: "15 Production-Grade Python & AI/ML Project Ideas for College Students",
+      title: "Python & AI/ML Project Ideas for Students",
       description:
-        "Explore 15 real-world Python and Machine Learning project ideas for final-year college students. Includes Computer Vision, NLP, RAG, and FastAPI deployment.",
+        "15 Python and AI project ideas for college — computer vision, NLP and deployable ML for final year.",
       keywords: [
         "python final year projects",
         "machine learning student projects",
@@ -261,9 +261,9 @@ export const blogPosts: BlogPost[] = [
         "Both stacks are winners. If your project is web-first or admin-heavy, choose React/Next.js. If your project is user-first and mobile-centric, choose Flutter. PB_IT_HUB supports both with battle-tested starter architectures and complete source code.",
     },
     seo: {
-      title: "React vs Flutter: Which Tech Stack for Final Year Project? (2025)",
+      title: "React vs Flutter for Final Year Projects",
       description:
-        "Comparing React and Flutter for college final-year major projects. Explore learning curves, examiner impressions, and job placement advantages.",
+        "Choose React or Flutter for your major project — learning curve, viva impact and placement value.",
       keywords: [
         "React vs Flutter college project",
         "best tech stack for student project",
@@ -324,9 +324,9 @@ export const blogPosts: BlogPost[] = [
         "PB_IT_HUB scopes every build in writing before work starts. Share a short brief on Contact or WhatsApp and we will tell you which band you are in — without vague “starting from” theater.",
     },
     seo: {
-      title: "How Much Does a Custom Website Cost in Punjab?",
+      title: "Custom Website Cost in Punjab",
       description:
-        "Understand custom website cost in Punjab: static vs dynamic, what drives price, and how Pathankot businesses should compare freelancers vs agencies.",
+        "What drives website pricing in Punjab — static vs dynamic, scope tips for Pathankot businesses.",
       keywords: [
         "custom website cost Punjab",
         "website price Pathankot",
@@ -381,9 +381,9 @@ export const blogPosts: BlogPost[] = [
         "Need a store scoped for your catalog? PB_IT_HUB builds Shopify and custom e-commerce for Punjab brands. Tell us product count and how you take orders today.",
     },
     seo: {
-      title: "E-commerce Website Development Cost in India",
+      title: "E-commerce Website Cost in India",
       description:
-        "What drives e-commerce website development cost in India — Shopify vs custom, catalogs, checkout and payments for retail and local brands.",
+        "Shopify vs custom store costs for Indian retail brands — catalog, checkout and payments.",
       keywords: [
         "ecommerce website development cost India",
         "Shopify store cost Punjab",
@@ -439,9 +439,9 @@ export const blogPosts: BlogPost[] = [
         "Want a MERN project with complete source code and viva prep? Browse Learn or Buy on PB_IT_HUB and order on WhatsApp.",
     },
     seo: {
-      title: "MERN Stack Final Year Project Ideas with GitHub",
+      title: "MERN Final Year Project Ideas",
       description:
-        "MERN stack final year project ideas for CSE, BCA and MCA students — MongoDB, Express, React, Node with GitHub-ready structure tips.",
+        "MERN stack college project ideas with GitHub structure tips for CSE, BCA and MCA students.",
       keywords: [
         "MERN stack final year project ideas",
         "MERN project with GitHub",
@@ -491,9 +491,9 @@ export const blogPosts: BlogPost[] = [
         "Ship a live demo link before your viva. If you need a complete college project with source code, explore PB_IT_HUB Learn or Buy.",
     },
     seo: {
-      title: "Host a Website Free on GitHub Pages or Vercel",
+      title: "Host Free on GitHub Pages or Vercel",
       description:
-        "How to host a website on GitHub Pages or Vercel for free — student portfolios, static sites and Next.js demos with practical tips.",
+        "Deploy student portfolios and static sites free on GitHub Pages or Vercel — when to use each.",
       keywords: [
         "host website GitHub Pages free",
         "deploy Next.js Vercel free",

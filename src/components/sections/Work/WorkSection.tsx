@@ -112,7 +112,7 @@ export function WorkSection() {
               >
                 <Image
                   src={resolveImageSrc(project.heroImage)}
-                  alt={`${project.title} preview`}
+                  alt={`${project.title} — PB_IT_HUB Pathankot case study`}
                   fill
                   className="object-contain object-top"
                   sizes="50vw"
@@ -192,7 +192,7 @@ export function WorkSection() {
               <div className={cnOrder(index, "media")}>
                 <ProjectFrame
                   src={project.heroImage}
-                  alt={`${project.title} product visual`}
+                  alt={`${project.title} — PB_IT_HUB product case study`}
                   screenTone={project.screenTone ?? "dark"}
                   urlLabel={frameUrl(project.liveUrl)}
                   mediaAttr

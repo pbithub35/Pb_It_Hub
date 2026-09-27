@@ -6,19 +6,15 @@ import { BackButton } from "@/components/ui/BackButton";
 import { ProjectAccordion } from "@/components/learn-build";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Final Year Projects & Source Code for BCA, MCA, B.Tech Students",
+  title: "Final Year Projects with Source Code",
   description:
-    "Explore production-grade student projects with full source code, architecture diagrams, viva preparation, and setup support. Available in React, Flutter, Python, Node.js, AI/ML, PHP, and Java.",
+    "BCA, MCA and B.Tech projects in React, Flutter, Python and more — full source code and viva support.",
   path: "/learn-and-build/projects",
   keywords: [
     "final year projects BCA MCA BTech",
     "student projects source code",
-    "React student projects",
-    "Flutter college projects",
-    "Python AI ML final year project",
-    "college project source code download",
-    "buy student projects",
-    "PB_IT_HUB projects",
+    "React Flutter college projects",
+    "buy student projects Pathankot",
   ],
 });
 
@@ -30,8 +26,8 @@ export default function StudentProjectsPage() {
         <SectionHeading
           tone="dark"
           eyebrow="Projects"
-          title="Choose a project to buy"
-          description="Expand a project for details. Source code on the right — add-ons below — buy at the end."
+          title="Final-year projects with source code"
+          description="BCA, MCA and B.Tech packages — expand for details, then order on WhatsApp."
         />
         <div className="mt-8 md:mt-10">
           <ProjectAccordion />

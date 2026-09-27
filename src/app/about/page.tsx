@@ -9,9 +9,9 @@ import { STRINGS } from "@/config/strings";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "About",
+  title: "About PB_IT_HUB Pathankot",
   description:
-    "PB_IT_HUB is based in Pathankot, Punjab — building digital products, SaaS systems, AI solutions and student projects across Jammu, Himachal and beyond.",
+    "Pathankot technology company building websites, apps and student projects for Punjab, Jammu and Himachal.",
   path: "/about",
 });
 

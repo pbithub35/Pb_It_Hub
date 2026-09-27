@@ -19,40 +19,42 @@ const syne = Syne({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "PB_IT_HUB — Software Development, AI Solutions & Student Projects",
-    template: "%s · PB_IT_HUB",
+    default: siteConfig.seoTitle,
+    template: `%s | ${siteConfig.name}`,
   },
-  description:
-    "PB_IT_HUB delivers custom web applications, SaaS platforms, AI solutions, and industry-grade student projects with source code for BCA, MCA, B.Tech & CS/IT students.",
+  description: siteConfig.seoDescription,
   keywords: [
+    "website development Pathankot",
     "student projects with source code",
     "final year projects BCA MCA BTech",
-    "computer science projects",
-    "React Flutter Python Node.js projects",
-    "custom software development",
-    "SaaS application development",
-    "AI automation solutions",
-    "software development Pathankot Punjab",
+    "software company Punjab",
+    "web design Jammu Himachal",
     "PB_IT_HUB",
   ],
   applicationName: siteConfig.name,
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
+  alternates: {
+    canonical: siteConfig.url,
+  },
   openGraph: {
     type: "website",
     locale: siteConfig.locale,
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: "PB_IT_HUB — Software Development, AI Solutions & Student Projects",
-    description:
-      "PB_IT_HUB delivers custom web applications, SaaS platforms, AI solutions, and industry-grade student projects with source code for BCA, MCA, B.Tech & CS/IT students.",
-    images: [{ url: "/images/pb-it-hub-dark.jpg", alt: siteConfig.name }],
+    title: siteConfig.seoTitle,
+    description: siteConfig.seoDescription,
+    images: [
+      {
+        url: "/images/pb-it-hub-dark.jpg",
+        alt: "PB_IT_HUB — website development and student projects in Pathankot",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "PB_IT_HUB — Software Development, AI Solutions & Student Projects",
-    description:
-      "PB_IT_HUB delivers custom web applications, SaaS platforms, AI solutions, and industry-grade student projects with source code for BCA, MCA, B.Tech & CS/IT students.",
+    title: siteConfig.seoTitle,
+    description: siteConfig.seoDescription,
     images: ["/images/pb-it-hub-dark.jpg"],
   },
   robots: { index: true, follow: true },

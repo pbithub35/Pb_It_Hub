@@ -9,16 +9,14 @@ import { locations, locationRegions } from "@/data/locations";
 import { STRINGS } from "@/config/strings";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Locations — Pathankot, Punjab, Jammu & Himachal",
+  title: "Pathankot, Punjab, Jammu & Himachal",
   description:
-    "PB_IT_HUB serves Pathankot and college cities across Punjab, Jammu and Himachal — websites, apps and final-year projects with source code.",
+    "City pages for websites and college projects across Pathankot, Punjab, Jammu and Himachal.",
   path: "/locations",
   keywords: [
-    "PB_IT_HUB Pathankot",
-    "website company Punjab",
+    "website company Pathankot",
     "final year projects Punjab",
     "student projects Jammu Himachal",
-    "software Pathankot",
   ],
 });
 

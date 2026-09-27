@@ -8,9 +8,9 @@ import { BackButton } from "@/components/ui/BackButton";
 import { STRINGS } from "@/config/strings";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Services",
+  title: "Web, App & Software Services",
   description:
-    "Web applications, SaaS, mobile apps, CRM systems, AI solutions, e-commerce, Shopify and website maintenance from PB_IT_HUB.",
+    "Website, mobile app, SaaS, Shopify and SEO services for businesses in Pathankot and Punjab.",
   path: "/services",
 });
 

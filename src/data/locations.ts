@@ -39,9 +39,9 @@ export const locations: LocationItem[] = [
     regionLabel: "Punjab",
     isHq: true,
     blurb: "Our home base — websites, apps and college projects for local businesses and students.",
-    metaTitle: "Website & Student Projects in Pathankot, Punjab",
+    metaTitle: "Websites & Projects in Pathankot",
     metaDescription:
-      "PB_IT_HUB is based in Pathankot. Custom websites, apps and final-year projects with source code for businesses and BCA, MCA & B.Tech students across Punjab, Jammu and Himachal.",
+      "Websites, apps and BCA/MCA projects with source code. Pathankot HQ serving Punjab, Jammu and Himachal.",
     keywords: [
       "website development Pathankot",
       "software company Pathankot",
@@ -76,9 +76,9 @@ export const locations: LocationItem[] = [
     region: "punjab",
     regionLabel: "Punjab / Tri-city",
     blurb: "Websites, SaaS and college projects for Tri-city businesses and students.",
-    metaTitle: "Website Development & College Projects in Chandigarh",
+    metaTitle: "Websites & College Projects Chandigarh",
     metaDescription:
-      "Custom websites, apps and final-year projects for Chandigarh businesses and students. Delivered by PB_IT_HUB from Pathankot with clear WhatsApp support.",
+      "Websites, apps and final-year projects for Chandigarh — Pathankot team, WhatsApp support.",
     keywords: [
       "website development Chandigarh",
       "final year projects Chandigarh",
@@ -112,9 +112,9 @@ export const locations: LocationItem[] = [
     region: "punjab",
     regionLabel: "Punjab / Tri-city",
     blurb: "Software, websites and student projects for Mohali’s tech and college belt.",
-    metaTitle: "Website & App Development in Mohali | Student Projects",
+    metaTitle: "Websites & Apps for Mohali",
     metaDescription:
-      "Websites, mobile apps and final-year projects for Mohali businesses and students. PB_IT_HUB delivers from Pathankot with transparent scoping.",
+      "Websites, apps and student projects for Mohali — clear scope from Pathankot.",
     keywords: [
       "website company Mohali",
       "app development Mohali",
@@ -143,9 +143,9 @@ export const locations: LocationItem[] = [
     region: "punjab",
     regionLabel: "Punjab",
     blurb: "E-commerce, business sites and college projects for Ludhiana.",
-    metaTitle: "Web Design & College Projects in Ludhiana, Punjab",
+    metaTitle: "Web Design & Projects in Ludhiana",
     metaDescription:
-      "Modern websites, Shopify stores and final-year projects for Ludhiana businesses and students — built by PB_IT_HUB with clear WhatsApp ordering.",
+      "Websites, Shopify and college projects for Ludhiana businesses and students.",
     keywords: [
       "web design Ludhiana",
       "website development Ludhiana",
@@ -174,9 +174,9 @@ export const locations: LocationItem[] = [
     region: "punjab",
     regionLabel: "Punjab",
     blurb: "Websites, apps and final-year projects for Jalandhar.",
-    metaTitle: "Website Company & Student Projects in Jalandhar",
+    metaTitle: "Websites & Projects in Jalandhar",
     metaDescription:
-      "Custom websites, apps and college project source code for Jalandhar businesses and students. Remote-friendly delivery from Pathankot.",
+      "Websites, apps and college project source code for Jalandhar — from Pathankot.",
     keywords: [
       "website development Jalandhar",
       "final year projects Jalandhar",
@@ -205,9 +205,9 @@ export const locations: LocationItem[] = [
     region: "punjab",
     regionLabel: "Punjab",
     blurb: "Local business websites and student projects for Amritsar.",
-    metaTitle: "Website Development & Projects in Amritsar",
+    metaTitle: "Websites & Projects in Amritsar",
     metaDescription:
-      "Websites, storefronts and final-year projects for Amritsar businesses and college students — from PB_IT_HUB, Pathankot.",
+      "Websites and final-year projects for Amritsar businesses and students.",
     keywords: [
       "website Amritsar",
       "web design Amritsar",
@@ -236,9 +236,9 @@ export const locations: LocationItem[] = [
     region: "punjab",
     regionLabel: "Punjab",
     blurb: "College-city projects and business websites for Patiala.",
-    metaTitle: "College Projects & Web Development in Patiala",
+    metaTitle: "College Projects & Web in Patiala",
     metaDescription:
-      "Final-year projects with source code and custom websites for Patiala students and businesses. PB_IT_HUB — Pathankot-based, WhatsApp delivery.",
+      "College projects with source code and websites for Patiala — WhatsApp delivery.",
     keywords: [
       "final year projects Patiala",
       "BCA projects Patiala",
@@ -267,9 +267,9 @@ export const locations: LocationItem[] = [
     region: "jammu",
     regionLabel: "Jammu & Kashmir",
     blurb: "Websites, apps and student projects for Jammu and nearby towns.",
-    metaTitle: "Website & Student Projects in Jammu",
+    metaTitle: "Websites & Projects in Jammu",
     metaDescription:
-      "Custom websites, software and final-year projects for Jammu businesses and students. Served from Pathankot with remote-friendly WhatsApp support.",
+      "Websites, software and college projects for Jammu — remote-friendly from Pathankot.",
     keywords: [
       "website development Jammu",
       "final year projects Jammu",
@@ -298,9 +298,9 @@ export const locations: LocationItem[] = [
     region: "jammu",
     regionLabel: "Jammu & Kashmir",
     blurb: "Nearby to Pathankot — local websites and student project support.",
-    metaTitle: "Websites & College Projects in Kathua",
+    metaTitle: "Websites & Projects in Kathua",
     metaDescription:
-      "PB_IT_HUB supports Kathua businesses and students with websites, apps and final-year project source code — close to our Pathankot base.",
+      "Websites and college project source code for Kathua — near Pathankot.",
     keywords: [
       "website Kathua",
       "final year projects Kathua",
@@ -328,9 +328,9 @@ export const locations: LocationItem[] = [
     region: "himachal",
     regionLabel: "Himachal Pradesh",
     blurb: "Websites and college projects for Shimla businesses and students.",
-    metaTitle: "Website Development & Projects in Shimla, Himachal",
+    metaTitle: "Websites & Projects in Shimla",
     metaDescription:
-      "Custom websites and final-year projects for Shimla. PB_IT_HUB serves Himachal from Pathankot with WhatsApp-first delivery.",
+      "Websites and college projects for Shimla — Himachal support from Pathankot.",
     keywords: [
       "website development Shimla",
       "final year projects Shimla",
@@ -359,9 +359,9 @@ export const locations: LocationItem[] = [
     region: "himachal",
     regionLabel: "Himachal Pradesh",
     blurb: "College-belt projects and business websites for Solan.",
-    metaTitle: "College Projects & Websites in Solan, Himachal",
+    metaTitle: "College Projects & Web in Solan",
     metaDescription:
-      "Final-year projects with source code and business websites for Solan students and companies. Delivered by PB_IT_HUB.",
+      "College projects and websites for Solan students and businesses.",
     keywords: [
       "final year projects Solan",
       "website Solan Himachal",
@@ -389,9 +389,9 @@ export const locations: LocationItem[] = [
     region: "himachal",
     regionLabel: "Himachal Pradesh",
     blurb: "Strong engineering college city — projects and web builds for Hamirpur.",
-    metaTitle: "Final Year Projects & Web Development in Hamirpur",
+    metaTitle: "Projects & Websites in Hamirpur",
     metaDescription:
-      "Industry-grade college projects and websites for Hamirpur students and businesses. PB_IT_HUB — Pathankot-based, Himachal-ready.",
+      "College projects and websites for Hamirpur — Pathankot team, Himachal-ready.",
     keywords: [
       "final year projects Hamirpur",
       "B.Tech projects Hamirpur",

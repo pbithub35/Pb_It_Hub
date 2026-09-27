@@ -94,7 +94,7 @@ export function ServicesSection() {
                         <div className="relative aspect-[16/9] overflow-hidden rounded-md border border-white/10 bg-navy-deep">
                           <MediaImage
                             src={service.visualKey}
-                            alt={`PB_IT_HUB ${service.shortTitle}`}
+                            alt={`${service.shortTitle} development by PB_IT_HUB Pathankot`}
                             fill
                             className="object-cover"
                             sizes="100vw"
@@ -206,7 +206,7 @@ export function ServicesSection() {
                 <div className="relative aspect-[5/4] w-full overflow-hidden rounded-xl border border-white/12 bg-navy-deep shadow-[0_20px_60px_rgba(0,0,0,0.5)] lg:aspect-[4/3] lg:min-h-[420px] xl:min-h-[460px]">
                   <MediaImage
                     src={current.visualKey}
-                    alt={`PB_IT_HUB ${current.shortTitle} visual`}
+                    alt={`${current.shortTitle} services by PB_IT_HUB in Pathankot`}
                     fill
                     className="object-cover object-center"
                     sizes="(max-width: 1024px) 50vw, 55vw"

@@ -18,7 +18,7 @@ export function absoluteUrl(path = "/") {
 
 export function createPageMetadata({
   title,
-  description = siteConfig.description,
+  description = siteConfig.seoDescription,
   path = "/",
   image = "/images/pb-it-hub-dark.jpg",
   keywords,
@@ -39,7 +39,12 @@ export function createPageMetadata({
       siteName: siteConfig.name,
       title,
       description,
-      images: [{ url: ogImage, alt: title }],
+      images: [
+        {
+          url: ogImage,
+          alt: `${title} — ${siteConfig.name}, Pathankot`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",

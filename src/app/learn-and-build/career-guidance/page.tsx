@@ -6,9 +6,9 @@ import { CareerGuidanceCTA, CareerGuidanceFAQ } from "@/components/learn-build";
 import { STRINGS } from "@/config/strings";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Free Career Guidance | PB_IT_HUB",
+  title: "Free Career Guidance for Students",
   description:
-    "We care about your career. Connect 1-on-1 with active software engineers who know the real 2026 tech market. 100% free personalized mentorship.",
+    "Free 1-on-1 career session with working engineers — honest roadmap for BCA, MCA and B.Tech students.",
   path: "/learn-and-build/career-guidance",
 });
 

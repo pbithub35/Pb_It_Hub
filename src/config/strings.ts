@@ -42,11 +42,11 @@ export const STRINGS = {
 
   // Homepage Hero Section
   hero: {
-    eyebrow: "BUILD · AUTOMATE · GROW",
+    eyebrow: "PATHANKOT · PUNJAB · BUILD · AUTOMATE · GROW",
     headlinePart1: "We build digital products",
     headlinePart2: "that move businesses forward.",
     description:
-      "PB_IT_HUB designs and develops modern web applications, SaaS platforms, mobile apps, CRM systems, AI solutions and automation for businesses in Pathankot, Punjab, Jammu, Himachal and beyond.",
+      "Website development, apps and AI for businesses in Pathankot, Punjab, Jammu and Himachal — plus final-year projects with source code for BCA, MCA and B.Tech students.",
     ctaProject: "Start a Project",
     ctaWork: "Explore Work",
     steps: {
@@ -75,9 +75,9 @@ export const STRINGS = {
   // Services Section
   services: {
     eyebrow: "What we build",
-    title: "Technology designed for real-world business",
+    title: "Website, app and software development",
     description:
-      "Purpose-built digital engineering designed around your business workflows, operations, and growth goals.",
+      "Custom websites, mobile apps, SaaS and business systems for companies in Pathankot, Punjab, Jammu and Himachal.",
     exploreLink: "Explore →",
     viewLink: "View →",
     servicePrefix: "Service",
@@ -151,14 +151,14 @@ export const STRINGS = {
   // About Section
   about: {
     eyebrow: "About PB_IT_HUB",
-    title: "We build technology that solves real problems.",
+    title: "Pathankot technology partner for business and students",
     description:
-      "PB_IT_HUB is a product-focused digital engineering firm. We design, architect, and ship high-performance software that helps businesses operate, scale, and grow.",
+      "Based in Pathankot, Punjab, we build websites, apps and custom software for regional businesses — and industry-grade college projects with source code for BCA, MCA and B.Tech students across Jammu and Himachal.",
     focusList: [
       "Digital Products",
       "Business Platforms",
       "SaaS Architectures",
-      "Autonomous AI Systems",
+      "Student Projects",
     ],
   },
 
@@ -182,9 +182,9 @@ export const STRINGS = {
   // Student Services & Benefits Horizontal Scroll
   studentServicesScroll: {
     eyebrow: "STUDENT SERVICES & BENEFITS",
-    headline: "Buy Project or Build With Us",
+    headline: "Final-year projects with source code",
     description:
-      "Everything you need to complete, understand, and ace your final year project — with direct support from working engineers.",
+      "BCA, MCA and B.Tech project packages, viva prep and free career guidance — built by working engineers in Pathankot.",
     scrollHint: "Scroll to explore our offerings",
     items: [
       {
@@ -464,7 +464,7 @@ export const STRINGS = {
     eyebrow: "Knowledge Base & Help",
     title: "Frequently Asked Questions",
     description:
-      "Find direct answers about student final-year projects, source code, 1-to-1 mentorship, custom project builds, and our digital product engineering services.",
+      "Answers on student projects, source code, viva help and custom software from Pathankot.",
     searchPlaceholder: "Search questions (e.g., source code, viva, BCA, refund)...",
     allCategory: "All Questions",
     stillQuestions: "Still have questions?",
@@ -570,9 +570,9 @@ export const STRINGS = {
   // Blog & Insights
   blog: {
     eyebrow: "Articles & Engineering Guides",
-    title: "PB_IT_HUB Blog & Guides",
+    title: "Guides for students and local businesses",
     description:
-      "Actionable engineering guides, final year project breakdowns, viva preparation advice, and technology insights for computer science students and developers.",
+      "Final-year project ideas, viva tips, website cost guides and hosting help for Pathankot, Punjab and nearby colleges.",
     searchPlaceholder: "Search articles (e.g. BCA, viva, Python, React)...",
     allCategory: "All Articles",
     readArticle: "Read Article →",
@@ -592,6 +592,7 @@ export const STRINGS = {
     connect: "Connect",
     whatsapp: "WhatsApp",
     instagram: "Instagram",
+    google: "Google Business",
     call: "Call",
   },
 } as const;
