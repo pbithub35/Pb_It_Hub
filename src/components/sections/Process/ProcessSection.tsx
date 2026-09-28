@@ -147,7 +147,7 @@ export function ProcessSection() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={reduce ? undefined : { opacity: 0, y: -8 }}
                 transition={{ duration: 0.3 }}
-                className="mt-8 hidden rounded-2xl border p-5 shadow-[var(--shadow-soft)] lg:block"
+                className="mt-8 rounded-2xl border p-4 shadow-[var(--shadow-soft)] sm:p-5"
                 style={{
                   backgroundColor: `${current.accent}18`,
                   borderColor: `${current.accent}40`,
@@ -159,7 +159,7 @@ export function ProcessSection() {
                 >
                   STAGE {current.number}
                 </p>
-                <h3 className="mt-2 font-display text-2xl text-ink">
+                <h3 className="mt-2 font-display text-xl text-ink sm:text-2xl">
                   {current.title}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-strong">
@@ -169,9 +169,9 @@ export function ProcessSection() {
             </AnimatePresence>
           </motion.div>
 
-          {/* Circular diagram — desktop / tablet */}
+          {/* Circular diagram — same UI on all breakpoints */}
           <motion.div
-            className="relative mx-auto hidden aspect-square w-full max-w-[560px] md:block"
+            className="relative mx-auto aspect-square w-full max-w-[min(100%,28rem)] sm:max-w-[34rem] md:max-w-[560px]"
             initial={reduce ? false : { opacity: 0, scale: 0.92 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.25 }}
@@ -206,14 +206,14 @@ export function ProcessSection() {
               })}
             </svg>
 
-            <div className="absolute left-1/2 top-1/2 z-[2] flex w-[34%] -translate-x-1/2 -translate-y-1/2 flex-col items-center">
-              <div className="relative flex aspect-square w-full items-center justify-center rounded-2xl border border-blue/20 bg-white shadow-[0_16px_40px_rgba(15,23,42,0.08)]">
-                <div className="absolute inset-0 rounded-2xl bg-[radial-gradient(circle_at_50%_25%,rgba(59,130,246,0.12),transparent_65%)]" />
-                <div className="relative flex flex-col items-center text-center">
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-blue/10 text-blue">
-                    <StepIcon type="idea" className="h-6 w-6" />
+            <div className="absolute left-1/2 top-1/2 z-[2] flex w-[32%] -translate-x-1/2 -translate-y-1/2 flex-col items-center sm:w-[34%]">
+              <div className="relative flex aspect-square w-full items-center justify-center rounded-xl border border-blue/20 bg-white shadow-[0_16px_40px_rgba(15,23,42,0.08)] sm:rounded-2xl">
+                <div className="absolute inset-0 rounded-xl bg-[radial-gradient(circle_at_50%_25%,rgba(59,130,246,0.12),transparent_65%)] sm:rounded-2xl" />
+                <div className="relative flex flex-col items-center px-1 text-center">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-blue/10 text-blue sm:h-12 sm:w-12">
+                    <StepIcon type="idea" className="h-5 w-5 sm:h-6 sm:w-6" />
                   </span>
-                  <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-strong">
+                  <p className="mt-1.5 text-[8px] font-semibold uppercase tracking-[0.14em] text-muted-strong sm:mt-2 sm:text-[10px] sm:tracking-[0.18em]">
                     Product Idea
                   </p>
                 </div>
@@ -231,7 +231,7 @@ export function ProcessSection() {
                   onFocus={() => setActive(index)}
                   onClick={() => setActive(index)}
                   className={cn(
-                    "absolute z-[3] flex w-[5.5rem] -translate-x-1/2 -translate-y-1/2 flex-col items-center text-center transition duration-300",
+                    "absolute z-[3] flex w-[4.25rem] -translate-x-1/2 -translate-y-1/2 flex-col items-center text-center transition duration-300 sm:w-[5.5rem]",
                     isActive ? "scale-110" : "scale-100 opacity-90 hover:opacity-100",
                   )}
                   style={{ left: `${pos.x}%`, top: `${pos.y}%` }}
@@ -240,7 +240,7 @@ export function ProcessSection() {
                 >
                   <span
                     className={cn(
-                      "flex h-12 w-12 items-center justify-center rounded-full border text-white shadow-md transition",
+                      "flex h-9 w-9 items-center justify-center rounded-full border text-white shadow-md transition sm:h-12 sm:w-12",
                       isActive ? "border-white ring-2 ring-navy/10" : "border-white/70",
                     )}
                     style={{
@@ -251,69 +251,19 @@ export function ProcessSection() {
                     }}
                   >
                     {step.icon ? (
-                      <StepIcon type={step.icon} className="h-5 w-5" />
+                      <StepIcon type={step.icon} className="h-4 w-4 sm:h-5 sm:w-5" />
                     ) : null}
                   </span>
-                  <span className="mt-2 text-[10px] font-bold tracking-[0.12em] text-muted">
+                  <span className="mt-1.5 text-[9px] font-bold tracking-[0.1em] text-muted sm:mt-2 sm:text-[10px] sm:tracking-[0.12em]">
                     {step.number}
                   </span>
-                  <span className="mt-0.5 max-w-[5.5rem] text-[11px] font-semibold leading-tight text-ink">
+                  <span className="mt-0.5 max-w-[4.25rem] text-[10px] font-semibold leading-tight text-ink sm:max-w-[5.5rem] sm:text-[11px]">
                     {step.shortTitle ?? step.title}
                   </span>
                 </button>
               );
             })}
           </motion.div>
-
-          {/* Mobile: vertical timeline */}
-          <ol className="space-y-3 md:hidden">
-            {steps.map((step, index) => {
-              const isActive = index === active;
-              return (
-                <motion.li
-                  key={step.number}
-                  initial={reduce ? false : { opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 0.45, ease, delay: index * 0.05 }}
-                >
-                  <button
-                    type="button"
-                    onClick={() => setActive(index)}
-                    className={cn(
-                      "flex w-full gap-3 rounded-2xl border p-4 text-left transition",
-                      isActive
-                        ? "border-blue/25 bg-white shadow-[var(--shadow-soft)]"
-                        : "border-navy/10 bg-white/80",
-                    )}
-                  >
-                    <span
-                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-white"
-                      style={{
-                        backgroundColor: step.accent,
-                        boxShadow: `0 8px 16px ${step.accent}40`,
-                      }}
-                    >
-                      {step.icon ? (
-                        <StepIcon type={step.icon} className="h-5 w-5" />
-                      ) : null}
-                    </span>
-                    <span className="min-w-0">
-                      <span className="text-[10px] font-bold tracking-[0.14em] text-muted">
-                        {step.number}
-                      </span>
-                      <span className="mt-0.5 block font-display text-lg text-ink">
-                        {step.title}
-                      </span>
-                      <span className="mt-1 block text-sm leading-relaxed text-muted-strong">
-                        {step.description}
-                      </span>
-                    </span>
-                  </button>
-                </motion.li>
-              );
-            })}
-          </ol>
         </div>
       </Container>
     </section>
