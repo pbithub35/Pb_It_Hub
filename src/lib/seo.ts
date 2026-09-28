@@ -20,12 +20,13 @@ export function createPageMetadata({
   title,
   description = siteConfig.seoDescription,
   path = "/",
-  image = "/images/pb-it-hub-dark.jpg",
+  image = siteConfig.ogImage,
   keywords,
   noIndex = false,
 }: PageSeoInput): Metadata {
   const url = absoluteUrl(path);
   const ogImage = image.startsWith("http") ? image : absoluteUrl(image);
+  const isDefaultOg = image === siteConfig.ogImage || image.endsWith("og-default.jpg");
 
   return {
     title,
@@ -42,7 +43,8 @@ export function createPageMetadata({
       images: [
         {
           url: ogImage,
-          alt: `${title} — ${siteConfig.name}, Pathankot`,
+          ...(isDefaultOg ? { width: 1200, height: 630 } : {}),
+          alt: `${title} — ${siteConfig.name} · Pathankot, Jammu & Himachal`,
         },
       ],
     },
@@ -66,6 +68,8 @@ export function organizationJsonLd() {
     url: siteConfig.url,
     description: siteConfig.description,
     email: siteConfig.email,
+    logo: absoluteUrl("/images/pb-it-hub-mark.png"),
+    image: absoluteUrl(siteConfig.ogImage),
     sameAs: [
       ...Object.values(siteConfig.social).filter(Boolean),
       siteConfig.maps.url,
@@ -105,9 +109,11 @@ export function faqJsonLd(
   };
 }
 
-/** Only emit when a verified location is configured — never invent an address. */
+/** City-level NAP only — never invent a street address. */
 export function localBusinessJsonLd() {
   if (!siteConfig.location) return null;
+
+  const streetAddress = process.env.NEXT_PUBLIC_BUSINESS_STREET?.trim();
 
   return {
     "@context": "https://schema.org",
@@ -117,18 +123,26 @@ export function localBusinessJsonLd() {
     description: siteConfig.description,
     email: siteConfig.email,
     telephone: siteConfig.phone ? `+${siteConfig.phone}` : undefined,
-    image: absoluteUrl("/images/pb-it-hub-mark.png"),
+    image: absoluteUrl(siteConfig.ogImage),
     logo: absoluteUrl("/images/pb-it-hub-mark.png"),
+    priceRange: siteConfig.priceRange,
     hasMap: siteConfig.maps.url,
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: siteConfig.geo.latitude,
+      longitude: siteConfig.geo.longitude,
+    },
     areaServed: siteConfig.areasServed.map((name) => ({
       "@type": "Place",
       name,
     })),
     address: {
       "@type": "PostalAddress",
+      ...(streetAddress ? { streetAddress } : {}),
       addressLocality: siteConfig.location,
-      addressRegion: "Punjab",
-      addressCountry: "IN",
+      addressRegion: siteConfig.addressRegion,
+      postalCode: siteConfig.postalCode,
+      addressCountry: siteConfig.addressCountry,
     },
     sameAs: [
       ...Object.values(siteConfig.social).filter(Boolean),
@@ -181,7 +195,7 @@ export function blogPostingJsonLd({
   url,
   datePublished,
   authorName,
-  image = "/images/pb-it-hub-dark.jpg",
+  image = siteConfig.ogImage,
 }: {
   title: string;
   description: string;
@@ -205,6 +219,7 @@ export function blogPostingJsonLd({
       "@type": "Organization",
       name: siteConfig.name,
       url: siteConfig.url,
+      logo: absoluteUrl("/images/pb-it-hub-mark.png"),
     },
     image: absoluteUrl(image),
     mainEntityOfPage: {

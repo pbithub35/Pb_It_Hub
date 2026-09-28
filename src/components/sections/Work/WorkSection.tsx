@@ -132,20 +132,20 @@ export function WorkSection({ limit }: { limit?: number } = {}) {
                   viewport={{ once: true, amount: 0.25 }}
                   transition={{ duration: 0.6, ease }}
                 >
-                  <p className="eyebrow text-blue">
+                  <p className="eyebrow text-sm text-blue">
                     {STRINGS.work.projectPrefix} {formatProjectIndex(index)}
                   </p>
-                  <h3 className="mt-3 font-display text-lg font-semibold text-ink sm:text-xl">
+                  <h3 className="mt-3 font-display text-2xl font-semibold text-ink lg:text-[1.85rem]">
                     {project.title}
                   </h3>
-                  <p className="mt-4 max-w-md text-base leading-relaxed text-muted-strong">
+                  <p className="mt-4 max-w-md text-base leading-relaxed text-muted-strong lg:text-lg">
                     {project.description}
                   </p>
                   <ul className="mt-6 flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <li
                         key={tag}
-                        className="rounded-full border border-navy/10 bg-white px-3 py-1 text-[10px] uppercase tracking-[0.14em] text-muted-strong shadow-[var(--shadow-soft)]"
+                        className="rounded-full border border-navy/10 bg-white px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-muted-strong shadow-[var(--shadow-soft)]"
                       >
                         {tag}
                       </li>
@@ -155,7 +155,7 @@ export function WorkSection({ limit }: { limit?: number } = {}) {
                     {project.caseStudy ? (
                       <Link
                         href={`/work/${project.slug}`}
-                        className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-blue transition hover:gap-3 hover:text-navy"
+                        className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.16em] text-blue transition hover:gap-3 hover:text-navy"
                       >
                         {STRINGS.work.viewCaseStudy}
                         <span aria-hidden>→</span>
@@ -166,7 +166,7 @@ export function WorkSection({ limit }: { limit?: number } = {}) {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-muted transition hover:text-navy"
+                        className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.16em] text-muted transition hover:text-navy"
                       >
                         {STRINGS.work.liveSite}
                         <span aria-hidden>↗</span>

@@ -27,14 +27,18 @@ const localRegistry: Record<string, string> = {
   "work/tamanna-makeover/hero": "/images/work/tamanna-makeover/hero.webp",
   "work/creator-influencer-platform/hero":
     "/images/work/creator-influencer-platform/hero.webp",
-  "services/web": "/images/services/web.webp",
-  "services/saas": "/images/services/saas.webp",
-  "services/mobile": "/images/services/mobile.webp",
-  "services/ai": "/images/services/ai.webp",
-  "services/crm": "/images/services/crm.webp",
+  "services/web": "/images/services/web-v2.webp",
+  "services/saas": "/images/services/saas-v2.webp",
+  "services/mobile": "/images/services/mobile-v2.webp",
+  "services/ai": "/images/services/ai-v2.webp",
+  "services/crm": "/images/services/crm-v2.webp",
+  "services/custom": "/images/services/custom.webp",
+  "services/ecommerce": "/images/services/ecommerce.webp",
+  "services/shopify": "/images/services/shopify.webp",
+  "services/seo": "/images/services/seo.webp",
   "learn-build/career-guidance": "/images/learn-build/career-guidance.jpg",
   "learn-build/projects-pricing-badge":
-    "/images/learn-build/projects-pricing-badge.jpg",
+    "/images/learn-build/projects-pricing-badge.png",
 };
 
 const remoteOverrides: Record<string, string> = {

@@ -85,13 +85,13 @@ export default async function ServiceDetailPage({
           <div className="mt-5">
             <Button href="/contact">Start a Project</Button>
           </div>
-          <div className="relative mt-6 aspect-[16/9] overflow-hidden rounded-[1.25rem] border border-navy/10">
+          <div className="relative mt-6 aspect-[16/9] overflow-hidden rounded-[1.25rem] border border-navy/10 bg-off-white">
             <Image
               src={resolveImageSrc(service.visualKey)}
               alt={`PB IT HUB ${service.shortTitle} visual`}
               fill
               priority
-              className="object-cover"
+              className="object-contain object-center p-2 sm:p-3"
               sizes="100vw"
             />
           </div>
@@ -132,7 +132,7 @@ export default async function ServiceDetailPage({
       <section className="surface-soft section-pad">
         <Container wide>
           <h2 className="heading-section">Process</h2>
-          <ol className="mt-5 grid gap-3 md:grid-cols-5 md:gap-4">
+          <ol className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-4">
             {processSteps.map((step) => (
               <li
                 key={step.number}

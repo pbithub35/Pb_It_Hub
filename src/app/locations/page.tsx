@@ -8,14 +8,17 @@ import { locations, locationRegions } from "@/data/locations";
 import { STRINGS } from "@/config/strings";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Pathankot, Punjab, Jammu & Himachal",
+  title: "Pathankot, Jammu & Himachal Locations",
   description:
-    "City pages for websites and college projects across Pathankot, Punjab, Jammu and Himachal.",
+    "Websites, apps and college projects with source code across Pathankot, Jammu, Himachal and Punjab — city pages for businesses and students.",
   path: "/locations",
   keywords: [
     "website company Pathankot",
-    "final year projects Punjab",
-    "student projects Jammu Himachal",
+    "website company Jammu",
+    "website company Himachal",
+    "final year projects Jammu",
+    "final year projects Himachal",
+    "student projects Pathankot Punjab",
   ],
 });
 
@@ -27,8 +30,8 @@ export default function LocationsIndexPage() {
           <SectionHeading
             tone="light"
             eyebrow="Locations"
-            title="Pathankot home base — Punjab, Jammu & Himachal"
-            description="City pages for businesses and college students we serve. Pick your city for local context, then start a project or browse student packages."
+            title="Pathankot, Jammu & Himachal — our focus regions"
+            description="HQ in Pathankot. Equal focus on Jammu and Himachal for business websites, apps and college projects with source code. Pick your city for local context."
           />
 
           <div className="mt-6 space-y-8 md:mt-8 md:space-y-10">

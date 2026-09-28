@@ -199,9 +199,11 @@ const sections = [
       <>
         <p>
           Our site may use essential cookies / local storage for basic
-          functionality (for example remembering UI preferences). If analytics
-          tools are enabled, they may collect aggregated usage metrics to help
-          us understand which pages are useful.
+          functionality (for example remembering UI preferences). We also log
+          anonymous visit events (page path, device type, referrer host, and
+          optional campaign tags) so we can see whether people visit and whether
+          they look like student or business visitors based on pages opened. We
+          do not use this to identify you by name, email, or phone.
         </p>
         <p>
           You can control cookies through your browser settings. Blocking some

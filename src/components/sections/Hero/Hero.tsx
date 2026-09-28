@@ -18,7 +18,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative isolate min-h-[min(92svh,52rem)] overflow-hidden bg-navy-deep"
+      className="relative isolate min-h-[min(78svh,44rem)] overflow-hidden bg-navy-deep md:min-h-[min(92svh,52rem)]"
     >
       {/* Full-bleed workspace — edge to edge */}
       <motion.div
@@ -54,7 +54,7 @@ export function Hero() {
         }}
       />
 
-      <Container wide className="relative flex min-h-[min(92svh,52rem)] flex-col justify-end pb-12 pt-28 sm:pb-14 sm:pt-32 md:justify-center md:pb-20 md:pt-28">
+      <Container wide className="relative flex min-h-[min(78svh,44rem)] flex-col justify-end pb-9 pt-24 sm:pb-12 sm:pt-28 md:min-h-[min(92svh,52rem)] md:justify-center md:pb-20 md:pt-28">
         <motion.div
           className="max-w-xl md:max-w-2xl"
           initial="hidden"

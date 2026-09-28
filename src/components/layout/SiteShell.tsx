@@ -6,10 +6,12 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { MobileBottomBar } from "@/components/layout/MobileBottomBar";
 import { FloatingWhatsApp } from "@/components/layout/FloatingWhatsApp";
+import { VisitTrackerBoundary } from "@/components/analytics/VisitTrackerBoundary";
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   return (
     <ContactModalProvider>
+      <VisitTrackerBoundary />
       <Navbar />
       <main className="flex-1 pb-16 lg:pb-0">{children}</main>
       <Footer />

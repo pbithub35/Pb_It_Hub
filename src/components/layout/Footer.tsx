@@ -6,7 +6,6 @@ import { footerNav, legalNav } from "@/data/navigation";
 import { siteConfig } from "@/config/site";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
 import { STRINGS } from "@/config/strings";
 import { buildWhatsAppUrl, getWhatsAppNumber } from "@/lib/whatsapp";
 
@@ -120,9 +119,9 @@ export function Footer() {
       className="relative overflow-hidden border-t border-white/8"
       style={{ backgroundColor: "#020617" }}
     >
-      <Container wide className="relative py-10 md:py-14">
+      <Container wide className="relative py-7 md:py-12">
         <motion.div
-          className="grid gap-10 lg:grid-cols-[1.35fr_1fr_1fr_auto] lg:gap-12"
+          className="grid grid-cols-2 gap-x-6 gap-y-7 sm:gap-x-8 lg:grid-cols-[1.35fr_1fr_1fr_auto] lg:gap-10"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
@@ -133,20 +132,15 @@ export function Footer() {
             },
           }}
         >
-          {/* Brand + CTA */}
+          {/* Brand */}
           <motion.div
-            className="max-w-md"
+            className="col-span-2 max-w-md lg:col-span-1"
             variants={reduce ? undefined : itemVariants}
           >
             <BrandLogo tone="dark" />
-            <p className="mt-4 text-sm leading-relaxed text-white/55">
+            <p className="mt-2.5 line-clamp-2 text-sm leading-relaxed text-white/55 sm:line-clamp-none sm:mt-3">
               {STRINGS.brand.footerSlogan}
             </p>
-            <div className="mt-6">
-              <Button href="/contact" size="sm">
-                {STRINGS.hero.ctaProject}
-              </Button>
-            </div>
           </motion.div>
 
           {/* Explore */}
@@ -154,7 +148,7 @@ export function Footer() {
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-blue-bright">
               {STRINGS.footer.explore}
             </p>
-            <ul className="mt-4 space-y-2.5 text-sm text-white/55">
+            <ul className="mt-3 space-y-2 text-sm text-white/55">
               {exploreLinks.map((item) => (
                 <li key={item.href}>
                   <Link
@@ -173,7 +167,7 @@ export function Footer() {
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-blue-bright">
               {STRINGS.footer.company}
             </p>
-            <ul className="mt-4 space-y-2.5 text-sm text-white/55">
+            <ul className="mt-3 space-y-2 text-sm text-white/55">
               {companyLinks.map((item) => (
                 <li key={item.href}>
                   <Link
@@ -188,11 +182,14 @@ export function Footer() {
           </motion.div>
 
           {/* Connect */}
-          <motion.div variants={reduce ? undefined : itemVariants}>
+          <motion.div
+            className="col-span-2 lg:col-span-1"
+            variants={reduce ? undefined : itemVariants}
+          >
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-blue-bright">
               {STRINGS.footer.connect}
             </p>
-            <ul className="mt-4 flex items-center gap-2.5">
+            <ul className="mt-3 flex flex-wrap items-center gap-2">
               {connect.map((item) => {
                 const Icon = item.icon;
                 return (
@@ -202,40 +199,51 @@ export function Footer() {
                       target={item.label === STRINGS.footer.call ? undefined : "_blank"}
                       rel={item.label === STRINGS.footer.call ? undefined : "noreferrer"}
                       aria-label={item.label}
-                      className={`inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70 transition ${item.className}`}
+                      className={`inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white/70 transition ${item.className}`}
                     >
-                      <Icon className="h-5 w-5" />
+                      <Icon className="h-[18px] w-[18px]" />
                     </a>
                   </li>
                 );
               })}
             </ul>
-            <a
-              href={`mailto:${siteConfig.email}`}
-              className="mt-4 block text-sm text-white/45 transition hover:text-blue-bright"
-            >
-              {siteConfig.email}
-            </a>
-            <a
-              href={siteConfig.maps.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 block text-xs text-white/35 transition hover:text-blue-bright"
-            >
-              {siteConfig.location}, {siteConfig.region} · Map
-            </a>
+            <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1">
+              <a
+                href={`mailto:${siteConfig.email}`}
+                className="text-sm text-white/45 transition hover:text-blue-bright"
+              >
+                {siteConfig.email}
+              </a>
+              <span className="hidden text-white/20 sm:inline" aria-hidden>
+                ·
+              </span>
+              <a
+                href={siteConfig.maps.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-white/35 transition hover:text-blue-bright"
+              >
+                {siteConfig.location}, {siteConfig.region} · Map
+              </a>
+            </div>
           </motion.div>
         </motion.div>
 
         <motion.div
-          className="mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between"
+          className="mt-7 flex flex-col gap-3 border-t border-white/10 pt-5 text-xs text-white/40 sm:mt-8 sm:flex-row sm:items-end sm:justify-between sm:gap-4"
           initial={reduce ? false : { opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45, ease, delay: 0.15 }}
         >
-          <p>{STRINGS.brand.copyrightNotice(new Date().getFullYear())}</p>
-          <div className="flex flex-wrap gap-4 md:gap-5">
+          <div className="space-y-1">
+            {STRINGS.brand.copyrightLines(new Date().getFullYear()).map(
+              (line) => (
+                <p key={line}>{line}</p>
+              ),
+            )}
+          </div>
+          <div className="flex flex-wrap gap-3 md:gap-5">
             {legalNav.map((item) => (
               <Link
                 key={item.href}

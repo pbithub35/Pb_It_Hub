@@ -266,23 +266,26 @@ export const locations: LocationItem[] = [
     name: "Jammu",
     region: "jammu",
     regionLabel: "Jammu & Kashmir",
-    blurb: "Websites, apps and student projects for Jammu and nearby towns.",
-    metaTitle: "Websites & Projects in Jammu",
+    blurb: "Priority market — websites, apps and student projects across Jammu.",
+    metaTitle: "Website & Project Company in Jammu",
     metaDescription:
-      "Websites, software and college projects for Jammu — remote-friendly from Pathankot.",
+      "Custom websites, apps and BCA/MCA/B.Tech projects with source code for Jammu businesses and students — Pathankot team, WhatsApp-first.",
     keywords: [
       "website development Jammu",
-      "final year projects Jammu",
+      "IT company Jammu",
       "software company Jammu",
+      "app development Jammu",
+      "final year projects Jammu",
       "BCA projects Jammu",
+      "MCA projects Jammu",
     ],
-    headline: "Serving Jammu businesses and college students",
+    headline: "Jammu websites, apps & college projects",
     intro:
-      "From Pathankot we work closely with Jammu clients and students — websites and custom software for local businesses, plus college projects with full source code.",
+      "Jammu is a core focus region for PB IT HUB. We build websites, web apps and custom software for local businesses, and deliver college projects with full source code for university and college students — remote-friendly from Pathankot with clear WhatsApp delivery.",
     businessFocus:
-      "Business sites, apps and automation for Jammu teams that need reliable remote collaboration and clear deliverables.",
+      "Business sites, booking flows, apps and light automation for Jammu shops, services and growing teams that want reliable remote collaboration.",
     studentFocus:
-      "Final-year and minor projects for Jammu university and college students — catalog or custom problem statements.",
+      "Final-year and minor projects for Jammu university and college students — catalog packages or custom problem statements with viva-ready code.",
     nearbySlugs: ["pathankot", "kathua", "jalandhar", "amritsar"],
     faqs: [
       {
@@ -298,17 +301,19 @@ export const locations: LocationItem[] = [
     region: "jammu",
     regionLabel: "Jammu & Kashmir",
     blurb: "Nearby to Pathankot — local websites and student project support.",
-    metaTitle: "Websites & Projects in Kathua",
+    metaTitle: "Websites & Projects in Kathua, Jammu",
     metaDescription:
-      "Websites and college project source code for Kathua — near Pathankot.",
+      "Websites and college project source code for Kathua and nearby Jammu towns — close to our Pathankot base.",
     keywords: [
       "website Kathua",
       "final year projects Kathua",
       "college projects Kathua",
+      "website development Jammu",
+      "IT services Kathua Jammu",
     ],
-    headline: "Digital help for Kathua — close to Pathankot",
+    headline: "Kathua & nearby Jammu — websites and student projects",
     intro:
-      "Kathua sits near our Pathankot base. Local businesses get practical websites and tools; students get college projects with source code and optional guidance.",
+      "Kathua sits near our Pathankot base and is part of our Jammu focus. Local businesses get practical websites and tools; students get college projects with source code and optional guidance.",
     businessFocus:
       "Straightforward business websites and inquiry flows tailored to Kathua shops and services.",
     studentFocus:
@@ -327,23 +332,26 @@ export const locations: LocationItem[] = [
     name: "Shimla",
     region: "himachal",
     regionLabel: "Himachal Pradesh",
-    blurb: "Websites and college projects for Shimla businesses and students.",
-    metaTitle: "Websites & Projects in Shimla",
+    blurb: "Himachal hub — websites and college projects for Shimla & beyond.",
+    metaTitle: "Website & Projects Company in Shimla, Himachal",
     metaDescription:
-      "Websites and college projects for Shimla — Himachal support from Pathankot.",
+      "Websites, apps and college projects with source code for Shimla and Himachal Pradesh — hotels, services, students. Pathankot team, remote-ready.",
     keywords: [
       "website development Shimla",
+      "website development Himachal",
+      "IT company Himachal Pradesh",
       "final year projects Shimla",
       "college projects Himachal",
       "web design Shimla",
+      "student projects Himachal",
     ],
-    headline: "Build for Shimla — business sites & student projects",
+    headline: "Shimla & Himachal — business sites and student projects",
     intro:
-      "Shimla’s hospitality, services and colleges need dependable digital products. We deliver websites and student project packages remotely from Pathankot across Himachal.",
+      "Himachal is a core focus region alongside Pathankot and Jammu. Shimla’s hospitality, services and colleges get dependable websites and student project packages — delivered remotely from Pathankot across Himachal Pradesh.",
     businessFocus:
-      "Clear marketing and inquiry websites for Shimla hotels, services and local brands.",
+      "Clear marketing and inquiry websites for Shimla hotels, tourism, services and local brands across Himachal.",
     studentFocus:
-      "Source-code projects for Shimla college and university students — BCA, MCA, B.Tech and related CS/IT programs.",
+      "Source-code projects for Shimla and Himachal college students — BCA, MCA, B.Tech and related CS/IT programs.",
     nearbySlugs: ["solan", "hamirpur", "chandigarh", "pathankot"],
     faqs: [
       {
@@ -359,17 +367,19 @@ export const locations: LocationItem[] = [
     region: "himachal",
     regionLabel: "Himachal Pradesh",
     blurb: "College-belt projects and business websites for Solan.",
-    metaTitle: "College Projects & Web in Solan",
+    metaTitle: "College Projects & Websites in Solan, Himachal",
     metaDescription:
-      "College projects and websites for Solan students and businesses.",
+      "Final-year projects with source code and business websites for Solan, Himachal — BCA, MCA, B.Tech and local SMBs.",
     keywords: [
       "final year projects Solan",
       "website Solan Himachal",
       "B.Tech projects Solan",
+      "IT services Solan Himachal",
+      "college projects Himachal",
     ],
-    headline: "Solan’s students and businesses — practical tech",
+    headline: "Solan, Himachal — projects and business websites",
     intro:
-      "Solan’s education and industry corridor needs usable projects and websites. PB IT HUB provides both with transparent WhatsApp ordering from Pathankot.",
+      "Solan’s education and industry corridor is part of our Himachal focus. PB IT HUB provides usable college projects and business websites with transparent WhatsApp ordering from Pathankot.",
     businessFocus:
       "Business websites and light digital systems for Solan organizations that want a professional presence.",
     studentFocus:
@@ -389,18 +399,19 @@ export const locations: LocationItem[] = [
     region: "himachal",
     regionLabel: "Himachal Pradesh",
     blurb: "Strong engineering college city — projects and web builds for Hamirpur.",
-    metaTitle: "Projects & Websites in Hamirpur",
+    metaTitle: "Projects & Websites in Hamirpur, Himachal",
     metaDescription:
-      "College projects and websites for Hamirpur — Pathankot team, Himachal-ready.",
+      "B.Tech and college projects with source code plus business websites for Hamirpur, Himachal — Pathankot engineering team.",
     keywords: [
       "final year projects Hamirpur",
       "B.Tech projects Hamirpur",
       "website Hamirpur Himachal",
       "college projects NIT Hamirpur area",
+      "IT company Hamirpur Himachal",
     ],
-    headline: "Hamirpur college projects & business websites",
+    headline: "Hamirpur, Himachal — college projects & websites",
     intro:
-      "Hamirpur is known for serious engineering study. We supply final-year and minor projects with clean architecture and viva prep, plus websites for local businesses across the district.",
+      "Hamirpur is a key Himachal focus city for serious engineering study. We supply final-year and minor projects with clean architecture and viva prep, plus websites for local businesses across the district.",
     businessFocus:
       "Straightforward web products for Hamirpur businesses that want to be found and contacted online.",
     studentFocus:

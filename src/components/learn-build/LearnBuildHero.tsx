@@ -41,8 +41,8 @@ export function LearnBuildHero() {
               <MediaImage
                 src="learn-build/projects-pricing-badge"
                 alt="Projects under ₹1,999 – ₹5,999. Real projects, source code, optional support."
-                width={1024}
-                height={512}
+                width={733}
+                height={334}
                 className="h-auto w-full drop-shadow-md"
                 sizes="(max-width: 640px) 280px, (max-width: 1024px) 36vw, 380px"
                 priority

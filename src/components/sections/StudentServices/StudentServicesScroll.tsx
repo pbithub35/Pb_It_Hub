@@ -268,7 +268,7 @@ export function StudentServicesScroll() {
                 }
                 whileHover={reduce ? undefined : { y: -4 }}
                 transition={{ duration: 0.22, ease }}
-                className="flex w-[min(88vw,300px)] shrink-0 snap-start flex-col justify-between rounded-2xl border border-navy/10 bg-white p-5 shadow-[var(--shadow-soft)] transition-shadow duration-300 hover:border-blue/20 hover:shadow-[var(--shadow-card-hover)] sm:w-[calc((100%-1.25rem)/2)] sm:p-6 lg:w-[calc((100%-2.5rem)/3)]"
+                className="flex w-[min(88vw,300px)] shrink-0 snap-start flex-col justify-between rounded-2xl border border-navy/10 bg-white p-5 shadow-[var(--shadow-soft)] transition-shadow duration-300 hover:border-blue/20 hover:shadow-[var(--shadow-card-hover)] sm:w-[calc((100%-1.25rem)/2)] sm:p-6 lg:w-[min(250px,calc((100%-3rem)/3.5))] xl:w-[min(260px,calc((100%-3.75rem)/4))]"
               >
               <div>
                 <div className="flex items-center justify-between">

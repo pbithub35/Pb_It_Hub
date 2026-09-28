@@ -70,7 +70,11 @@ export async function submitStudentLead(
   }
 
   await new Promise((resolve) => setTimeout(resolve, 650));
-  console.info("[PB IT HUB] Student lead (no endpoint configured):", body);
+  if (process.env.NODE_ENV !== "production") {
+    console.info(
+      "[PB IT HUB] Student lead received (no endpoint configured).",
+    );
+  }
 
   return {
     ok: true,

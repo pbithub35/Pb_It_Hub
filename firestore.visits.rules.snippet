@@ -1,0 +1,33 @@
+// Paste into Firebase Console → Firestore → Rules → Publish.
+// One visit doc per sessionId. Stats may only increment (not decrease).
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /visits/{sessionId} {
+      allow create: if
+        request.resource.data.keys().hasOnly([
+          'sessionId', 'path', 'visitorType', 'device',
+          'referrerHost', 'utmSource', 'utmMedium', 'utmCampaign', 'createdAt'
+        ])
+        && request.resource.data.sessionId == sessionId
+        && request.resource.data.sessionId is string
+        && request.resource.data.sessionId.size() <= 80
+        && request.resource.data.path is string
+        && request.resource.data.path.size() <= 200
+        && request.resource.data.visitorType in ['student', 'business', 'mixed', 'general']
+        && request.resource.data.device in ['mobile', 'tablet', 'desktop'];
+      allow read, update, delete: if false;
+    }
+
+    match /stats/site {
+      allow create: if
+        request.resource.data.totalVisitors is int
+        && request.resource.data.totalVisitors == 1;
+      allow update: if
+        request.resource.data.totalVisitors is int
+        && request.resource.data.totalVisitors == resource.data.totalVisitors + 1;
+      allow read, delete: if false;
+    }
+  }
+}

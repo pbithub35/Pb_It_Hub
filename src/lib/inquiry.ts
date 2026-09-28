@@ -57,9 +57,13 @@ export async function submitProjectInquiry(
     }
   }
 
-  // Development / pre-backend fallback
+  // Development / pre-backend fallback — do not log PII
   await new Promise((resolve) => setTimeout(resolve, 700));
-  console.info("[PB IT HUB] Project inquiry (no endpoint configured):", payload);
+  if (process.env.NODE_ENV !== "production") {
+    console.info(
+      "[PB IT HUB] Project inquiry received (no endpoint configured).",
+    );
+  }
 
   return {
     ok: true,

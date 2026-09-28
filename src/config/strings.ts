@@ -15,9 +15,11 @@ export const STRINGS = {
     tagline: "Technology designed for real-world business.",
     subheadline: "Technology designed for real-world business.",
     footerSlogan:
-      "Based in Pathankot, Punjab — serving Jammu, Himachal & beyond. Technology partner for businesses that want to build, automate and grow.",
-    copyrightNotice: (year: number) =>
+      "Pathankot HQ — websites, apps and student projects for Pathankot, Jammu, Himachal and Punjab.",
+    copyrightLines: (year: number) => [
       `© ${year} PB IT HUB. All rights reserved.`,
+      "Serving Pathankot, Jammu & Himachal from Pathankot, Punjab.",
+    ],
   },
 
   // Navigation Links
@@ -43,13 +45,13 @@ export const STRINGS = {
   // Homepage Hero Section
   hero: {
     eyebrow: "PATHANKOT · PUNJAB · BUILD · AUTOMATE · GROW",
-    locationLine: "Pathankot · Punjab · Jammu · Himachal",
-    headlinePart1: "We build digital products",
-    headlinePart2: "that move businesses forward.",
+    locationLine: "Pathankot · Jammu · Himachal · Punjab",
+    headlinePart1: "Websites, apps & student projects",
+    headlinePart2: "for Pathankot, Jammu & Himachal.",
     description:
-      "Website development, apps and AI for businesses in Pathankot, Punjab, Jammu and Himachal — plus final-year projects with source code for BCA, MCA and B.Tech students.",
+      "Custom website and app development, SaaS and AI for businesses in Pathankot, Jammu, Himachal and Punjab — plus final-year BCA, MCA and B.Tech projects with source code.",
     descriptionShort:
-      "Websites, apps and AI for regional businesses — plus final-year projects with source code.",
+      "IT partner for Pathankot, Jammu and Himachal — websites, apps, AI and college projects with source code.",
     ctaProject: "Start a Project",
     ctaWork: "Explore Work",
     steps: {
@@ -80,7 +82,7 @@ export const STRINGS = {
     eyebrow: "What we build",
     title: "Website, app and software development",
     description:
-      "Custom websites, mobile apps, SaaS and business systems for companies in Pathankot, Punjab, Jammu and Himachal.",
+      "Custom websites, mobile apps, SaaS and business systems for Pathankot, Jammu, Himachal and Punjab.",
     exploreLink: "Explore →",
     viewLink: "View →",
     viewAllServices: "View all services",
@@ -155,9 +157,9 @@ export const STRINGS = {
   // About Section
   about: {
     eyebrow: "About PB IT HUB",
-    title: "Pathankot technology partner for business and students",
+    title: "Technology partner for Pathankot, Jammu & Himachal",
     description:
-      "Based in Pathankot, Punjab, we build websites, apps and custom software for regional businesses — and industry-grade college projects with source code for BCA, MCA and B.Tech students across Jammu and Himachal.",
+      "Headquartered in Pathankot, we build websites, apps and custom software for businesses across Pathankot, Jammu and Himachal — plus industry-grade college projects with source code for BCA, MCA and B.Tech students.",
     focusList: [
       "Digital Products",
       "Business Platforms",
@@ -171,7 +173,7 @@ export const STRINGS = {
     eyebrow: "Process",
     title: "From idea to product",
     description:
-      "A clear path from discovery to launch — without unnecessary process theater.",
+      "Seven clear stages from product idea to live impact — discovery, build, launch and continuous growth.",
   },
 
   // Contact CTA (Bottom of Pages)

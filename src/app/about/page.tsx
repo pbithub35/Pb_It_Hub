@@ -9,9 +9,9 @@ import { STRINGS } from "@/config/strings";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "About PB IT HUB Pathankot",
+  title: "About PB IT HUB — Pathankot, Jammu & Himachal",
   description:
-    "Pathankot technology company building websites, apps and student projects for Punjab, Jammu and Himachal.",
+    "Technology partner for Pathankot, Jammu and Himachal — websites, apps and student projects with source code.",
   path: "/about",
 });
 
@@ -26,7 +26,7 @@ const focusAreas = [
   },
   {
     title: "Local + remote delivery",
-    body: "Based in Pathankot with clear WhatsApp-first communication for Punjab, Jammu, Himachal and beyond.",
+    body: "Pathankot HQ with equal focus on Jammu and Himachal — WhatsApp-first delivery across Punjab and beyond.",
   },
 ];
 
@@ -88,7 +88,7 @@ export default function AboutPage() {
             tone="light"
             eyebrow={STRINGS.about.eyebrow}
             title={STRINGS.about.title}
-            description="PB IT HUB is a Pathankot-based technology partner for digital products, business platforms and student project learning — built with practical engineering, not empty buzzwords."
+            description="PB IT HUB is the technology partner for Pathankot, Jammu and Himachal — digital products, business platforms and student project learning with practical engineering, not empty buzzwords."
           />
 
           <div className="mt-6 grid gap-3 sm:grid-cols-3 md:mt-8 md:gap-4">
@@ -113,12 +113,12 @@ export default function AboutPage() {
         <Container wide className="max-w-5xl">
           <p className="eyebrow text-blue">Our story</p>
           <h2 className="heading-section mt-2">
-            Built in Pathankot for real work across North India
+            Pathankot HQ — focused on Jammu & Himachal too
           </h2>
           <div className="mt-5 max-w-3xl space-y-3.5 text-sm leading-relaxed text-muted-strong md:text-base">
             <p>
               {siteConfig.name} started with a simple belief: businesses and
-              students in Pathankot, Punjab, Jammu and Himachal deserve the same
+              students in Pathankot, Jammu and Himachal deserve the same
               quality of product engineering as metro markets — delivered with
               clear communication and practical pricing.
             </p>

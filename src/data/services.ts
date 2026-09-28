@@ -117,7 +117,7 @@ export const services: ServiceItem[] = [
       "Purpose-built software for operations that off-the-shelf tools cannot cover — scoped, engineered and owned by your team.",
     seoDescription:
       "Custom software development services for businesses that need tailored systems, integrations and durable product foundations.",
-    visualKey: "services/saas",
+    visualKey: "services/custom",
     capabilities: [
       "Discovery & system design",
       "Internal tools",
@@ -136,7 +136,7 @@ export const services: ServiceItem[] = [
       "Online stores and commerce platforms designed around catalog, checkout and post-purchase operations.",
     seoDescription:
       "E-commerce website development cost and build options for Indian retail brands — storefronts, catalogs and checkout flows engineered for real selling.",
-    visualKey: "services/web",
+    visualKey: "services/ecommerce",
     capabilities: [
       "Catalog & product pages",
       "Cart & checkout flows",
@@ -155,7 +155,7 @@ export const services: ServiceItem[] = [
       "Shopify storefronts customized for your brand, catalog structure and conversion goals.",
     seoDescription:
       "Shopify store development and customization for Punjab businesses — themes, product structure and conversion-focused pages.",
-    visualKey: "services/web",
+    visualKey: "services/shopify",
     capabilities: [
       "Store setup & theming",
       "Product & collection architecture",
@@ -174,7 +174,7 @@ export const services: ServiceItem[] = [
       "Ongoing care for speed, security, content updates and practical search visibility.",
     seoDescription:
       "Website maintenance and SEO services price clarity — performance, security, content updates and practical search improvements for business sites.",
-    visualKey: "services/crm",
+    visualKey: "services/seo",
     capabilities: [
       "Performance monitoring",
       "Security & updates",

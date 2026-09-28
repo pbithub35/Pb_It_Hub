@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { getFallbackMedia, resolveImageSrc } from "@/lib/media";
 
@@ -63,6 +63,10 @@ export function MediaImage({
 }: MediaImageProps) {
   const resolved = resolveImageSrc(src);
   const [current, setCurrent] = useState(resolved);
+
+  useEffect(() => {
+    setCurrent(resolved);
+  }, [resolved]);
 
   const resolvedSizes =
     sizes ?? (fill ? DEFAULT_SIZES[imageType] : undefined);

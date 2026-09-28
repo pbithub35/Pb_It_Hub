@@ -9,9 +9,9 @@ import { siteConfig } from "@/config/site";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Contact Pathankot Team",
+  title: "Contact Pathankot, Jammu & Himachal",
   description:
-    "Start a website, app or student project with PB IT HUB in Pathankot — WhatsApp-friendly support.",
+    "Start a website, app or student project with PB IT HUB — Pathankot HQ, serving Jammu and Himachal. WhatsApp-friendly support.",
   path: "/contact",
 });
 
