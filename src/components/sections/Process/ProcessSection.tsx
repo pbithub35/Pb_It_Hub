@@ -157,7 +157,7 @@ export function ProcessSection() {
                   className="text-xs font-bold tracking-[0.16em]"
                   style={{ color: current.accent }}
                 >
-                  STAGE {current.number}
+                  STAGE
                 </p>
                 <h3 className="mt-2 font-display text-xl text-ink sm:text-2xl">
                   {current.title}
@@ -214,7 +214,7 @@ export function ProcessSection() {
                     <StepIcon type="idea" className="h-5 w-5 sm:h-6 sm:w-6" />
                   </span>
                   <p className="mt-1.5 text-[8px] font-semibold uppercase tracking-[0.14em] text-muted-strong sm:mt-2 sm:text-[10px] sm:tracking-[0.18em]">
-                    Product Idea
+                    Life cycle
                   </p>
                 </div>
               </div>
@@ -254,10 +254,7 @@ export function ProcessSection() {
                       <StepIcon type={step.icon} className="h-4 w-4 sm:h-5 sm:w-5" />
                     ) : null}
                   </span>
-                  <span className="mt-1.5 text-[9px] font-bold tracking-[0.1em] text-muted sm:mt-2 sm:text-[10px] sm:tracking-[0.12em]">
-                    {step.number}
-                  </span>
-                  <span className="mt-0.5 max-w-[4.25rem] text-[10px] font-semibold leading-tight text-ink sm:max-w-[5.5rem] sm:text-[11px]">
+                  <span className="mt-1.5 max-w-[4.25rem] text-[10px] font-semibold leading-tight text-ink sm:mt-2 sm:max-w-[5.5rem] sm:text-[11px]">
                     {step.shortTitle ?? step.title}
                   </span>
                 </button>

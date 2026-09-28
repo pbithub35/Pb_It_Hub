@@ -129,10 +129,7 @@ export function TechnologyGraphSection() {
                     reduce ? undefined : { y: -4, transition: { duration: 0.22 } }
                   }
                 >
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-blue/15 bg-blue/[0.06] font-display text-sm font-bold text-blue">
-                    {String(page * PAGE_SIZE + index + 1).padStart(2, "0")}
-                  </div>
-                  <h3 className="mt-4 font-display text-xl text-ink">
+                  <h3 className="font-display text-xl text-ink">
                     {tech.label}
                   </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-strong">

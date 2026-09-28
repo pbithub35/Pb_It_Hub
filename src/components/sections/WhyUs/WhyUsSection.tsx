@@ -105,18 +105,13 @@ export function WhyUsSection() {
         }
       >
         <div className="relative">
-          <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center justify-between gap-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-blue/20 bg-blue/[0.06] text-blue transition-all duration-300 group-hover:bg-blue group-hover:text-white sm:h-11 sm:w-11">
               <ApproachIcon icon={item.icon} />
             </div>
-            <div className="flex items-center gap-2.5">
-              <span className="rounded-full border border-blue/20 bg-blue/[0.06] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-blue sm:text-xs">
-                {item.highlight}
-              </span>
-              <span className="font-display text-xs font-bold text-muted transition-colors group-hover:text-blue sm:text-sm">
-                {item.number}
-              </span>
-            </div>
+            <span className="rounded-full border border-blue/20 bg-blue/[0.06] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-blue sm:text-xs">
+              {item.highlight}
+            </span>
           </div>
 
           <h3 className="mt-4 font-display text-base text-navy transition-colors group-hover:text-blue sm:text-xl md:text-2xl">
