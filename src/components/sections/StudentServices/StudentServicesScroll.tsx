@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
@@ -138,14 +138,29 @@ export function StudentServicesScroll() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [activeIndex, setActiveIndex] = useState(0);
   const reduce = useReducedMotion();
 
-  const checkScroll = () => {
+  const { studentServicesScroll: copy } = STRINGS;
+  const totalItems = copy.items.length;
+
+  const checkScroll = useCallback(() => {
     const el = containerRef.current;
     if (!el) return;
     setCanScrollLeft(el.scrollLeft > 10);
     setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 10);
-  };
+
+    const card = el.querySelector<HTMLElement>("[data-student-card]");
+    if (card) {
+      const styles = getComputedStyle(el);
+      const gap = parseFloat(styles.columnGap || styles.gap || "24") || 24;
+      const cardWidth = card.offsetWidth + gap;
+      if (cardWidth > 0) {
+        const index = Math.round(el.scrollLeft / cardWidth);
+        setActiveIndex(Math.min(Math.max(0, index), totalItems - 1));
+      }
+    }
+  }, [totalItems]);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -157,27 +172,38 @@ export function StudentServicesScroll() {
       el.removeEventListener("scroll", checkScroll);
       window.removeEventListener("resize", checkScroll);
     };
-  }, []);
+  }, [checkScroll]);
 
   const scroll = (direction: "left" | "right") => {
     const el = containerRef.current;
     if (!el) return;
     const card = el.querySelector<HTMLElement>("[data-student-card]");
     const styles = getComputedStyle(el);
-    const gap = parseFloat(styles.columnGap || styles.gap || "20") || 20;
-    const amount = card ? card.offsetWidth + gap : el.clientWidth / 3;
+    const gap = parseFloat(styles.columnGap || styles.gap || "24") || 24;
+    const amount = card ? card.offsetWidth + gap : el.clientWidth;
     el.scrollBy({
       left: direction === "left" ? -amount : amount,
       behavior: "smooth",
     });
   };
 
-  const { studentServicesScroll: copy } = STRINGS;
+  const scrollToIndex = (index: number) => {
+    const el = containerRef.current;
+    if (!el) return;
+    const cards = el.querySelectorAll<HTMLElement>("[data-student-card]");
+    if (cards[index]) {
+      cards[index].scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+        inline: "start",
+      });
+    }
+  };
 
   return (
     <section
       id="student-services"
-      className="relative overflow-hidden py-10 md:py-14"
+      className="relative overflow-hidden py-10 md:py-16"
       style={{ backgroundColor: "var(--pb-surface)" }}
       aria-labelledby="student-services-heading"
     >
@@ -192,7 +218,7 @@ export function StudentServicesScroll() {
             <p className="eyebrow text-blue">{copy.eyebrow}</p>
             <h2
               id="student-services-heading"
-              className="heading-section mt-2"
+              className="heading-section mt-2 text-balance"
             >
               {copy.headline}
             </h2>
@@ -201,44 +227,51 @@ export function StudentServicesScroll() {
             </p>
           </motion.div>
 
-          <div className="hidden items-center gap-2 sm:flex">
-            <button
-              type="button"
-              onClick={() => scroll("left")}
-              disabled={!canScrollLeft}
-              aria-label="Scroll offerings left"
-              className={cn(
-                "inline-flex h-9 w-9 items-center justify-center rounded-xl border border-navy/10 bg-white text-navy shadow-[var(--shadow-soft)] transition hover:border-blue/25 hover:text-blue active:scale-95",
-                !canScrollLeft &&
-                  "cursor-not-allowed opacity-30 hover:border-navy/10 hover:text-navy",
-              )}
-            >
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button
-              type="button"
-              onClick={() => scroll("right")}
-              disabled={!canScrollRight}
-              aria-label="Scroll offerings right"
-              className={cn(
-                "inline-flex h-9 w-9 items-center justify-center rounded-xl border border-navy/10 bg-white text-navy shadow-[var(--shadow-soft)] transition hover:border-blue/25 hover:text-blue active:scale-95",
-                !canScrollRight &&
-                  "cursor-not-allowed opacity-30 hover:border-navy/10 hover:text-navy",
-              )}
-            >
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
+          <div className="flex items-center justify-between sm:justify-end gap-3">
+            <span className="text-xs font-semibold text-muted sm:hidden">
+              {activeIndex + 1} / {totalItems}
+            </span>
+
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={() => scroll("left")}
+                disabled={!canScrollLeft}
+                aria-label="Scroll offerings left"
+                className={cn(
+                  "inline-flex h-9 w-9 items-center justify-center rounded-xl border border-navy/10 bg-white text-navy shadow-[var(--shadow-soft)] transition hover:border-blue/25 hover:text-blue active:scale-95",
+                  !canScrollLeft &&
+                    "cursor-not-allowed opacity-30 hover:border-navy/10 hover:text-navy",
+                )}
+              >
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                onClick={() => scroll("right")}
+                disabled={!canScrollRight}
+                aria-label="Scroll offerings right"
+                className={cn(
+                  "inline-flex h-9 w-9 items-center justify-center rounded-xl border border-navy/10 bg-white text-navy shadow-[var(--shadow-soft)] transition hover:border-blue/25 hover:text-blue active:scale-95",
+                  !canScrollRight &&
+                    "cursor-not-allowed opacity-30 hover:border-navy/10 hover:text-navy",
+                )}
+              >
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
 
+        {/* Carousel Container */}
         <div className="mt-6 overflow-hidden md:mt-8">
           <motion.div
             ref={containerRef}
-            className="no-scrollbar flex gap-4 overflow-x-auto snap-x snap-mandatory pb-1 pt-1 sm:gap-5"
+            className="no-scrollbar flex gap-4 overflow-x-auto snap-x snap-mandatory pb-3 pt-1 sm:gap-5 lg:gap-6"
             style={{ WebkitOverflowScrolling: "touch" }}
             initial="hidden"
             whileInView="visible"
@@ -246,7 +279,7 @@ export function StudentServicesScroll() {
             variants={{
               hidden: {},
               visible: {
-                transition: { staggerChildren: 0.08, delayChildren: 0.06 },
+                transition: { staggerChildren: 0.07, delayChildren: 0.05 },
               },
             }}
           >
@@ -268,71 +301,92 @@ export function StudentServicesScroll() {
                 }
                 whileHover={reduce ? undefined : { y: -4 }}
                 transition={{ duration: 0.22, ease }}
-                className="flex w-[min(88vw,300px)] shrink-0 snap-start flex-col justify-between rounded-2xl border border-navy/10 bg-white p-5 shadow-[var(--shadow-soft)] transition-shadow duration-300 hover:border-blue/20 hover:shadow-[var(--shadow-card-hover)] sm:w-[calc((100%-1.25rem)/2)] sm:p-6 lg:w-[min(250px,calc((100%-3rem)/3.5))] xl:w-[min(260px,calc((100%-3.75rem)/4))]"
+                className="flex w-[84vw] max-w-[340px] shrink-0 snap-start flex-col justify-between rounded-2xl border border-navy/10 bg-white p-5 shadow-[var(--shadow-soft)] transition-all duration-300 hover:border-blue/30 hover:shadow-lg sm:w-[calc((100%-1.25rem)/2)] sm:max-w-none sm:p-6 lg:w-[calc((100%-3rem)/3)]"
               >
-              <div>
-                <div className="flex items-center justify-between">
-                  <div className="rounded-xl border border-blue/15 bg-blue/[0.05] p-1.5">
-                    <ServiceIcon id={item.id} />
+                <div>
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="rounded-xl border border-blue/15 bg-blue/[0.05] p-2">
+                      <ServiceIcon id={item.id} />
+                    </div>
+                    <span
+                      className={cn(
+                        "rounded-md px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase border",
+                        item.badge === "100% FREE"
+                          ? "border-emerald-500/30 bg-emerald-50 text-emerald-700"
+                          : item.badge === "BEST VALUE"
+                            ? "border-amber-500/30 bg-amber-50 text-amber-700"
+                            : "border-blue/20 bg-blue/[0.06] text-blue",
+                      )}
+                    >
+                      {item.badge}
+                    </span>
                   </div>
-                  <span
-                    className={cn(
-                      "rounded-md px-2 py-0.5 text-[10px] font-semibold tracking-wider uppercase border",
-                      item.badge === "100% FREE"
-                        ? "border-emerald-500/30 bg-emerald-50 text-emerald-700"
-                        : item.badge === "BEST VALUE"
-                          ? "border-amber-500/30 bg-amber-50 text-amber-700"
-                          : "border-blue/20 bg-blue/[0.06] text-blue",
-                    )}
-                  >
-                    {item.badge}
-                  </span>
-                </div>
 
-                <h3 className="mt-3.5 font-display text-base font-semibold text-navy sm:text-lg">
-                  {item.title}
-                </h3>
-                <p className="mt-1 text-xs font-medium text-blue">{item.tagline}</p>
+                  <h3 className="mt-4 font-display text-base font-semibold text-navy sm:text-lg">
+                    {item.title}
+                  </h3>
+                  <p className="mt-1 text-xs font-semibold text-blue">{item.tagline}</p>
 
-                <p className="mt-2 text-xs leading-relaxed text-muted-strong">
-                  {item.description}
-                </p>
-
-                <div className="mt-4 border-t border-navy/8 pt-3.5">
-                  <p className="text-[10px] font-semibold uppercase tracking-wider text-muted">
-                    What You Get:
+                  <p className="mt-2.5 text-xs leading-relaxed text-muted-strong">
+                    {item.description}
                   </p>
-                  <ul className="mt-2 space-y-1.5">
-                    {item.benefits.map((benefit, i) => (
-                      <li
-                        key={i}
-                        className="flex items-start gap-2 text-[11px] leading-snug text-muted-strong sm:text-xs"
-                      >
-                        <span className="mt-0.5 shrink-0 font-bold text-blue">✓</span>
-                        <span>{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
 
-              <div className="mt-5 pt-2">
-                <Link
-                  href={item.ctaHref}
-                  className="inline-flex w-full items-center justify-center gap-1.5 rounded-xl border border-blue/20 bg-blue/[0.06] px-3.5 py-2 text-xs font-semibold text-blue transition hover:border-blue hover:bg-blue hover:text-white active:scale-[0.98]"
-                >
-                  <span>{item.ctaText}</span>
-                  <span aria-hidden="true">→</span>
-                </Link>
-              </div>
-            </motion.article>
-          ))}
+                  <div className="mt-4 border-t border-navy/8 pt-3.5">
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-muted">
+                      What You Get:
+                    </p>
+                    <ul className="mt-2 space-y-2">
+                      {item.benefits.map((benefit, i) => (
+                        <li
+                          key={i}
+                          className="flex items-start gap-2 text-xs leading-snug text-muted-strong"
+                        >
+                          <span className="mt-0.5 shrink-0 font-bold text-blue">✓</span>
+                          <span>{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-2">
+                  <Link
+                    href={item.ctaHref}
+                    className="inline-flex min-h-[42px] w-full items-center justify-center gap-1.5 rounded-xl border border-blue/20 bg-blue/[0.06] px-4 py-2.5 text-xs font-semibold text-blue transition hover:border-blue hover:bg-blue hover:text-white active:scale-[0.98]"
+                  >
+                    <span>{item.ctaText}</span>
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </div>
+              </motion.article>
+            ))}
           </motion.div>
         </div>
 
-        <p className="mt-2 text-center text-[11px] text-muted sm:hidden">
-          ← {copy.scrollHint} →
-        </p>
+        {/* Pagination Dots & Hint */}
+        <div className="mt-4 flex flex-col items-center justify-center gap-2">
+          <div className="flex items-center gap-1.5" role="tablist" aria-label="Card navigation">
+            {copy.items.map((_, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => scrollToIndex(idx)}
+                aria-label={`Go to card ${idx + 1}`}
+                aria-selected={activeIndex === idx}
+                className={cn(
+                  "h-1.5 rounded-full transition-all duration-300",
+                  activeIndex === idx
+                    ? "w-6 bg-blue"
+                    : "w-2 bg-navy/15 hover:bg-navy/30",
+                )}
+              />
+            ))}
+          </div>
+
+          <p className="text-center text-[11px] text-muted sm:hidden">
+            ← {copy.scrollHint} →
+          </p>
+        </div>
       </Container>
     </section>
   );
