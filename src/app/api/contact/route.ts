@@ -79,21 +79,21 @@ export async function POST(request: Request) {
         const isGmail = smtpUser.endsWith("@gmail.com") || smtpHost.includes("gmail");
         const transporter = isGmail
           ? nodemailer.createTransport({
-              service: "gmail",
-              auth: {
-                user: smtpUser.trim(),
-                pass: cleanPass,
-              },
-            })
+            service: "gmail",
+            auth: {
+              user: smtpUser.trim(),
+              pass: cleanPass,
+            },
+          })
           : nodemailer.createTransport({
-              host: smtpHost,
-              port: smtpPort,
-              secure: smtpPort === 465,
-              auth: {
-                user: smtpUser.trim(),
-                pass: cleanPass,
-              },
-            });
+            host: smtpHost,
+            port: smtpPort,
+            secure: smtpPort === 465,
+            auth: {
+              user: smtpUser.trim(),
+              pass: cleanPass,
+            },
+          });
 
         const mailOptions = {
           from: `"PB IT HUB Inquiry" <${smtpUser}>`,
@@ -111,7 +111,7 @@ Service Requested: ${service || "General"}
 Project Details:
 ${details.trim()}
 
-----------------------------------------
+-----------------------------------------
 Sent from PB IT HUB Website Contact Form
           `.trim(),
           html: `
