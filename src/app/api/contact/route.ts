@@ -72,17 +72,28 @@ export async function POST(request: Request) {
     let emailSent = false;
     let mailError: string | null = null;
 
-    if (smtpUser && smtpPass) {
+    const cleanPass = smtpPass ? smtpPass.replace(/\s+/g, "") : "";
+
+    if (smtpUser && cleanPass) {
       try {
-        const transporter = nodemailer.createTransport({
-          host: smtpHost,
-          port: smtpPort,
-          secure: smtpPort === 465,
-          auth: {
-            user: smtpUser,
-            pass: smtpPass,
-          },
-        });
+        const isGmail = smtpUser.endsWith("@gmail.com") || smtpHost.includes("gmail");
+        const transporter = isGmail
+          ? nodemailer.createTransport({
+              service: "gmail",
+              auth: {
+                user: smtpUser.trim(),
+                pass: cleanPass,
+              },
+            })
+          : nodemailer.createTransport({
+              host: smtpHost,
+              port: smtpPort,
+              secure: smtpPort === 465,
+              auth: {
+                user: smtpUser.trim(),
+                pass: cleanPass,
+              },
+            });
 
         const mailOptions = {
           from: `"PB IT HUB Inquiry" <${smtpUser}>`,
