@@ -60,11 +60,13 @@ export async function POST(request: Request) {
     const smtpUser =
       process.env.SMTP_USER ||
       process.env.GMAIL_USER ||
-      process.env.EMAIL_USER;
+      process.env.EMAIL_USER ||
+      "pbithub0@gmail.com";
     const smtpPass =
       process.env.SMTP_PASS ||
       process.env.GMAIL_APP_PASSWORD ||
-      process.env.EMAIL_PASSWORD;
+      process.env.EMAIL_PASSWORD ||
+      "scpjpatgirrcoxhx";
     const smtpHost =
       process.env.SMTP_HOST || "smtp.gmail.com";
     const smtpPort = Number(process.env.SMTP_PORT || 465);
@@ -79,21 +81,21 @@ export async function POST(request: Request) {
         const isGmail = smtpUser.endsWith("@gmail.com") || smtpHost.includes("gmail");
         const transporter = isGmail
           ? nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-              user: smtpUser.trim(),
-              pass: cleanPass,
-            },
-          })
+              service: "gmail",
+              auth: {
+                user: smtpUser.trim(),
+                pass: cleanPass,
+              },
+            })
           : nodemailer.createTransport({
-            host: smtpHost,
-            port: smtpPort,
-            secure: smtpPort === 465,
-            auth: {
-              user: smtpUser.trim(),
-              pass: cleanPass,
-            },
-          });
+              host: smtpHost,
+              port: smtpPort,
+              secure: smtpPort === 465,
+              auth: {
+                user: smtpUser.trim(),
+                pass: cleanPass,
+              },
+            });
 
         const mailOptions = {
           from: `"PB IT HUB Inquiry" <${smtpUser}>`,
@@ -158,19 +160,23 @@ Sent from PB IT HUB Website Contact Form
         mailError = err instanceof Error ? err.message : "SMTP transport error";
         console.error("Nodemailer send error:", err);
       }
-    } else {
-      console.warn(
-        "SMTP credentials (SMTP_USER & SMTP_PASS) not configured in environment variables. Inquiry received successfully.",
+    }
+
+    if (!emailSent) {
+      return NextResponse.json(
+        {
+          error:
+            mailError ||
+            "Failed to send email. Please ensure SMTP credentials are configured.",
+        },
+        { status: 500 },
       );
     }
 
     return NextResponse.json({
       success: true,
-      emailSent,
-      mailError: emailSent ? null : mailError,
-      message: emailSent
-        ? "Your project inquiry has been emailed successfully!"
-        : "Inquiry received. For direct instant response, you can also continue on WhatsApp or email.",
+      emailSent: true,
+      message: "Your project inquiry has been emailed successfully!",
     });
   } catch (error: unknown) {
     console.error("API error:", error);
