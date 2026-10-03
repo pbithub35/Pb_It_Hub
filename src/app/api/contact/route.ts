@@ -37,6 +37,7 @@ export async function POST(request: Request) {
       process.env.CONTACT_RECEIVER_EMAIL;
     const secondaryEmail = process.env.CONTACT_RECEIVER_EMAIL_2;
 
+    const defaultRecipients = ["pbithub0@gmail.com", "rishabk227@gmail.com"];
     const recipientList: string[] = [];
 
     if (envEmails) {
@@ -47,14 +48,14 @@ export async function POST(request: Request) {
           .filter(Boolean),
       );
     } else {
-      recipientList.push(siteConfig.email || "pbithub0@gmail.com");
+      recipientList.push(...defaultRecipients);
     }
 
     if (secondaryEmail && !recipientList.includes(secondaryEmail.trim())) {
       recipientList.push(secondaryEmail.trim());
     }
 
-    // Ensure recipient list has valid emails
+    // Ensure recipient list has valid unique emails
     const finalRecipients = Array.from(new Set(recipientList));
 
     const smtpUser =
