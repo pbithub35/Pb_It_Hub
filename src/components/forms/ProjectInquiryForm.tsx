@@ -5,7 +5,8 @@ import { services } from "@/data/services";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { STRINGS } from "@/config/strings";
-import { openWhatsApp } from "@/lib/whatsapp";
+import { openWhatsApp, buildWhatsAppUrl } from "@/lib/whatsapp";
+import { siteConfig } from "@/config/site";
 
 interface ProjectInquiryFormProps {
   className?: string;
@@ -39,7 +40,7 @@ export function ProjectInquiryForm({
   className,
   onSuccess,
 }: ProjectInquiryFormProps) {
-  const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
   const [form, setForm] = useState({
     name: "",
@@ -49,7 +50,7 @@ export function ProjectInquiryForm({
     details: "",
   });
 
-  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setStatus("loading");
     setMessage("");
@@ -66,25 +67,104 @@ export function ProjectInquiryForm({
       return;
     }
 
-    const text = buildBusinessWhatsAppMessage(form);
-    onSuccess?.();
-    openWhatsApp(text);
-    setStatus("idle");
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message.");
+      }
+
+      setStatus("success");
+      setMessage("Your project inquiry has been sent to our team via email! We will reply to your email shortly.");
+      onSuccess?.();
+    } catch (err: unknown) {
+      console.error("Submission error:", err);
+      // Fallback: construct mailto so user can still email directly without losing their content
+      const subject = encodeURIComponent(`Project Inquiry: ${form.service} - ${form.name}`);
+      const body = encodeURIComponent(
+        `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nService: ${form.service}\n\nProject Details:\n${form.details}`,
+      );
+      const mailtoUrl = `mailto:${siteConfig.email}?subject=${subject}&body=${body}`;
+      
+      setStatus("error");
+      setMessage("Could not connect to server. Click below to email directly or chat on WhatsApp.");
+      window.open(mailtoUrl, "_blank");
+    }
   }
 
   const fieldClass =
     "w-full rounded-xl border border-navy/10 bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-muted outline-none transition focus:border-blue/45 focus:ring-2 focus:ring-blue/15";
 
+  if (status === "success") {
+    const waText = buildBusinessWhatsAppMessage(form);
+    const waUrl = buildWhatsAppUrl(waText);
+
+    return (
+      <div className={cn("space-y-5 rounded-2xl border border-emerald-500/20 bg-emerald-50/40 p-6 text-center", className)}>
+        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+          <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <div>
+          <h3 className="font-display text-lg font-semibold text-navy">
+            Project Request Sent!
+          </h3>
+          <p className="mt-1.5 text-xs sm:text-sm text-muted-strong leading-relaxed">
+            Thank you, <strong className="text-ink">{form.name}</strong>. Your project brief has been emailed directly to our engineering team at <span className="font-medium text-blue">{siteConfig.email}</span>.
+          </p>
+        </div>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+          <a
+            href={waUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-10 w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-emerald-600 px-5 text-xs font-semibold text-white shadow-sm transition hover:bg-emerald-700 active:scale-95"
+          >
+            <span>Continue on WhatsApp</span>
+            <span>→</span>
+          </a>
+          <button
+            type="button"
+            onClick={() => {
+              setStatus("idle");
+              setMessage("");
+              setForm({
+                name: "",
+                email: "",
+                phone: "",
+                service: services[0]?.title ?? "Custom Web Applications",
+                details: "",
+              });
+            }}
+            className="inline-flex h-10 w-full sm:w-auto items-center justify-center rounded-xl border border-navy/15 bg-white px-4 text-xs font-medium text-navy transition hover:bg-off-white"
+          >
+            Send Another Request
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <form onSubmit={onSubmit} className={cn("space-y-4", className)} noValidate>
       <div className="rounded-xl border border-blue/15 bg-blue/[0.04] px-3.5 py-2.5 text-xs text-muted-strong">
-        Fill the brief below — we continue on WhatsApp with your details ready.
+        Fill the brief below — your request will be emailed directly to our team at {siteConfig.email}.
       </div>
 
       <div className="grid gap-3.5 sm:grid-cols-2">
         <label className="block space-y-1.5">
           <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted">
-            {STRINGS.form.nameLabel} <span className="text-blue">*</span>
+            {STRINGS.form.nameLabelSimple} <span className="text-blue">*</span>
           </span>
           <input
             required
@@ -98,7 +178,7 @@ export function ProjectInquiryForm({
         </label>
         <label className="block space-y-1.5">
           <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted">
-            {STRINGS.form.emailLabel} <span className="text-blue">*</span>
+            {STRINGS.form.emailLabelSimple} <span className="text-blue">*</span>
           </span>
           <input
             required
@@ -116,7 +196,7 @@ export function ProjectInquiryForm({
       <div className="grid gap-3.5 sm:grid-cols-2">
         <label className="block space-y-1.5">
           <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted">
-            {STRINGS.form.phoneLabel}
+            {STRINGS.form.phoneLabelSimple}
           </span>
           <input
             type="tel"
@@ -163,8 +243,7 @@ export function ProjectInquiryForm({
 
       <label className="block space-y-1.5">
         <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-muted">
-          {STRINGS.form.projectDetailsLabel}{" "}
-          <span className="text-blue">*</span>
+          Project Details <span className="text-blue">*</span>
         </span>
         <textarea
           required
@@ -201,10 +280,11 @@ export function ProjectInquiryForm({
           </p>
         ) : (
           <p className="text-xs leading-snug text-muted sm:max-w-[200px] sm:text-right">
-            Opens WhatsApp with your brief pre-filled.
+            Sends your project brief directly to our email.
           </p>
         )}
       </div>
     </form>
   );
 }
+
